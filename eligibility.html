@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check Your Eligibility — Canadian Study Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#173A63;
+    --navy-2:#0F2846;
+    --teal:#1C7FA0;
+    --red:#E1372B;
+    --paper:#FFFFFF;
+    --paper-2:#F6F8F9;
+    --ink:#1B2430;
+    --muted:#5B6672;
+    --line:#E7EBEE;
+
+    --font-display:'Work Sans', sans-serif;
+    --font-body:'Work Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1140px; margin:0 auto; padding:0 32px;}
+
+  .eyebrow{
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--teal); display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:16px; height:1px; background:var(--teal); display:inline-block;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-body); font-weight:600; font-size:14.5px;
+    padding:13px 24px; border-radius:2px; border:1px solid transparent;
+    cursor:pointer; text-decoration:none; transition:opacity .15s ease;
+  }
+  .btn:hover{opacity:.88;}
+  .btn-primary{background:var(--navy); color:var(--paper);}
+  .btn-outline{background:transparent; color:var(--navy); border-color:var(--navy);}
+  .btn-outline:hover{background:var(--navy); color:var(--paper);}
+
+  /* header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,.92); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; height:78px;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:var(--font-body); font-weight:700; font-size:19px; color:var(--navy); letter-spacing:.01em; text-decoration:none;}
+  .logo-mark{width:26px; height:26px; flex-shrink:0;}
+  .logo b{color:var(--teal); font-weight:700;}
+  .nav-links{display:flex; align-items:center; gap:32px; list-style:none;}
+  .nav-links a{font-size:14px; font-weight:500; color:var(--muted); text-decoration:none; transition:color .15s ease;}
+  .nav-links a:hover{color:var(--navy);}
+  .nav-links a.is-current{color:var(--navy);}
+
+  /* page hero */
+  .page-hero{padding:70px 0 56px;}
+  .page-hero h1{
+    font-family:var(--font-display); font-weight:600; font-size:42px; line-height:1.12;
+    letter-spacing:-.01em; margin:18px 0 16px; color:var(--navy-2); max-width:620px;
+  }
+  .page-hero p.lead{font-size:16px; color:var(--muted); max-width:560px;}
+  .page-hero .eyebrow, .page-hero h1, .page-hero p.lead{
+    opacity:0; transform:translateY(18px);
+    animation:hero-in .7s cubic-bezier(.16,1,.3,1) forwards;
+  }
+  .page-hero .eyebrow{animation-delay:.05s;}
+  .page-hero h1{animation-delay:.15s;}
+  .page-hero p.lead{animation-delay:.25s;}
+  @keyframes hero-in{ to{ opacity:1; transform:translateY(0); } }
+  @media (prefers-reduced-motion:reduce){
+    .page-hero .eyebrow, .page-hero h1, .page-hero p.lead{
+      opacity:1 !important; transform:none !important; animation:none !important;
+    }
+  }
+
+  section{padding:0 0 80px;}
+
+  /* CRS estimator */
+  .crs-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
+  .crs-form{display:flex; flex-direction:column; gap:18px;}
+  .crs-field label{
+    display:block; font-family:var(--font-mono); font-size:11px; letter-spacing:.05em;
+    color:var(--muted); text-transform:uppercase; margin-bottom:8px;
+  }
+  .crs-field select{
+    width:100%; font-family:var(--font-body); font-size:14.5px; color:var(--navy-2);
+    background:var(--paper); border:1px solid var(--line); border-radius:4px;
+    padding:12px 14px; appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235B6672' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");
+    background-repeat:no-repeat; background-position:right 14px center; background-size:16px;
+    cursor:pointer;
+  }
+  .crs-field select:focus{outline:none; border-color:var(--teal);}
+
+  .crs-result{
+    background:var(--paper-2); border:1px solid var(--line); border-radius:8px;
+    padding:32px 30px; position:sticky; top:100px;
+  }
+  .crs-score-row{display:flex; align-items:baseline; gap:10px; margin-bottom:6px;}
+  .crs-score-num{
+    font-family:var(--font-display); font-weight:600; font-size:52px; color:var(--navy-2);
+    transition:color .3s ease;
+  }
+  .crs-score-max{font-family:var(--font-mono); font-size:13px; color:var(--muted);}
+  .crs-score-label{font-size:13px; color:var(--muted); margin-bottom:20px;}
+
+  .crs-bar-track{
+    position:relative; height:10px; background:var(--line); border-radius:6px; overflow:visible; margin-bottom:10px;
+  }
+  .crs-bar-fill{
+    position:absolute; top:0; left:0; height:100%; width:0%;
+    background:var(--teal); border-radius:6px;
+    transition:width .5s cubic-bezier(.4,0,.2,1), background .3s ease;
+  }
+  .crs-bar-marker{
+    position:absolute; top:-5px; width:2px; height:20px; background:var(--navy-2); left:85%;
+  }
+  .crs-bar-marker span{
+    position:absolute; top:-22px; left:50%; transform:translateX(-50%);
+    font-family:var(--font-mono); font-size:10px; color:var(--navy-2); white-space:nowrap;
+  }
+  .crs-bar-labels{display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-bottom:24px;}
+
+  .crs-message{
+    font-size:14px; color:var(--ink); padding:16px 18px; border-radius:6px;
+    background:var(--paper); border:1px solid var(--line); margin-bottom:20px;
+    transition:background .3s ease, border-color .3s ease;
+  }
+  .crs-disclaimer{font-size:11.5px; color:var(--muted); margin-bottom:20px;}
+  .crs-result .btn{width:100%; justify-content:center;}
+
+  /* other pathways */
+  .other-paths{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:64px 0;}
+  .section-head{max-width:620px; margin-bottom:36px;}
+  .section-head h2{font-family:var(--font-display); font-weight:600; font-size:26px; margin-top:12px; color:var(--navy-2);}
+  .section-head p{color:var(--muted); font-size:14.5px; margin-top:10px;}
+  .path-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .path-card{background:var(--paper); padding:26px 24px;}
+  .path-card h3{font-family:var(--font-display); font-weight:600; font-size:17px; color:var(--navy-2); margin-bottom:8px;}
+  .path-card p{font-size:13.5px; color:var(--muted); margin-bottom:14px;}
+  .path-card a{font-size:13px; font-weight:600; color:var(--teal); text-decoration:none;}
+
+  /* cta banner */
+  .cta-banner{background:var(--navy); padding:60px 0;}
+  .cta-inner{display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;}
+  .cta-inner h2{font-family:var(--font-body); font-weight:600; font-size:26px; color:var(--paper); max-width:520px;}
+  .cta-inner .btn{background:var(--paper); color:var(--navy);}
+
+  /* footer */
+  footer{background:var(--navy-2); color:rgba(246,248,249,.8); padding:56px 0 28px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px; padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,.1);}
+  .footer-grid h4{font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); margin-bottom:14px;}
+  .footer-grid ul{list-style:none;}
+  .footer-grid li{margin-bottom:9px; font-size:13.5px;}
+  .footer-grid p{font-size:13px; line-height:1.6; color:rgba(246,248,249,.6);}
+  .office{margin-bottom:14px;}
+  .office b{display:block; font-size:13.5px; color:var(--paper); margin-bottom:2px;}
+  .office span{font-size:12.5px; color:rgba(246,248,249,.55);}
+  .bottom-bar{display:flex; justify-content:space-between; align-items:center; padding-top:22px; font-size:12px; color:rgba(246,248,249,.45); flex-wrap:wrap; gap:10px;}
+
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .page-hero h1{font-size:32px;}
+    .crs-grid{grid-template-columns:1fr; gap:32px;}
+    .crs-result{position:static;}
+    .path-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr; gap:26px;}
+    .cta-inner{flex-direction:column; align-items:flex-start;}
+  }
+
+  /* scroll reveal system */
+  .reveal{
+    opacity:0; transform:translateY(26px);
+    transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+    will-change:opacity, transform;
+  }
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1 !important; transform:none !important; transition:none !important;}
+  }
+
+   .logo{
+    width: 200px;
+  }
+</style>
+
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="logo">
+      <div class="logo" >
+            <img src="/images/Logo.png" alt="CSC Logo">
+    </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="success-stories.html">Success stories</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="about.html">About us</a></li>
+      <li><a href="contact-us.html">Contact</a></li>
+    </ul>
+    <a href="eligibility.html" class="btn btn-outline">Check your eligibility</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">ELIGIBILITY CHECK</div>
+    <h1>See your rough Express Entry score.</h1>
+    <p class="lead">Four questions, no sign-up. A real number to work from before you book a call — not an official IRCC result, but a solid starting point.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="crs-grid">
+      <div class="crs-form reveal">
+        <div class="crs-field">
+          <label for="crsAge">Age</label>
+          <select id="crsAge">
+            <option value="90">18–19</option>
+            <option value="110" selected>20–29</option>
+            <option value="94">30–34</option>
+            <option value="66">35–39</option>
+            <option value="28">40–44</option>
+            <option value="0">45+</option>
+          </select>
+        </div>
+        <div class="crs-field">
+          <label for="crsEdu">Highest education</label>
+          <select id="crsEdu">
+            <option value="30">High school</option>
+            <option value="90">One-year diploma/certificate</option>
+            <option value="98">Two-year diploma/certificate</option>
+            <option value="120" selected>Bachelor's degree</option>
+            <option value="128">Two credentials (one 3+ yrs)</option>
+            <option value="135">Master's degree</option>
+            <option value="150">PhD</option>
+          </select>
+        </div>
+        <div class="crs-field">
+          <label for="crsLang">English/French ability (CLB)</label>
+          <select id="crsLang">
+            <option value="24">CLB 4–5</option>
+            <option value="36">CLB 6</option>
+            <option value="68" selected>CLB 7</option>
+            <option value="92">CLB 8</option>
+            <option value="128">CLB 9+</option>
+          </select>
+        </div>
+        <div class="crs-field">
+          <label for="crsWork">Canadian work experience</label>
+          <select id="crsWork">
+            <option value="0" selected>None yet</option>
+            <option value="40">1 year</option>
+            <option value="53">2 years</option>
+            <option value="64">3 years</option>
+            <option value="72">4 years</option>
+            <option value="80">5+ years</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="crs-result reveal" style="transition-delay:120ms">
+        <div class="crs-score-row">
+          <span class="crs-score-num" id="crsScoreNum">278</span>
+          <span class="crs-score-max">/ 470</span>
+        </div>
+        <div class="crs-score-label">Estimated core CRS score</div>
+
+        <div class="crs-bar-track">
+          <div class="crs-bar-fill" id="crsBarFill"></div>
+          <div class="crs-bar-marker" style="left:85%;"><span>Strong range</span></div>
+        </div>
+        <div class="crs-bar-labels"><span>0</span><span>470</span></div>
+
+        <div class="crs-message" id="crsMessage">Fill in your details to see where you stand.</div>
+        <div class="crs-disclaimer">This is a simplified score based on 4 core factors only — not the official CRS (which goes up to 1,200 with skill transferability, provincial nomination, French/sibling bonuses, and a spouse's factors). Your real score is almost always higher than this number. Book a call for your actual estimate.</div>
+        <a href="homepage.html#book" class="btn btn-primary">Book a free consultation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="other-paths">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">NOT LOOKING AT PR RIGHT NOW?</div>
+      <h2>This tool covers Express Entry — here's where the others fit.</h2>
+      <p>Work permits, study permits, and sponsorship don't score the same way. These depend on your specific offer, program, or relationship — best worked through on a call.</p>
+    </div>
+    <div class="path-grid">
+      <div class="path-card reveal" style="transition-delay:0ms">
+        <h3>Work permit</h3>
+        <p>Eligibility depends on your job offer, LMIA status, or PGWP timing — not a points score.</p>
+        <a href="services.html#work">See what's involved →</a>
+      </div>
+      <div class="path-card reveal" style="transition-delay:90ms">
+        <h3>Study permit</h3>
+        <p>Extensions and DLI changes depend on your current program and compliance record.</p>
+        <a href="services.html#study">See what's involved →</a>
+      </div>
+      <div class="path-card reveal" style="transition-delay:180ms">
+        <h3>Family sponsorship</h3>
+        <p>Eligibility depends on your status, income, and relationship to the person you're sponsoring.</p>
+        <a href="services.html#sponsorship">See what's involved →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-banner" id="book">
+  <div class="wrap cta-inner reveal">
+    <h2>Want a second opinion on your actual number?</h2>
+    <a href="homepage.html#book" class="btn">Book a free 30-min call</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" >
+            <img src="/images/Logo2.png" alt="CSC Logo">
+    </div>
+        <p>CSC Global — a regulated immigration consultancy serving Nepalese across Canada with status, PR, and sponsorship since 2016.</p>
+      </div>
+      <div>
+        <h4>Office</h4>
+        <div class="office"><b>Mississauga</b><span>100 City Centre Dr, Mississauga, ON L5B 2C9</span></div>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#status">Status &amp; extensions</a></li>
+          <li><a href="services.html#pr">Permanent residency</a></li>
+          <li><a href="services.html#sponsorship">Family sponsorship</a></li>
+          <li><a href="services.html#work">Work permits</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>WhatsApp: +977 98XX-XXXXXX</li>
+          <li>info@cscglobal.ca</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <span>© 2026 CSC Global. RCIC #R5XXXXX.</span>
+      <span>Privacy · Terms · Refund policy</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ageEl = document.getElementById('crsAge');
+  var eduEl = document.getElementById('crsEdu');
+  var langEl = document.getElementById('crsLang');
+  var workEl = document.getElementById('crsWork');
+  var numEl = document.getElementById('crsScoreNum');
+  var fillEl = document.getElementById('crsBarFill');
+  var msgEl = document.getElementById('crsMessage');
+  if(!ageEl || !eduEl || !langEl || !workEl || !numEl || !fillEl || !msgEl) return;
+
+  var MAX = 470;
+  var displayed = 0;
+  var rafId = null;
+
+  function currentScore(){
+    return (parseInt(ageEl.value,10) || 0)
+      + (parseInt(eduEl.value,10) || 0)
+      + (parseInt(langEl.value,10) || 0)
+      + (parseInt(workEl.value,10) || 0);
+  }
+
+  function messageFor(score){
+    if(score >= 400){
+      return { text: "That's a strong core score — you're in range for recent Express Entry draws. Let's talk about filing.", tone: 'good' };
+    }
+    if(score >= 300){
+      return { text: "You're in a workable range, especially with a Provincial Nominee stream. Let's map which one fits.", tone: 'mid' };
+    }
+    return { text: "There's room to grow this — most people's core score isn't the full picture. Let's find your fastest path.", tone: 'low' };
+  }
+
+  function animateTo(target){
+    if(rafId) cancelAnimationFrame(rafId);
+    var start = displayed;
+    var startTime = null;
+    var duration = 500;
+    function step(ts){
+      if(!startTime) startTime = ts;
+      var p = Math.min((ts - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      displayed = Math.round(start + (target - start) * eased);
+      numEl.textContent = displayed;
+      fillEl.style.width = Math.min((displayed / MAX) * 100, 100) + '%';
+      if(p < 1){
+        rafId = requestAnimationFrame(step);
+      } else {
+        displayed = target;
+      }
+    }
+    rafId = requestAnimationFrame(step);
+  }
+
+  function update(){
+    var score = currentScore();
+    animateTo(score);
+    var m = messageFor(score);
+    msgEl.textContent = m.text;
+    fillEl.style.background = m.tone === 'good' ? 'var(--teal)' : (m.tone === 'mid' ? '#C98A2E' : 'var(--muted)');
+  }
+
+  [ageEl, eduEl, langEl, workEl].forEach(function(el){
+    el.addEventListener('change', update);
+  });
+
+  update();
+})();
+</script>
+
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.reveal');
+  if(!els.length) return;
+
+  if(reduceMotion || !('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('is-visible'); });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  els.forEach(function(el){ observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>

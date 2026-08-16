@@ -34,7 +34,7 @@
   }
   img{max-width:100%; display:block;}
   a{color:inherit;}
-  .wrap{max-width:1140px; margin:0 auto; padding:0 32px;}
+  .wrap{max-width:1280px; margin:0 auto; padding:0 32px;}
 
   .eyebrow{
     font-family:var(--font-mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
@@ -295,7 +295,7 @@
 
         <div class="crs-message" id="crsMessage">Fill in your details to see where you stand.</div>
         <div class="crs-disclaimer">This is a simplified score based on 4 core factors only — not the official CRS (which goes up to 1,200 with skill transferability, provincial nomination, French/sibling bonuses, and a spouse's factors). Your real score is almost always higher than this number. Book a call for your actual estimate.</div>
-        <a href="homepage.html#book" class="btn btn-primary">Book a free consultation</a>
+        <a href="#book" class="btn btn-primary">Book a free consultation</a>
       </div>
     </div>
   </div>
@@ -331,7 +331,7 @@
 <div class="cta-banner" id="book">
   <div class="wrap cta-inner reveal">
     <h2>Want a second opinion on your actual number?</h2>
-    <a href="homepage.html#book" class="btn">Book a free 30-min call</a>
+    <a href="#book" class="btn">Book a free 30-min call</a>
   </div>
 </div>
 
@@ -463,6 +463,59 @@
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
   els.forEach(function(el){ observer.observe(el); });
+})();
+</script>
+
+<div class="book-overlay" id="bookOverlay">
+  <div class="book-frame-wrap">
+    <button class="book-close" id="bookClose" aria-label="Close">&times;</button>
+    <iframe id="bookIframe" src="" title="Book a consultation"></iframe>
+  </div>
+</div>
+
+<style>
+  .book-overlay{
+    position:fixed; inset:0; z-index:200; background:rgba(15,40,70,.55);
+    display:none; align-items:center; justify-content:center; padding:20px;
+    opacity:0; transition:opacity .25s ease;
+  }
+  .book-overlay.open{display:flex;}
+  .book-overlay.visible{opacity:1;}
+  .book-frame-wrap{
+    position:relative; background:#fff; border-radius:10px;
+    width:100%; max-width:560px; height:min(640px, 90vh);
+    box-shadow:0 30px 70px -20px rgba(15,40,70,.4);
+  }
+  .book-frame-wrap iframe{width:100%; height:100%; border:0; border-radius:10px;}
+  .book-close{
+    position:absolute; top:-14px; right:-14px; z-index:2;
+    width:32px; height:32px; border-radius:50%; border:1px solid #E7EBEE;
+    background:#fff; font-size:18px; cursor:pointer;
+  }
+</style>
+
+<script>
+(function(){
+  var overlay = document.getElementById('bookOverlay');
+  var iframe = document.getElementById('bookIframe');
+  var closeBtn = document.getElementById('bookClose');
+
+  document.addEventListener('click', function(e){
+    var trigger = e.target.closest('a[href="#book"]');
+    if(!trigger) return;
+    e.preventDefault();
+    iframe.src = 'booking-modal.html';
+    overlay.classList.add('open');
+    requestAnimationFrame(function(){ overlay.classList.add('visible'); });
+  });
+
+  function close(){
+    overlay.classList.remove('visible');
+    setTimeout(function(){ overlay.classList.remove('open'); iframe.src = ''; }, 250);
+  }
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
 })();
 </script>
 

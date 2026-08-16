@@ -81,14 +81,40 @@
   <p>A consultant will reach out within 24 hours to confirm your time.</p>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-document.getElementById('f').addEventListener('submit', function(e){
-  e.preventDefault();
-  document.getElementById('f').style.display = 'none';
-  document.getElementById('s').classList.add('active');
-  // tell the parent page the form was submitted, so it can resize/react if needed
-  if(window.parent) window.parent.postMessage('booking-submitted', '*');
-});
+  const SUPABASE_URL = 'https://dgwssqymenrjwncbuyux.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_f5eZE-55wt0f2nn-Pw2hrw_kgxE3Gl4';
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  document.getElementById('f').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    const { error } = await supabase.from('consultation_bookings').insert({
+      full_name: form.name.value,
+      phone: form.phone.value,
+      email: form.email.value,
+      service: form.service.value,
+      best_time: form.time.value,
+      note: form.note.value
+    });
+
+    if (error) {
+      console.error(error);
+      btn.disabled = false;
+      btn.textContent = 'Confirm booking request';
+      alert('Something went wrong — please try again or message us on WhatsApp instead.');
+      return;
+    }
+
+    form.style.display = 'none';
+    document.getElementById('s').classList.add('active');
+    if (window.parent) window.parent.postMessage('booking-submitted', '*');
+  });
 </script>
 
 </body>

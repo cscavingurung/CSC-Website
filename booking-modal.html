@@ -83,9 +83,14 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+(function() {
   const SUPABASE_URL = 'https://dgwssqymenrjwncbuyux.supabase.co';
   const SUPABASE_ANON_KEY = 'sb_publishable_f5eZE-55wt0f2nn-Pw2hrw_kgxE3Gl4';
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  
+  // 1. Initialize client using window.supabase.createClient
+  // 2. Assign it to 'supabaseClient' (NOT 'supabase')
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   document.getElementById('f').addEventListener('submit', async function(e){
     e.preventDefault();
@@ -94,27 +99,35 @@
     btn.disabled = true;
     btn.textContent = 'Sending...';
 
-    const { error } = await supabase.from('consultation_bookings').insert({
-      full_name: form.name.value,
-      phone: form.phone.value,
-      email: form.email.value,
-      service: form.service.value,
-      best_time: form.time.value,
-      note: form.note.value
-    });
+    try {
+      const payload = {
+        full_name: form.querySelector('[name="name"]').value,
+        phone: form.querySelector('[name="phone"]').value,
+        email: form.querySelector('[name="email"]').value,
+        service: form.querySelector('[name="service"]').value,
+        best_time: form.querySelector('[name="time"]').value,
+        note: form.querySelector('[name="note"]').value
+      };
 
-    if (error) {
-      console.error(error);
+      // Call .from() on supabaseClient
+      const { error } = await supabaseClient
+        .from('consultation_bookings')
+        .insert([payload]);
+
+      if (error) throw error;
+
+      form.style.display = 'none';
+      document.getElementById('s').classList.add('active');
+      if (window.parent) window.parent.postMessage('booking-submitted', '*');
+
+    } catch (err) {
+      console.error('Submission Error:', err);
       btn.disabled = false;
       btn.textContent = 'Confirm booking request';
-      alert('Something went wrong — please try again or message us on WhatsApp instead.');
-      return;
+      alert('Error: ' + (err.message || 'Check console logs for details.'));
     }
-
-    form.style.display = 'none';
-    document.getElementById('s').classList.add('active');
-    if (window.parent) window.parent.postMessage('booking-submitted', '*');
   });
+})();
 </script>
 
 </body>

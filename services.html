@@ -1,485 +1,1163 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services — Canadian Study Center</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --navy:#173A63;
-    --navy-2:#0F2846;
-    --teal:#1C7FA0;
-    --red:#E1372B;
-    --paper:#FFFFFF;
-    --paper-2:#F6F8F9;
-    --ink:#1B2430;
-    --muted:#5B6672;
-    --line:#E7EBEE;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services — Canadian Study Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #173a63;
+        --navy-2: #0f2846;
+        --teal: #1c7fa0;
+        --red: #e1372b;
+        --paper: #ffffff;
+        --paper-2: #f6f8f9;
+        --ink: #1b2430;
+        --muted: #5b6672;
+        --line: #e7ebee;
 
-    --font-display:'Work Sans', sans-serif;
-    --font-body:'Work Sans', sans-serif;
-    --font-mono:'IBM Plex Mono', monospace;
-  }
-
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:var(--font-body);
-    color:var(--ink);
-    background:var(--paper);
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-  }
-  img{max-width:100%; display:block;}
-  a{color:inherit;}
-  .wrap{max-width:1280px; margin:0 auto; padding:0 32px;}
-
-  .eyebrow{
-    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--teal); display:flex; align-items:center; gap:10px;
-  }
-  .eyebrow::before{content:""; width:16px; height:1px; background:var(--teal); display:inline-block;}
-
-  .btn{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:var(--font-body); font-weight:600; font-size:14.5px;
-    padding:13px 24px; border-radius:2px; border:1px solid transparent;
-    cursor:pointer; text-decoration:none; transition:opacity .15s ease;
-  }
-  .btn:hover{opacity:.88;}
-  .btn-primary{background:var(--navy); color:var(--paper);}
-  .btn-outline{background:transparent; color:var(--navy); border-color:var(--navy);}
-  .btn-outline:hover{background:var(--navy); color:var(--paper);}
-
-  /* header */
-  header{
-    position:sticky; top:0; z-index:50;
-    background:rgba(255,255,255,.92); backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{display:flex; align-items:center; justify-content:space-between; height:78px;}
-  .logo{display:flex; align-items:center; gap:10px; font-family:var(--font-body); font-weight:700; font-size:19px; color:var(--navy); letter-spacing:.01em; text-decoration:none;}
-  .logo-mark{width:26px; height:26px; flex-shrink:0;}
-  .logo b{color:var(--teal); font-weight:700;}
-  .nav-links{display:flex; align-items:center; gap:32px; list-style:none;}
-  .nav-links a{font-size:14px; font-weight:500; color:var(--muted); text-decoration:none; transition:color .15s ease;}
-  .nav-links a:hover{color:var(--navy);}
-  .nav-links a.is-current{color:var(--navy);}
-
-  /* page hero */
-  .page-hero{padding:70px 0 60px; border-bottom:1px solid var(--line);}
-  .page-hero h1{
-    font-family:var(--font-display); font-weight:600; font-size:44px; line-height:1.12;
-    letter-spacing:-.01em; margin:18px 0 18px; color:var(--navy-2); max-width:620px;
-  }
-  .page-hero p.lead{font-size:16.5px; color:var(--muted); max-width:560px;}
-  .page-hero .eyebrow, .page-hero h1, .page-hero p.lead{
-    opacity:0; transform:translateY(18px);
-    animation:hero-in .7s cubic-bezier(.16,1,.3,1) forwards;
-  }
-  .page-hero .eyebrow{animation-delay:.05s;}
-  .page-hero h1{animation-delay:.15s;}
-  .page-hero p.lead{animation-delay:.25s;}
-  @keyframes hero-in{ to{ opacity:1; transform:translateY(0); } }
-  @media (prefers-reduced-motion:reduce){
-    .page-hero .eyebrow, .page-hero h1, .page-hero p.lead{
-      opacity:1 !important; transform:none !important; animation:none !important;
-    }
-  }
-
-  /* shared section */
-  section{padding:80px 0;}
-  .section-head{max-width:620px; margin-bottom:44px;}
-  .section-head h2{
-    font-family:var(--font-display); font-weight:600; font-size:30px; margin-top:14px; letter-spacing:-.01em; color:var(--navy-2);
-  }
-  .section-head p{color:var(--muted); font-size:15px; margin-top:12px;}
-
-  /* jump nav */
-  .jump-nav{
-    display:flex; flex-wrap:wrap; gap:10px;
-    padding:22px 0; border-bottom:1px solid var(--line);
-    position:sticky; top:78px; background:rgba(255,255,255,.95); backdrop-filter:blur(6px); z-index:40;
-  }
-  .jump-nav a{
-    font-size:13px; font-weight:500; color:var(--muted);
-    padding:7px 14px; border:1px solid var(--line); border-radius:20px;
-    text-decoration:none; transition:all .15s ease;
-  }
-  .jump-nav a:hover{color:var(--navy); border-color:var(--navy);}
-
-  /* service detail blocks */
-  .service-block{
-    display:grid; grid-template-columns:220px 1fr; gap:48px;
-    padding:56px 0; border-bottom:1px solid var(--line);
-    scroll-margin-top:150px;
-  }
-  .service-block:first-of-type{padding-top:0;}
-  .service-block:last-of-type{border-bottom:none;}
-  .service-side{position:sticky; top:150px; align-self:start;}
-  .service-num{font-family:var(--font-mono); font-size:12px; color:var(--teal); letter-spacing:.05em; margin-bottom:10px;}
-  .service-side h3{font-family:var(--font-display); font-weight:600; font-size:23px; color:var(--navy-2); line-height:1.2;}
-  .service-body p.desc{font-size:15px; color:var(--muted); max-width:600px; margin-bottom:24px;}
-  .service-included{
-    display:grid; grid-template-columns:1fr 1fr; gap:12px 28px;
-    margin-bottom:24px;
-  }
-  .service-included div{
-    display:flex; align-items:flex-start; gap:10px;
-    font-size:13.5px; color:var(--ink);
-  }
-  .service-included svg{width:15px; height:15px; flex-shrink:0; margin-top:2px;}
-  .service-timeline{
-    display:inline-flex; align-items:center; gap:8px;
-    font-size:12.5px; color:var(--muted); font-family:var(--font-mono);
-    padding:8px 14px; border:1px solid var(--line); border-radius:20px;
-  }
-  .service-timeline b{color:var(--navy-2); font-family:var(--font-body); font-weight:600;}
-
-  /* pricing note */
-  .pricing-note{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-  .pricing-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
-  .pricing-grid h2{font-family:var(--font-display); font-weight:600; font-size:28px; color:var(--navy-2); margin-bottom:14px;}
-  .pricing-grid p{font-size:15px; color:var(--muted); max-width:440px;}
-  .pricing-list{display:flex; flex-direction:column; gap:0;}
-  .pricing-item{display:flex; align-items:center; gap:12px; padding:14px 0; border-top:1px solid var(--line); font-size:14px;}
-  .pricing-item:last-child{border-bottom:1px solid var(--line);}
-  .pricing-item svg{width:16px; height:16px; flex-shrink:0; color:var(--teal);}
-
-  /* cta banner */
-  .cta-banner{background:var(--navy); padding:60px 0;}
-  .cta-inner{display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;}
-  .cta-inner h2{font-family:var(--font-body); font-weight:600; font-size:26px; color:var(--paper); max-width:520px;}
-  .cta-inner .btn{background:var(--paper); color:var(--navy);}
-
-  /* footer */
-  footer{background:var(--navy-2); color:rgba(246,248,249,.8); padding:56px 0 28px;}
-  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px; padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,.1);}
-  .footer-grid h4{font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); margin-bottom:14px;}
-  .footer-grid ul{list-style:none;}
-  .footer-grid li{margin-bottom:9px; font-size:13.5px;}
-  .footer-grid p{font-size:13px; line-height:1.6; color:rgba(246,248,249,.6);}
-  .office{margin-bottom:14px;}
-  .office b{display:block; font-size:13.5px; color:var(--paper); margin-bottom:2px;}
-  .office span{font-size:12.5px; color:rgba(246,248,249,.55);}
-  .bottom-bar{display:flex; justify-content:space-between; align-items:center; padding-top:22px; font-size:12px; color:rgba(246,248,249,.45); flex-wrap:wrap; gap:10px;}
-
-  @media (max-width:900px){
-    .nav-links{display:none;}
-    .page-hero h1{font-size:32px;}
-    .jump-nav{position:static; overflow-x:auto; flex-wrap:nowrap;}
-    .service-block{grid-template-columns:1fr; gap:16px;}
-    .service-side{position:static;}
-    .service-included{grid-template-columns:1fr;}
-    .pricing-grid{grid-template-columns:1fr; gap:30px;}
-    .footer-grid{grid-template-columns:1fr 1fr; gap:26px;}
-    .cta-inner{flex-direction:column; align-items:flex-start;}
-  }
-
-  /* scroll reveal system */
-  .reveal{
-    opacity:0; transform:translateY(26px);
-    transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
-    will-change:opacity, transform;
-  }
-  .reveal.is-visible{opacity:1; transform:translateY(0);}
-  @media (prefers-reduced-motion:reduce){
-    .reveal{opacity:1 !important; transform:none !important; transition:none !important;}
-  }
-
-   .logo{
-    width: 200px;
-  }
-</style>
-
-</head>
-<body>
-
-<header>
-  <div class="wrap nav">
-    <a href="index.html" class="logo">
-      <div class="logo" >
-            <img src="/images/Logo.png" alt="CSC Logo">
-    </div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="services.html" class="is-current">Services</a></li>
-      <li><a href="how-it-works.html">How it works</a></li>
-      <li><a href="success-stories.html">Success stories</a></li>
-      <li><a href="resources.html">Resources</a></li>
-      <li><a href="about.html">About us</a></li>
-      <li><a href="contact-us.html">Contact</a></li>
-    </ul>
-    <a href="eligibility.html" class="btn btn-outline">Check your eligibility</a>
-  </div>
-</header>
-
-<section class="page-hero">
-  <div class="wrap">
-    <div class="eyebrow">SERVICES</div>
-    <h1>Wherever you are in Canada, we have a lane for it.</h1>
-    <p class="lead">Each case gets a named consultant and a fixed fee — quoted upfront, before you commit to anything. Here's exactly what each service covers.</p>
-  </div>
-</section>
-
-<div class="wrap jump-nav">
-  <a href="#status">Status &amp; extensions</a>
-  <a href="#pr">Permanent residency</a>
-  <a href="#sponsorship">Family sponsorship</a>
-  <a href="#work">Work permits</a>
-  <a href="#study">Study permits</a>
-  <a href="#refusal">Refusal review</a>
-</div>
-
-<section>
-  <div class="wrap">
-
-    <div class="service-block reveal" id="status">
-      <div class="service-side">
-        <div class="service-num">01</div>
-        <h3>Status &amp; extensions</h3>
-      </div>
-      <div class="service-body">
-        <p class="desc">Restoration, extensions, and status changes for Nepalis already living in Canada — filed directly with IRCC, with you kept in the loop at every stage.</p>
-        <div class="service-included">
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Visitor, study &amp; work status extensions</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Restoration after a status lapse</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Change of conditions on your permit</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Direct filing &amp; tracking with IRCC</div>
-        </div>
-        <div class="service-timeline">Typical timeline: <b>varies by category — we give you a range upfront</b></div>
-      </div>
-    </div>
-
-    <div class="service-block reveal" id="pr">
-      <div class="service-side">
-        <div class="service-num">02</div>
-        <h3>Permanent residency</h3>
-      </div>
-      <div class="service-body">
-        <p class="desc">Express Entry, PNP, and CEC pathways from within Canada — built around your actual CRS score, not a generic checklist.</p>
-        <div class="service-included">
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>CRS scoring &amp; improvement plan</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Express Entry profile setup</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Provincial Nominee Program applications</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Post-invitation application filing</div>
-        </div>
-        <div class="service-timeline">Typical timeline: <b>6–18 months, depending on pathway</b></div>
-      </div>
-    </div>
-
-    <div class="service-block reveal" id="sponsorship">
-      <div class="service-side">
-        <div class="service-num">03</div>
-        <h3>Family sponsorship</h3>
-      </div>
-      <div class="service-body">
-        <p class="desc">Sponsoring a spouse, parent, or child to join you from Nepal — with honest timelines on current processing backlogs, not marketing numbers.</p>
-        <div class="service-included">
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Sponsor eligibility assessment</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Relationship evidence package</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Application filing &amp; tracking</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Super Visa applications for parents</div>
-        </div>
-        <div class="service-timeline">Typical timeline: <b>backlog-aware estimate given upfront</b></div>
-      </div>
-    </div>
-
-    <div class="service-block reveal" id="work">
-      <div class="service-side">
-        <div class="service-num">04</div>
-        <h3>Work permits</h3>
-      </div>
-      <div class="service-body">
-        <p class="desc">LMIA-backed and open work permit applications, including post-graduation work permit (PGWP) planning and renewals.</p>
-        <div class="service-included">
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Employer-sponsored LMIA applications</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Open work permit applications</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>PGWP eligibility &amp; timing</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Permit renewals &amp; extensions</div>
-        </div>
-        <div class="service-timeline">Typical timeline: <b>2–16 weeks, depending on category</b></div>
-      </div>
-    </div>
-
-    <div class="service-block reveal" id="study">
-      <div class="service-side">
-        <div class="service-num">05</div>
-        <h3>Study permits</h3>
-      </div>
-      <div class="service-body">
-        <p class="desc">Study permit extensions and the pathway from PGWP toward permanent residence — for students already enrolled in Canada.</p>
-        <div class="service-included">
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Study permit extensions</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Change of DLI or program</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>PGWP pathway planning</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Compliance guidance (hours, program rules)</div>
-        </div>
-        <div class="service-timeline">Typical timeline: <b>4–12 weeks for extensions</b></div>
-      </div>
-    </div>
-
-    <div class="service-block reveal" id="refusal">
-      <div class="service-side">
-        <div class="service-num">06</div>
-        <h3>Refusal review</h3>
-      </div>
-      <div class="service-body">
-        <p class="desc">Had an application refused? We review the refusal letter and tell you honestly what's fixable — before you pay us to try again.</p>
-        <div class="service-included">
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Full refusal letter review</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Reapplication strategy</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Judicial review referral, if applicable</div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="#1C7FA0" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Second-opinion consultations</div>
-        </div>
-        <div class="service-timeline">Typical timeline: <b>review within 5 business days</b></div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="pricing-note">
-  <div class="wrap" style="padding:64px 0;">
-    <div class="pricing-grid">
-      <div>
-        <div class="eyebrow">HOW PRICING WORKS</div>
-        <h2 style="margin-top:14px;">Fixed fees, quoted before you commit.</h2>
-        <p>No percentage cuts, no hourly surprises, no add-ons that appear halfway through. You'll know the full cost of your service on the free consultation call — before you pay anything.</p>
-      </div>
-      <div class="pricing-list">
-        <div class="pricing-item reveal" style="transition-delay:0ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Fixed fee per service, agreed upfront</div>
-        <div class="pricing-item reveal" style="transition-delay:90ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>No charge for the initial consultation</div>
-        <div class="pricing-item reveal" style="transition-delay:180ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Government filing fees always billed separately, at cost</div>
-        <div class="pricing-item reveal" style="transition-delay:270ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Refusal reviews discounted if you filed with us originally</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="cta-banner" id="book">
-  <div class="wrap cta-inner reveal">
-    <h2>Not sure which service fits your situation?</h2>
-    <a href="#book" class="btn">Book a free 30-min call</a>
-  </div>
-</div>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="logo" >
-            <img src="/images/Logo2.png" alt="CSC Logo">
-    </div>
-        <p>CSC Global — a regulated immigration consultancy serving Nepalese across Canada with status, PR, and sponsorship since 2016.</p>
-      </div>
-      <div>
-        <h4>Office</h4>
-        <div class="office"><b>Mississauga</b><span>100 City Centre Dr, Mississauga, ON L5B 2C9</span></div>
-      </div>
-      <div>
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#status">Status &amp; extensions</a></li>
-          <li><a href="#pr">Permanent residency</a></li>
-          <li><a href="#sponsorship">Family sponsorship</a></li>
-          <li><a href="#work">Work permits</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li>WhatsApp: +977 98XX-XXXXXX</li>
-          <li>info@cscglobal.ca</li>
-        </ul>
-      </div>
-    </div>
-    <div class="bottom-bar">
-      <span>© 2026 CSC Global. RCIC #R5XXXXX.</span>
-      <span>Privacy · Terms · Refund policy</span>
-    </div>
-  </div>
-</footer>
-
-
-<script>
-(function(){
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var els = document.querySelectorAll('.reveal');
-  if(!els.length) return;
-
-  if(reduceMotion || !('IntersectionObserver' in window)){
-    els.forEach(function(el){ el.classList.add('is-visible'); });
-    return;
-  }
-
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
+        --font-display: "Work Sans", sans-serif;
+        --font-body: "Work Sans", sans-serif;
+        --font-mono: "IBM Plex Mono", monospace;
       }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-  els.forEach(function(el){ observer.observe(el); });
-})();
-</script>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font-body);
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+      }
+      .wrap {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
 
-<div class="book-overlay" id="bookOverlay">
-  <div class="book-frame-wrap">
-    <button class="book-close" id="bookClose" aria-label="Close">&times;</button>
-    <iframe id="bookIframe" src="" title="Book a consultation"></iframe>
-  </div>
-</div>
+      .eyebrow {
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--teal);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 16px;
+        height: 1px;
+        background: var(--teal);
+        display: inline-block;
+      }
 
-<style>
-  .book-overlay{
-    position:fixed; inset:0; z-index:200; background:rgba(15,40,70,.55);
-    display:none; align-items:center; justify-content:center; padding:20px;
-    opacity:0; transition:opacity .25s ease;
-  }
-  .book-overlay.open{display:flex;}
-  .book-overlay.visible{opacity:1;}
-  .book-frame-wrap{
-    position:relative; background:#fff; border-radius:10px;
-    width:100%; max-width:560px; height:min(640px, 90vh);
-    box-shadow:0 30px 70px -20px rgba(15,40,70,.4);
-  }
-  .book-frame-wrap iframe{width:100%; height:100%; border:0; border-radius:10px;}
-  .book-close{
-    position:absolute; top:-14px; right:-14px; z-index:2;
-    width:32px; height:32px; border-radius:50%; border:1px solid #E7EBEE;
-    background:#fff; font-size:18px; cursor:pointer;
-  }
-</style>
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 14.5px;
+        padding: 13px 24px;
+        border-radius: 2px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        text-decoration: none;
+        transition: opacity 0.15s ease;
+      }
+      .btn:hover {
+        opacity: 0.88;
+      }
+      .btn-primary {
+        background: var(--navy);
+        color: var(--paper);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--navy);
+        border-color: var(--navy);
+      }
+      .btn-outline:hover {
+        background: var(--navy);
+        color: var(--paper);
+      }
 
-<script>
-(function(){
-  var overlay = document.getElementById('bookOverlay');
-  var iframe = document.getElementById('bookIframe');
-  var closeBtn = document.getElementById('bookClose');
+      /* header */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(6px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 78px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-body);
+        font-weight: 700;
+        font-size: 19px;
+        color: var(--navy);
+        letter-spacing: 0.01em;
+        text-decoration: none;
+      }
+      .logo-mark {
+        width: 26px;
+        height: 26px;
+        flex-shrink: 0;
+      }
+      .logo b {
+        color: var(--teal);
+        font-weight: 700;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.15s ease;
+      }
+      .nav-links a:hover {
+        color: var(--navy);
+      }
+      .nav-links a.is-current {
+        color: var(--navy);
+      }
 
-  document.addEventListener('click', function(e){
-    var trigger = e.target.closest('a[href="#book"]');
-    if(!trigger) return;
-    e.preventDefault();
-    iframe.src = 'booking-modal.html';
-    overlay.classList.add('open');
-    requestAnimationFrame(function(){ overlay.classList.add('visible'); });
-  });
+      /* page hero */
+      .page-hero {
+        padding: 70px 0 60px;
+        border-bottom: 1px solid var(--line);
+      }
+      .page-hero h1 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 44px;
+        line-height: 1.12;
+        letter-spacing: -0.01em;
+        margin: 18px 0 18px;
+        color: var(--navy-2);
+        max-width: 620px;
+      }
+      .page-hero p.lead {
+        font-size: 16.5px;
+        color: var(--muted);
+        max-width: 560px;
+      }
+      .page-hero .eyebrow,
+      .page-hero h1,
+      .page-hero p.lead {
+        opacity: 0;
+        transform: translateY(18px);
+        animation: hero-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      .page-hero .eyebrow {
+        animation-delay: 0.05s;
+      }
+      .page-hero h1 {
+        animation-delay: 0.15s;
+      }
+      .page-hero p.lead {
+        animation-delay: 0.25s;
+      }
+      @keyframes hero-in {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .page-hero .eyebrow,
+        .page-hero h1,
+        .page-hero p.lead {
+          opacity: 1 !important;
+          transform: none !important;
+          animation: none !important;
+        }
+      }
 
-  function close(){
-    overlay.classList.remove('visible');
-    setTimeout(function(){ overlay.classList.remove('open'); iframe.src = ''; }, 250);
-  }
-  closeBtn.addEventListener('click', close);
-  overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
-})();
-</script>
+      /* shared section */
+      section {
+        padding: 80px 0;
+      }
+      .section-head {
+        max-width: 620px;
+        margin-bottom: 44px;
+      }
+      .section-head h2 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 30px;
+        margin-top: 14px;
+        letter-spacing: -0.01em;
+        color: var(--navy-2);
+      }
+      .section-head p {
+        color: var(--muted);
+        font-size: 15px;
+        margin-top: 12px;
+      }
 
-</body>
+      /* jump nav */
+      .jump-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 22px 0;
+        border-bottom: 1px solid var(--line);
+        position: sticky;
+        top: 78px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(6px);
+        z-index: 40;
+      }
+      .jump-nav a {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--muted);
+        padding: 7px 14px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        text-decoration: none;
+        transition: all 0.15s ease;
+      }
+      .jump-nav a:hover {
+        color: var(--navy);
+        border-color: var(--navy);
+      }
+
+      /* service detail blocks */
+      .service-block {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 48px;
+        padding: 56px 0;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 150px;
+      }
+      .service-block:first-of-type {
+        padding-top: 0;
+      }
+      .service-block:last-of-type {
+        border-bottom: none;
+      }
+      .service-side {
+        position: sticky;
+        top: 150px;
+        align-self: start;
+      }
+      .service-num {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--teal);
+        letter-spacing: 0.05em;
+        margin-bottom: 10px;
+      }
+      .service-side h3 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 23px;
+        color: var(--navy-2);
+        line-height: 1.2;
+      }
+      .service-body p.desc {
+        font-size: 15px;
+        color: var(--muted);
+        max-width: 600px;
+        margin-bottom: 24px;
+      }
+      .service-included {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px 28px;
+        margin-bottom: 24px;
+      }
+      .service-included div {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 13.5px;
+        color: var(--ink);
+      }
+      .service-included svg {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .service-timeline {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12.5px;
+        color: var(--muted);
+        font-family: var(--font-mono);
+        padding: 8px 14px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+      }
+      .service-timeline b {
+        color: var(--navy-2);
+        font-family: var(--font-body);
+        font-weight: 600;
+      }
+
+      /* pricing note */
+      .pricing-note {
+        background: var(--paper-2);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+        align-items: center;
+      }
+      .pricing-grid h2 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 28px;
+        color: var(--navy-2);
+        margin-bottom: 14px;
+      }
+      .pricing-grid p {
+        font-size: 15px;
+        color: var(--muted);
+        max-width: 440px;
+      }
+      .pricing-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .pricing-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 0;
+        border-top: 1px solid var(--line);
+        font-size: 14px;
+      }
+      .pricing-item:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .pricing-item svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        color: var(--teal);
+      }
+
+      /* cta banner */
+      .cta-banner {
+        background: var(--navy);
+        padding: 60px 0;
+      }
+      .cta-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+      .cta-inner h2 {
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 26px;
+        color: var(--paper);
+        max-width: 520px;
+      }
+      .cta-inner .btn {
+        background: var(--paper);
+        color: var(--navy);
+      }
+
+      /* footer */
+      footer {
+        background: var(--navy-2);
+        color: rgba(246, 248, 249, 0.8);
+        padding: 56px 0 28px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 36px;
+        padding-bottom: 36px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .footer-grid h4 {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 14px;
+      }
+      .footer-grid ul {
+        list-style: none;
+      }
+      .footer-grid li {
+        margin-bottom: 9px;
+        font-size: 13.5px;
+      }
+      .footer-grid p {
+        font-size: 13px;
+        line-height: 1.6;
+        color: rgba(246, 248, 249, 0.6);
+      }
+      .office {
+        margin-bottom: 14px;
+      }
+      .office b {
+        display: block;
+        font-size: 13.5px;
+        color: var(--paper);
+        margin-bottom: 2px;
+      }
+      .office span {
+        font-size: 12.5px;
+        color: rgba(246, 248, 249, 0.55);
+      }
+      .bottom-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 22px;
+        font-size: 12px;
+        color: rgba(246, 248, 249, 0.45);
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      @media (max-width: 900px) {
+        .nav-links {
+          display: none;
+        }
+        .page-hero h1 {
+          font-size: 32px;
+        }
+        .jump-nav {
+          position: static;
+          overflow-x: auto;
+          flex-wrap: nowrap;
+        }
+        .service-block {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        .service-side {
+          position: static;
+        }
+        .service-included {
+          grid-template-columns: 1fr;
+        }
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 26px;
+        }
+        .cta-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      /* scroll reveal system */
+      .reveal {
+        opacity: 0;
+        transform: translateY(26px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+        }
+      }
+
+      .logo {
+        width: 200px;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <header>
+      <div class="wrap nav">
+        <a href="index.html" class="logo">
+          <div class="logo">
+            <img src="/images/Logo.png" alt="CSC Logo" />
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="services.html" class="is-current">Services</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="success-stories.html">Success stories</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact-us.html">Contact</a></li>
+        </ul>
+        <a href="eligibility.html" class="btn btn-outline"
+          >Check your eligibility</a
+        >
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="eyebrow">SERVICES</div>
+        <h1>Wherever you are in Canada, we have a lane for it.</h1>
+        <p class="lead">
+          Each case gets a named consultant and a fixed fee — quoted upfront,
+          before you commit to anything. Here's exactly what each service
+          covers.
+        </p>
+      </div>
+    </section>
+
+    <div class="wrap jump-nav">
+      <a href="#status">Status &amp; extensions</a>
+      <a href="#pr">Permanent residency</a>
+      <a href="#sponsorship">Family sponsorship</a>
+      <a href="#work">Work permits</a>
+      <a href="#study">Study permits</a>
+      <a href="#refusal">Refusal review</a>
+    </div>
+
+    <section>
+      <div class="wrap">
+        <div class="service-block reveal" id="status">
+          <div class="service-side">
+            <div class="service-num">01</div>
+            <h3>Status &amp; extensions</h3>
+          </div>
+          <div class="service-body">
+            <p class="desc">
+              Restoration, extensions, and status changes for Nepalis already
+              living in Canada — filed directly with IRCC, with you kept in the
+              loop at every stage.
+            </p>
+            <div class="service-included">
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Visitor, study &amp; work status extensions
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Restoration after a status lapse
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Change of conditions on your permit
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Direct filing &amp; tracking with IRCC
+              </div>
+            </div>
+            <div class="service-timeline">
+              Typical timeline:
+              <b>varies by category — we give you a range upfront</b>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-block reveal" id="pr">
+          <div class="service-side">
+            <div class="service-num">02</div>
+            <h3>Permanent residency</h3>
+          </div>
+          <div class="service-body">
+            <p class="desc">
+              Express Entry, PNP, and CEC pathways from within Canada — built
+              around your actual CRS score, not a generic checklist.
+            </p>
+            <div class="service-included">
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >CRS scoring &amp; improvement plan
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Express Entry profile setup
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Provincial Nominee Program applications
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Post-invitation application filing
+              </div>
+            </div>
+            <div class="service-timeline">
+              Typical timeline: <b>6–18 months, depending on pathway</b>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-block reveal" id="sponsorship">
+          <div class="service-side">
+            <div class="service-num">03</div>
+            <h3>Family sponsorship</h3>
+          </div>
+          <div class="service-body">
+            <p class="desc">
+              Sponsoring a spouse, parent, or child to join you from Nepal —
+              with honest timelines on current processing backlogs, not
+              marketing numbers.
+            </p>
+            <div class="service-included">
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Sponsor eligibility assessment
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Relationship evidence package
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Application filing &amp; tracking
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Super Visa applications for parents
+              </div>
+            </div>
+            <div class="service-timeline">
+              Typical timeline: <b>backlog-aware estimate given upfront</b>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-block reveal" id="work">
+          <div class="service-side">
+            <div class="service-num">04</div>
+            <h3>Work permits</h3>
+          </div>
+          <div class="service-body">
+            <p class="desc">
+              LMIA-backed and open work permit applications, including
+              post-graduation work permit (PGWP) planning and renewals.
+            </p>
+            <div class="service-included">
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Employer-sponsored LMIA applications
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Open work permit applications
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >PGWP eligibility &amp; timing
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Permit renewals &amp; extensions
+              </div>
+            </div>
+            <div class="service-timeline">
+              Typical timeline: <b>2–16 weeks, depending on category</b>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-block reveal" id="study">
+          <div class="service-side">
+            <div class="service-num">05</div>
+            <h3>Study permits</h3>
+          </div>
+          <div class="service-body">
+            <p class="desc">
+              Study permit extensions and the pathway from PGWP toward permanent
+              residence — for students already enrolled in Canada.
+            </p>
+            <div class="service-included">
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Study permit extensions
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Change of DLI or program
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >PGWP pathway planning
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Compliance guidance (hours, program rules)
+              </div>
+            </div>
+            <div class="service-timeline">
+              Typical timeline: <b>4–12 weeks for extensions</b>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-block reveal" id="refusal">
+          <div class="service-side">
+            <div class="service-num">06</div>
+            <h3>Refusal review</h3>
+          </div>
+          <div class="service-body">
+            <p class="desc">
+              Had an application refused? We review the refusal letter and tell
+              you honestly what's fixable — before you pay us to try again.
+            </p>
+            <div class="service-included">
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Full refusal letter review
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Reapplication strategy
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Judicial review referral, if applicable
+              </div>
+              <div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1C7FA0"
+                  stroke-width="2"
+                >
+                  <path d="M20 6L9 17l-5-5" /></svg
+                >Second-opinion consultations
+              </div>
+            </div>
+            <div class="service-timeline">
+              Typical timeline: <b>review within 5 business days</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="pricing-note">
+      <div class="wrap" style="padding: 64px 0">
+        <div class="pricing-grid">
+          <div>
+            <div class="eyebrow">HOW PRICING WORKS</div>
+            <h2 style="margin-top: 14px">
+              Fixed fees, quoted before you commit.
+            </h2>
+            <p>
+              No percentage cuts, no hourly surprises, no add-ons that appear
+              halfway through. You'll know the full cost of your service on the
+              free consultation call — before you pay anything.
+            </p>
+          </div>
+          <div class="pricing-list">
+            <div class="pricing-item reveal" style="transition-delay: 0ms">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M20 6L9 17l-5-5" /></svg
+              >Fixed fee per service, agreed upfront
+            </div>
+            <div class="pricing-item reveal" style="transition-delay: 90ms">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M20 6L9 17l-5-5" /></svg
+              >No charge for the initial consultation
+            </div>
+            <div class="pricing-item reveal" style="transition-delay: 180ms">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M20 6L9 17l-5-5" /></svg
+              >Government filing fees always billed separately, at cost
+            </div>
+            <div class="pricing-item reveal" style="transition-delay: 270ms">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M20 6L9 17l-5-5" /></svg
+              >Refusal reviews discounted if you filed with us originally
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-banner" id="book">
+      <div class="wrap cta-inner reveal">
+        <h2>Not sure which service fits your situation?</h2>
+        <a href="#book" class="btn">Book a free 30-min call</a>
+      </div>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <div class="logo">
+              <img src="/images/Logo2.png" alt="CSC Logo" />
+            </div>
+            <p>
+              CSC Global — a regulated immigration consultancy serving Nepalese
+              across Canada with status, PR, and sponsorship since 2016.
+            </p>
+          </div>
+          <div>
+            <h4>Office</h4>
+            <div class="office">
+              <b>Mississauga</b
+              ><span>100 City Centre Dr, Mississauga, ON L5B 2C9</span>
+            </div>
+          </div>
+          <div>
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#status">Status &amp; extensions</a></li>
+              <li><a href="#pr">Permanent residency</a></li>
+              <li><a href="#sponsorship">Family sponsorship</a></li>
+              <li><a href="#work">Work permits</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <ul>
+              <li>WhatsApp: +977 98XX-XXXXXX</li>
+              <li>info@cscglobal.ca</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bottom-bar">
+          <span>© 2026 CSC Global. RCIC #R5XXXXX.</span>
+          <span>Privacy · Terms · Refund policy</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var reduceMotion =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var els = document.querySelectorAll(".reveal");
+        if (!els.length) return;
+
+        if (reduceMotion || !("IntersectionObserver" in window)) {
+          els.forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+          return;
+        }
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+        );
+
+        els.forEach(function (el) {
+          observer.observe(el);
+        });
+      })();
+    </script>
+
+    <div class="book-overlay" id="bookOverlay">
+      <div class="book-frame-wrap">
+        <button class="book-close" id="bookClose" aria-label="Close">
+          &times;
+        </button>
+        <iframe id="bookIframe" src="" title="Book a consultation"></iframe>
+      </div>
+    </div>
+
+    <style>
+      .book-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        background: rgba(15, 40, 70, 0.55);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+      .book-overlay.open {
+        display: flex;
+      }
+      .book-overlay.visible {
+        opacity: 1;
+      }
+      .book-frame-wrap {
+        position: relative;
+        background: #fff;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 560px;
+        height: min(640px, 90vh);
+        box-shadow: 0 30px 70px -20px rgba(15, 40, 70, 0.4);
+      }
+      .book-frame-wrap iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        border-radius: 10px;
+      }
+      .book-close {
+        position: absolute;
+        top: -14px;
+        right: -14px;
+        z-index: 2;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid #e7ebee;
+        background: #fff;
+        font-size: 18px;
+        cursor: pointer;
+      }
+    </style>
+
+    <script>
+      (function () {
+        var overlay = document.getElementById("bookOverlay");
+        var iframe = document.getElementById("bookIframe");
+        var closeBtn = document.getElementById("bookClose");
+
+        document.addEventListener("click", function (e) {
+          var trigger = e.target.closest('a[href="#book"]');
+          if (!trigger) return;
+          e.preventDefault();
+          iframe.src = "booking-modal.html";
+          overlay.classList.add("open");
+          requestAnimationFrame(function () {
+            overlay.classList.add("visible");
+          });
+        });
+
+        function close() {
+          overlay.classList.remove("visible");
+          setTimeout(function () {
+            overlay.classList.remove("open");
+            iframe.src = "";
+          }, 250);
+        }
+        closeBtn.addEventListener("click", close);
+        overlay.addEventListener("click", function (e) {
+          if (e.target === overlay) close();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") close();
+        });
+      })();
+    </script>
+  </body>
 </html>

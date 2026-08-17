@@ -1,441 +1,901 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us — Canadian Study Center</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --navy:#173A63;
-    --navy-2:#0F2846;
-    --teal:#1C7FA0;
-    --red:#E1372B;
-    --paper:#FFFFFF;
-    --paper-2:#F6F8F9;
-    --ink:#1B2430;
-    --muted:#5B6672;
-    --line:#E7EBEE;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us — Canadian Study Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #173a63;
+        --navy-2: #0f2846;
+        --teal: #1c7fa0;
+        --red: #e1372b;
+        --paper: #ffffff;
+        --paper-2: #f6f8f9;
+        --ink: #1b2430;
+        --muted: #5b6672;
+        --line: #e7ebee;
 
-    --font-display:'Work Sans', sans-serif;
-    --font-body:'Work Sans', sans-serif;
-    --font-mono:'IBM Plex Mono', monospace;
-  }
-
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:var(--font-body);
-    color:var(--ink);
-    background:var(--paper);
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-  }
-  img{max-width:100%; display:block;}
-  a{color:inherit;}
-  .wrap{max-width:1280px; margin:0 auto; padding:0 32px;}
-
-  .eyebrow{
-    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--teal); display:flex; align-items:center; gap:10px;
-  }
-  .eyebrow::before{content:""; width:16px; height:1px; background:var(--teal); display:inline-block;}
-
-  .btn{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:var(--font-body); font-weight:600; font-size:14.5px;
-    padding:13px 24px; border-radius:2px; border:1px solid transparent;
-    cursor:pointer; text-decoration:none; transition:opacity .15s ease;
-  }
-  .btn:hover{opacity:.88;}
-  .btn-primary{background:var(--navy); color:var(--paper);}
-  .btn-outline{background:transparent; color:var(--navy); border-color:var(--navy);}
-  .btn-outline:hover{background:var(--navy); color:var(--paper);}
-
-  /* header */
-  header{
-    position:sticky; top:0; z-index:50;
-    background:rgba(255,255,255,.92); backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{display:flex; align-items:center; justify-content:space-between; height:78px;}
-  .logo{display:flex; align-items:center; gap:10px; font-family:var(--font-body); font-weight:700; font-size:19px; color:var(--navy); letter-spacing:.01em;}
-  .logo-mark{width:26px; height:26px; flex-shrink:0;}
-  .logo b{color:var(--teal); font-weight:700;}
-  .nav-links{display:flex; align-items:center; gap:32px; list-style:none;}
-  .nav-links a{font-size:14px; font-weight:500; color:var(--muted); text-decoration:none; transition:color .15s ease;}
-  .nav-links a:hover{color:var(--navy);}
-  .nav-links a.is-current{color:var(--navy);}
-
-  /* page hero */
-  .page-hero{padding:70px 0 64px; border-bottom:1px solid var(--line);}
-  .page-hero-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:56px; align-items:center;}
-  .page-hero h1{
-    font-family:var(--font-display); font-weight:600; font-size:44px; line-height:1.12;
-    letter-spacing:-.01em; margin:18px 0 18px; color:var(--navy-2); max-width:520px;
-  }
-  .page-hero p.lead{font-size:16.5px; color:var(--muted); max-width:480px;}
-  .page-hero .eyebrow, .page-hero h1, .page-hero p.lead, .page-hero-media{
-    opacity:0; transform:translateY(18px);
-    animation:hero-in .7s cubic-bezier(.16,1,.3,1) forwards;
-  }
-  .page-hero .eyebrow{animation-delay:.05s;}
-  .page-hero h1{animation-delay:.15s;}
-  .page-hero p.lead{animation-delay:.25s;}
-  .page-hero-media{animation-delay:.2s;}
-  @keyframes hero-in{ to{ opacity:1; transform:translateY(0); } }
-  @media (prefers-reduced-motion:reduce){
-    .page-hero .eyebrow, .page-hero h1, .page-hero p.lead, .page-hero-media{
-      opacity:1 !important; transform:none !important; animation:none !important;
-    }
-  }
-  .page-hero-media img{
-    width:100%; aspect-ratio:4/3; object-fit:cover;
-    border-radius:10px; border:1px solid var(--line);
-  }
-
-  /* shared section */
-  section{padding:80px 0;}
-  .section-head{max-width:620px; margin-bottom:44px;}
-  .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
-  .section-head h2{
-    font-family:var(--font-display); font-weight:600; font-size:30px; margin-top:14px; letter-spacing:-.01em; color:var(--navy-2);
-  }
-  .section-head p{color:var(--muted); font-size:15px; margin-top:12px;}
-
-  /* story - two column, text + stacked facts */
-  .story-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:64px;}
-  .story-copy p{font-size:15.5px; color:var(--muted); margin-bottom:18px; max-width:540px;}
-  .story-copy p:last-child{margin-bottom:0;}
-  .story-facts{display:flex; flex-direction:column; gap:0;}
-  .story-fact{border-top:1px solid var(--line); padding:20px 0;}
-  .story-fact:last-child{border-bottom:1px solid var(--line);}
-  .story-fact b{
-    display:block; font-family:var(--font-display); font-weight:600; font-size:24px; color:var(--navy-2); margin-bottom:4px;
-  }
-  .story-fact span{font-size:12.5px; color:var(--muted);}
-
-  /* values */
-  .values-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
-  .value-card{background:var(--paper); padding:30px 26px;}
-  .value-num{font-family:var(--font-mono); font-size:11.5px; color:var(--teal); letter-spacing:.05em;}
-  .value-card h3{font-family:var(--font-display); font-weight:600; font-size:18px; margin:12px 0 8px; color:var(--navy-2);}
-  .value-card p{font-size:13.5px; color:var(--muted);}
-
-  /* team */
-  .team-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:32px;}
-  .team-card img{
-    width:100%; aspect-ratio:1/1; object-fit:cover;
-    border-radius:8px; border:1px solid var(--line); margin-bottom:16px;
-  }
-  .team-card h4{font-family:var(--font-body); font-weight:600; font-size:16px; color:var(--navy-2); margin-bottom:2px;}
-  .team-card span.role{font-size:12.5px; color:var(--teal); font-family:var(--font-mono);}
-  .team-card p{font-size:13.5px; color:var(--muted); margin-top:10px;}
-
-  /* results-style stat band, reused visual language from homepage */
-  .about-stats{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-  .about-stats-row{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
-  .about-stats-row div b{
-    font-family:var(--font-display); font-weight:600; font-size:28px; color:var(--navy); display:block; margin-bottom:6px;
-  }
-  .about-stats-row div span{font-size:12.5px; color:var(--muted);}
-
-  /* cta banner */
-  .cta-banner{background:var(--navy); padding:60px 0;}
-  .cta-inner{display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;}
-  .cta-inner h2{font-family:var(--font-body); font-weight:600; font-size:26px; color:var(--paper); max-width:520px;}
-  .cta-inner .btn{background:var(--paper); color:var(--navy);}
-
-  /* footer */
-  footer{background:var(--navy-2); color:rgba(246,248,249,.8); padding:56px 0 28px;}
-  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px; padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,.1);}
-  .footer-grid h4{font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); margin-bottom:14px;}
-  .footer-grid ul{list-style:none;}
-  .footer-grid li{margin-bottom:9px; font-size:13.5px;}
-  .footer-grid p{font-size:13px; line-height:1.6; color:rgba(246,248,249,.6);}
-  .office{margin-bottom:14px;}
-  .office b{display:block; font-size:13.5px; color:var(--paper); margin-bottom:2px;}
-  .office span{font-size:12.5px; color:rgba(246,248,249,.55);}
-  .bottom-bar{display:flex; justify-content:space-between; align-items:center; padding-top:22px; font-size:12px; color:rgba(246,248,249,.45); flex-wrap:wrap; gap:10px;}
-
-  @media (max-width:900px){
-    .nav-links{display:none;}
-    .page-hero-grid{grid-template-columns:1fr; gap:30px;}
-    .page-hero h1{font-size:32px;}
-    .story-grid{grid-template-columns:1fr; gap:36px;}
-    .values-grid{grid-template-columns:1fr 1fr;}
-    .team-grid{grid-template-columns:1fr;}
-    .about-stats-row{grid-template-columns:1fr 1fr; gap:20px;}
-    .footer-grid{grid-template-columns:1fr 1fr; gap:26px;}
-    .cta-inner{flex-direction:column; align-items:flex-start;}
-  }
-
-  /* scroll reveal system */
-  .reveal{
-    opacity:0; transform:translateY(26px);
-    transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
-    will-change:opacity, transform;
-  }
-  .reveal.is-visible{opacity:1; transform:translateY(0);}
-  @media (prefers-reduced-motion:reduce){
-    .reveal{opacity:1 !important; transform:none !important; transition:none !important;}
-  }
-   .logo{
-    width: 200px;
-  }
-</style>
-
-</head>
-<body>
-
-<header>
-  <div class="wrap nav">
-    <a href="index.html" class="logo">
-      <div class="logo" >
-            <img src="/images/Logo.png" alt="CSC Logo">
-    </div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="services.html">Services</a></li>
-      <li><a href="how-it-works.html">How it works</a></li>
-      <li><a href="success-stories.html">Success stories</a></li>
-      <li><a href="resources.html">Resources</a></li>
-      <li><a href="about.html" class="is-current">About us</a></li>
-      <li><a href="contact-us.html">Contact</a></li>
-    </ul>
-    <a href="eligibility.html" class="btn btn-outline">Check your eligibility</a>
-  </div>
-</header>
-
-<section class="page-hero">
-  <div class="wrap page-hero-grid">
-    <div>
-      <div class="eyebrow">ABOUT US</div>
-      <h1>Built for Nepalese who are already here.</h1>
-      <p class="lead">Canadian Study Center is a regulated immigration consultancy serving Nepalis living across Canada. We started it because too many people were getting patchy advice on their status, PR, or sponsoring family back home — we wanted to do it properly, and be honest about what's actually possible.</p>
-    </div>
-    <div class="page-hero-media">
-      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=900&auto=format&fit=crop" alt="Consultant reviewing documents with a client">
-    </div>
-  </div>
-</section>
-
-<section id="story">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">OUR STORY</div>
-      <h2>Why we started this.</h2>
-    </div>
-    <div class="story-grid reveal">
-      <div class="story-copy">
-        <p>Canadian Study Center was founded by a small group of consultants who had already been through the process ourselves — as students who became permanent residents, as people who sponsored our own parents from Nepal, and as people who watched friends get burned by agents promising guarantees no one can honestly make.</p>
-        <p>We built this consultancy around one idea: tell clients the truth about their chances, their timeline, and their costs before they pay us anything. That's meant turning away applicants whose profile wasn't ready yet, and it's meant harder conversations up front — but it's also why our approval rate holds up.</p>
-        <p>Today we work with Nepalis living across Canada — on study permit extensions, work permits, permanent residence, and sponsoring family from Nepal — each with a named consultant who stays on the file from the first call through to approval.</p>
-      </div>
-      <div class="story-facts">
-        <div class="story-fact"><b>2016</b><span>Year Canadian Study Center opened</span></div>
-        <div class="story-fact"><b>4,200+</b><span>Applications filed since then</span></div>
-        <div class="story-fact"><b>96%</b><span>First-attempt approval rate</span></div>
-        <div class="story-fact"><b>RCIC</b><span>Regulated Canadian Immigration Consultants</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="values" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">HOW WE WORK</div>
-      <h2>What we won't compromise on.</h2>
-    </div>
-    <div class="values-grid">
-      <div class="value-card reveal" style="transition-delay:0ms">
-        <div class="value-num">01</div>
-        <h3>Honest odds</h3>
-        <p>If your profile isn't ready, we say so before you pay — not after.</p>
-      </div>
-      <div class="value-card reveal" style="transition-delay:90ms">
-        <div class="value-num">02</div>
-        <h3>One consultant</h3>
-        <p>The person you meet first is the person who stays on your file.</p>
-      </div>
-      <div class="value-card reveal" style="transition-delay:180ms">
-        <div class="value-num">03</div>
-        <h3>Fixed fees</h3>
-        <p>Quoted upfront. No percentage cuts, no surprise add-ons later.</p>
-      </div>
-      <div class="value-card reveal" style="transition-delay:270ms">
-        <div class="value-num">04</div>
-        <h3>Direct to IRCC</h3>
-        <p>We file and track directly — no unlicensed middlemen in between.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="team">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">THE TEAM</div>
-      <h2>Who you'll actually talk to.</h2>
-      <p>A small team on purpose — so every file gets a consultant who knows it by name, not a case number.</p>
-    </div>
-    <div class="team-grid">
-      <div class="team-card reveal" style="transition-delay:0ms">
-        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop" alt="Portrait of the principal consultant">
-        <h4>Founder &amp; Principal Consultant</h4>
-        <span class="role">RCIC</span>
-        <p>Leads study permit and PR files, and reviews every refusal case personally before we take it on.</p>
-      </div>
-      <div class="team-card reveal" style="transition-delay:90ms">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop" alt="Portrait of a senior consultant">
-        <h4>Senior Consultant</h4>
-        <span class="role">Work permits &amp; LMIA</span>
-        <p>Handles employer-sponsored work permits and PGWP planning for students nearing graduation.</p>
-      </div>
-      <div class="team-card reveal" style="transition-delay:180ms">
-        <img src="https://images.unsplash.com/photo-1629425733761-caae3b5f2e50?q=80&w=600&auto=format&fit=crop" alt="Portrait of the client services lead">
-        <h4>Client Services Lead</h4>
-        <span class="role">Documentation &amp; tracking</span>
-        <p>Your first point of contact for checklists, status updates, and scheduling — usually within 24 hours.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="about-stats">
-  <div class="wrap" style="padding:56px 0;">
-    <div class="about-stats-row reveal">
-      <div><b>Kathmandu</b><span>Where our team is — serving clients across Canada</span></div>
-      <div><b>$0</b><span>Hidden fees, ever</span></div>
-      <div><b>13 yrs</b><span>Combined consulting experience</span></div>
-      <div><b>24 hrs</b><span>Typical WhatsApp response time</span></div>
-    </div>
-  </div>
-</div>
-
-<div class="cta-banner" id="book">
-  <div class="wrap cta-inner reveal">
-    <h2>Talk to the consultant who'd actually handle your file.</h2>
-    <a href="#book" class="btn">Book your free 30-min call</a>
-  </div>
-</div>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="logo" >
-            <img src="/images/Logo2.png" alt="CSC Logo">
-    </div>
-        <p>CSC Global — a regulated immigration consultancy serving Nepalese across Canada with status, PR, and sponsorship since 2016.</p>
-      </div>
-      <div>
-        <h4>Office</h4>
-        <div class="office"><b>Mississauga</b><span>100 City Centre Dr, Mississauga, ON L5B 2C9</span></div>
-      </div>
-      <div>
-        <h4>Services</h4>
-        <ul>
-          <li>Study permits</li>
-          <li>Work permits</li>
-          <li>Permanent residency</li>
-          <li>Family sponsorship</li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li>WhatsApp: +977 98XX-XXXXXX</li>
-          <li>info@cscglobal.ca</li>
-        </ul>
-      </div>
-    </div>
-    <div class="bottom-bar">
-      <span>© 2026 CSC Global. RCIC #R5XXXXX.</span>
-      <span>Privacy · Terms · Refund policy</span>
-    </div>
-  </div>
-</footer>
-
-
-<script>
-(function(){
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var els = document.querySelectorAll('.reveal');
-  if(!els.length) return;
-
-  if(reduceMotion || !('IntersectionObserver' in window)){
-    els.forEach(function(el){ el.classList.add('is-visible'); });
-    return;
-  }
-
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
+        --font-display: "Work Sans", sans-serif;
+        --font-body: "Work Sans", sans-serif;
+        --font-mono: "IBM Plex Mono", monospace;
       }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-  els.forEach(function(el){ observer.observe(el); });
-})();
-</script>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font-body);
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+      }
+      .wrap {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
 
-<div class="book-overlay" id="bookOverlay">
-  <div class="book-frame-wrap">
-    <button class="book-close" id="bookClose" aria-label="Close">&times;</button>
-    <iframe id="bookIframe" src="" title="Book a consultation"></iframe>
-  </div>
-</div>
+      .eyebrow {
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--teal);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 16px;
+        height: 1px;
+        background: var(--teal);
+        display: inline-block;
+      }
 
-<style>
-  .book-overlay{
-    position:fixed; inset:0; z-index:200; background:rgba(15,40,70,.55);
-    display:none; align-items:center; justify-content:center; padding:20px;
-    opacity:0; transition:opacity .25s ease;
-  }
-  .book-overlay.open{display:flex;}
-  .book-overlay.visible{opacity:1;}
-  .book-frame-wrap{
-    position:relative; background:#fff; border-radius:10px;
-    width:100%; max-width:560px; height:min(640px, 90vh);
-    box-shadow:0 30px 70px -20px rgba(15,40,70,.4);
-  }
-  .book-frame-wrap iframe{width:100%; height:100%; border:0; border-radius:10px;}
-  .book-close{
-    position:absolute; top:-14px; right:-14px; z-index:2;
-    width:32px; height:32px; border-radius:50%; border:1px solid #E7EBEE;
-    background:#fff; font-size:18px; cursor:pointer;
-  }
-</style>
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 14.5px;
+        padding: 13px 24px;
+        border-radius: 2px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        text-decoration: none;
+        transition: opacity 0.15s ease;
+      }
+      .btn:hover {
+        opacity: 0.88;
+      }
+      .btn-primary {
+        background: var(--navy);
+        color: var(--paper);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--navy);
+        border-color: var(--navy);
+      }
+      .btn-outline:hover {
+        background: var(--navy);
+        color: var(--paper);
+      }
 
-<script>
-(function(){
-  var overlay = document.getElementById('bookOverlay');
-  var iframe = document.getElementById('bookIframe');
-  var closeBtn = document.getElementById('bookClose');
+      /* header */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(6px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 78px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-body);
+        font-weight: 700;
+        font-size: 19px;
+        color: var(--navy);
+        letter-spacing: 0.01em;
+      }
+      .logo-mark {
+        width: 26px;
+        height: 26px;
+        flex-shrink: 0;
+      }
+      .logo b {
+        color: var(--teal);
+        font-weight: 700;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.15s ease;
+      }
+      .nav-links a:hover {
+        color: var(--navy);
+      }
+      .nav-links a.is-current {
+        color: var(--navy);
+      }
 
-  document.addEventListener('click', function(e){
-    var trigger = e.target.closest('a[href="#book"]');
-    if(!trigger) return;
-    e.preventDefault();
-    iframe.src = 'booking-modal.html';
-    overlay.classList.add('open');
-    requestAnimationFrame(function(){ overlay.classList.add('visible'); });
-  });
+      /* page hero */
+      .page-hero {
+        padding: 70px 0 64px;
+        border-bottom: 1px solid var(--line);
+      }
+      .page-hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 56px;
+        align-items: center;
+      }
+      .page-hero h1 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 44px;
+        line-height: 1.12;
+        letter-spacing: -0.01em;
+        margin: 18px 0 18px;
+        color: var(--navy-2);
+        max-width: 520px;
+      }
+      .page-hero p.lead {
+        font-size: 16.5px;
+        color: var(--muted);
+        max-width: 480px;
+      }
+      .page-hero .eyebrow,
+      .page-hero h1,
+      .page-hero p.lead,
+      .page-hero-media {
+        opacity: 0;
+        transform: translateY(18px);
+        animation: hero-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      .page-hero .eyebrow {
+        animation-delay: 0.05s;
+      }
+      .page-hero h1 {
+        animation-delay: 0.15s;
+      }
+      .page-hero p.lead {
+        animation-delay: 0.25s;
+      }
+      .page-hero-media {
+        animation-delay: 0.2s;
+      }
+      @keyframes hero-in {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .page-hero .eyebrow,
+        .page-hero h1,
+        .page-hero p.lead,
+        .page-hero-media {
+          opacity: 1 !important;
+          transform: none !important;
+          animation: none !important;
+        }
+      }
+      .page-hero-media img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+      }
 
-  function close(){
-    overlay.classList.remove('visible');
-    setTimeout(function(){ overlay.classList.remove('open'); iframe.src = ''; }, 250);
-  }
-  closeBtn.addEventListener('click', close);
-  overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
-})();
-</script>
+      /* shared section */
+      section {
+        padding: 80px 0;
+      }
+      .section-head {
+        max-width: 620px;
+        margin-bottom: 44px;
+      }
+      .section-head.center {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+      .section-head h2 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 30px;
+        margin-top: 14px;
+        letter-spacing: -0.01em;
+        color: var(--navy-2);
+      }
+      .section-head p {
+        color: var(--muted);
+        font-size: 15px;
+        margin-top: 12px;
+      }
 
-</body>
+      /* story - two column, text + stacked facts */
+      .story-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 64px;
+      }
+      .story-copy p {
+        font-size: 15.5px;
+        color: var(--muted);
+        margin-bottom: 18px;
+        max-width: 540px;
+      }
+      .story-copy p:last-child {
+        margin-bottom: 0;
+      }
+      .story-facts {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .story-fact {
+        border-top: 1px solid var(--line);
+        padding: 20px 0;
+      }
+      .story-fact:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .story-fact b {
+        display: block;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 24px;
+        color: var(--navy-2);
+        margin-bottom: 4px;
+      }
+      .story-fact span {
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+
+      /* values */
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .value-card {
+        background: var(--paper);
+        padding: 30px 26px;
+      }
+      .value-num {
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        color: var(--teal);
+        letter-spacing: 0.05em;
+      }
+      .value-card h3 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 18px;
+        margin: 12px 0 8px;
+        color: var(--navy-2);
+      }
+      .value-card p {
+        font-size: 13.5px;
+        color: var(--muted);
+      }
+
+      /* team */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+      .team-card img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        margin-bottom: 16px;
+      }
+      .team-card h4 {
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 16px;
+        color: var(--navy-2);
+        margin-bottom: 2px;
+      }
+      .team-card span.role {
+        font-size: 12.5px;
+        color: var(--teal);
+        font-family: var(--font-mono);
+      }
+      .team-card p {
+        font-size: 13.5px;
+        color: var(--muted);
+        margin-top: 10px;
+      }
+
+      /* results-style stat band, reused visual language from homepage */
+      .about-stats {
+        background: var(--paper-2);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .about-stats-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+      .about-stats-row div b {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 28px;
+        color: var(--navy);
+        display: block;
+        margin-bottom: 6px;
+      }
+      .about-stats-row div span {
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+
+      /* cta banner */
+      .cta-banner {
+        background: var(--navy);
+        padding: 60px 0;
+      }
+      .cta-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+      .cta-inner h2 {
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 26px;
+        color: var(--paper);
+        max-width: 520px;
+      }
+      .cta-inner .btn {
+        background: var(--paper);
+        color: var(--navy);
+      }
+
+      /* footer */
+      footer {
+        background: var(--navy-2);
+        color: rgba(246, 248, 249, 0.8);
+        padding: 56px 0 28px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 36px;
+        padding-bottom: 36px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .footer-grid h4 {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 14px;
+      }
+      .footer-grid ul {
+        list-style: none;
+      }
+      .footer-grid li {
+        margin-bottom: 9px;
+        font-size: 13.5px;
+      }
+      .footer-grid p {
+        font-size: 13px;
+        line-height: 1.6;
+        color: rgba(246, 248, 249, 0.6);
+      }
+      .office {
+        margin-bottom: 14px;
+      }
+      .office b {
+        display: block;
+        font-size: 13.5px;
+        color: var(--paper);
+        margin-bottom: 2px;
+      }
+      .office span {
+        font-size: 12.5px;
+        color: rgba(246, 248, 249, 0.55);
+      }
+      .bottom-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 22px;
+        font-size: 12px;
+        color: rgba(246, 248, 249, 0.45);
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      @media (max-width: 900px) {
+        .nav-links {
+          display: none;
+        }
+        .page-hero-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .page-hero h1 {
+          font-size: 32px;
+        }
+        .story-grid {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+        .values-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+        .about-stats-row {
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 26px;
+        }
+        .cta-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      /* scroll reveal system */
+      .reveal {
+        opacity: 0;
+        transform: translateY(26px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+        }
+      }
+      .logo {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap nav">
+        <a href="index.html" class="logo">
+          <div class="logo">
+            <img src="/images/Logo.png" alt="CSC Logo" />
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="services.html">Services</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="success-stories.html">Success stories</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="about.html" class="is-current">About us</a></li>
+          <li><a href="contact-us.html">Contact</a></li>
+        </ul>
+        <a href="eligibility.html" class="btn btn-outline"
+          >Check your eligibility</a
+        >
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <div class="wrap page-hero-grid">
+        <div>
+          <div class="eyebrow">ABOUT US</div>
+          <h1>Built for Nepalese who are already here.</h1>
+          <p class="lead">
+            Canadian Study Center is a regulated immigration consultancy serving
+            Nepalis living across Canada. We started it because too many people
+            were getting patchy advice on their status, PR, or sponsoring family
+            back home — we wanted to do it properly, and be honest about what's
+            actually possible.
+          </p>
+        </div>
+        <div class="page-hero-media">
+          <img
+            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=900&auto=format&fit=crop"
+            alt="Consultant reviewing documents with a client"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">OUR STORY</div>
+          <h2>Why we started this.</h2>
+        </div>
+        <div class="story-grid reveal">
+          <div class="story-copy">
+            <p>
+              Canadian Study Center was founded by a small group of consultants
+              who had already been through the process ourselves — as students
+              who became permanent residents, as people who sponsored our own
+              parents from Nepal, and as people who watched friends get burned
+              by agents promising guarantees no one can honestly make.
+            </p>
+            <p>
+              We built this consultancy around one idea: tell clients the truth
+              about their chances, their timeline, and their costs before they
+              pay us anything. That's meant turning away applicants whose
+              profile wasn't ready yet, and it's meant harder conversations up
+              front — but it's also why our approval rate holds up.
+            </p>
+            <p>
+              Today we work with Nepalis living across Canada — on study permit
+              extensions, work permits, permanent residence, and sponsoring
+              family from Nepal — each with a named consultant who stays on the
+              file from the first call through to approval.
+            </p>
+          </div>
+          <div class="story-facts">
+            <div class="story-fact">
+              <b>2016</b><span>Year Canadian Study Center opened</span>
+            </div>
+            <div class="story-fact">
+              <b>4,200+</b><span>Applications filed since then</span>
+            </div>
+            <div class="story-fact">
+              <b>96%</b><span>First-attempt approval rate</span>
+            </div>
+            <div class="story-fact">
+              <b>RCIC</b><span>Regulated Canadian Immigration Consultants</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="values"
+      style="
+        background: var(--paper-2);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      "
+    >
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">HOW WE WORK</div>
+          <h2>What we won't compromise on.</h2>
+        </div>
+        <div class="values-grid">
+          <div class="value-card reveal" style="transition-delay: 0ms">
+            <div class="value-num">01</div>
+            <h3>Honest odds</h3>
+            <p>
+              If your profile isn't ready, we say so before you pay — not after.
+            </p>
+          </div>
+          <div class="value-card reveal" style="transition-delay: 90ms">
+            <div class="value-num">02</div>
+            <h3>One consultant</h3>
+            <p>
+              The person you meet first is the person who stays on your file.
+            </p>
+          </div>
+          <div class="value-card reveal" style="transition-delay: 180ms">
+            <div class="value-num">03</div>
+            <h3>Fixed fees</h3>
+            <p>
+              Quoted upfront. No percentage cuts, no surprise add-ons later.
+            </p>
+          </div>
+          <div class="value-card reveal" style="transition-delay: 270ms">
+            <div class="value-num">04</div>
+            <h3>Direct to IRCC</h3>
+            <p>
+              We file and track directly — no unlicensed middlemen in between.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">THE TEAM</div>
+          <h2>Who you'll actually talk to.</h2>
+          <p>
+            A small team on purpose — so every file gets a consultant who knows
+            it by name, not a case number.
+          </p>
+        </div>
+        <div class="team-grid">
+          <div class="team-card reveal" style="transition-delay: 0ms">
+            <img
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop"
+              alt="Portrait of the principal consultant"
+            />
+            <h4>Founder &amp; Principal Consultant</h4>
+            <span class="role">RCIC</span>
+            <p>
+              Leads study permit and PR files, and reviews every refusal case
+              personally before we take it on.
+            </p>
+          </div>
+          <div class="team-card reveal" style="transition-delay: 90ms">
+            <img
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop"
+              alt="Portrait of a senior consultant"
+            />
+            <h4>Senior Consultant</h4>
+            <span class="role">Work permits &amp; LMIA</span>
+            <p>
+              Handles employer-sponsored work permits and PGWP planning for
+              students nearing graduation.
+            </p>
+          </div>
+          <div class="team-card reveal" style="transition-delay: 180ms">
+            <img
+              src="https://images.unsplash.com/photo-1629425733761-caae3b5f2e50?q=80&w=600&auto=format&fit=crop"
+              alt="Portrait of the client services lead"
+            />
+            <h4>Client Services Lead</h4>
+            <span class="role">Documentation &amp; tracking</span>
+            <p>
+              Your first point of contact for checklists, status updates, and
+              scheduling — usually within 24 hours.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="about-stats">
+      <div class="wrap" style="padding: 56px 0">
+        <div class="about-stats-row reveal">
+          <div>
+            <b>Kathmandu</b
+            ><span>Where our team is — serving clients across Canada</span>
+          </div>
+          <div><b>$0</b><span>Hidden fees, ever</span></div>
+          <div><b>13 yrs</b><span>Combined consulting experience</span></div>
+          <div><b>24 hrs</b><span>Typical WhatsApp response time</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-banner" id="book">
+      <div class="wrap cta-inner reveal">
+        <h2>Talk to the consultant who'd actually handle your file.</h2>
+        <a href="#book" class="btn">Book your free 30-min call</a>
+      </div>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <div class="logo">
+              <img src="/images/Logo2.png" alt="CSC Logo" />
+            </div>
+            <p>
+              CSC Global — a regulated immigration consultancy serving Nepalese
+              across Canada with status, PR, and sponsorship since 2016.
+            </p>
+          </div>
+          <div>
+            <h4>Office</h4>
+            <div class="office">
+              <b>Mississauga</b
+              ><span>100 City Centre Dr, Mississauga, ON L5B 2C9</span>
+            </div>
+          </div>
+          <div>
+            <h4>Services</h4>
+            <ul>
+              <li>Study permits</li>
+              <li>Work permits</li>
+              <li>Permanent residency</li>
+              <li>Family sponsorship</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <ul>
+              <li>WhatsApp: +977 98XX-XXXXXX</li>
+              <li>info@cscglobal.ca</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bottom-bar">
+          <span>© 2026 CSC Global. RCIC #R5XXXXX.</span>
+          <span>Privacy · Terms · Refund policy</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var reduceMotion =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var els = document.querySelectorAll(".reveal");
+        if (!els.length) return;
+
+        if (reduceMotion || !("IntersectionObserver" in window)) {
+          els.forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+          return;
+        }
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+        );
+
+        els.forEach(function (el) {
+          observer.observe(el);
+        });
+      })();
+    </script>
+
+    <div class="book-overlay" id="bookOverlay">
+      <div class="book-frame-wrap">
+        <button class="book-close" id="bookClose" aria-label="Close">
+          &times;
+        </button>
+        <iframe id="bookIframe" src="" title="Book a consultation"></iframe>
+      </div>
+    </div>
+
+    <style>
+      .book-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        background: rgba(15, 40, 70, 0.55);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+      .book-overlay.open {
+        display: flex;
+      }
+      .book-overlay.visible {
+        opacity: 1;
+      }
+      .book-frame-wrap {
+        position: relative;
+        background: #fff;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 560px;
+        height: min(640px, 90vh);
+        box-shadow: 0 30px 70px -20px rgba(15, 40, 70, 0.4);
+      }
+      .book-frame-wrap iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        border-radius: 10px;
+      }
+      .book-close {
+        position: absolute;
+        top: -14px;
+        right: -14px;
+        z-index: 2;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid #e7ebee;
+        background: #fff;
+        font-size: 18px;
+        cursor: pointer;
+      }
+    </style>
+
+    <script>
+      (function () {
+        var overlay = document.getElementById("bookOverlay");
+        var iframe = document.getElementById("bookIframe");
+        var closeBtn = document.getElementById("bookClose");
+
+        document.addEventListener("click", function (e) {
+          var trigger = e.target.closest('a[href="#book"]');
+          if (!trigger) return;
+          e.preventDefault();
+          iframe.src = "booking-modal.html";
+          overlay.classList.add("open");
+          requestAnimationFrame(function () {
+            overlay.classList.add("visible");
+          });
+        });
+
+        function close() {
+          overlay.classList.remove("visible");
+          setTimeout(function () {
+            overlay.classList.remove("open");
+            iframe.src = "";
+          }, 250);
+        }
+        closeBtn.addEventListener("click", close);
+        overlay.addEventListener("click", function (e) {
+          if (e.target === overlay) close();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") close();
+        });
+      })();
+    </script>
+  </body>
 </html>

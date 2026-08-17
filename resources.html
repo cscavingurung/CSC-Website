@@ -1,421 +1,806 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resources — Canadian Study Center</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --navy:#173A63;
-    --navy-2:#0F2846;
-    --teal:#1C7FA0;
-    --red:#E1372B;
-    --paper:#FFFFFF;
-    --paper-2:#F6F8F9;
-    --ink:#1B2430;
-    --muted:#5B6672;
-    --line:#E7EBEE;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resources — Canadian Study Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #173a63;
+        --navy-2: #0f2846;
+        --teal: #1c7fa0;
+        --red: #e1372b;
+        --paper: #ffffff;
+        --paper-2: #f6f8f9;
+        --ink: #1b2430;
+        --muted: #5b6672;
+        --line: #e7ebee;
 
-    --font-display:'Work Sans', sans-serif;
-    --font-body:'Work Sans', sans-serif;
-    --font-mono:'IBM Plex Mono', monospace;
-  }
-
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:var(--font-body);
-    color:var(--ink);
-    background:var(--paper);
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-  }
-  img{max-width:100%; display:block;}
-  a{color:inherit;}
-  .wrap{max-width:1280px; margin:0 auto; padding:0 32px;}
-
-  .eyebrow{
-    font-family:var(--font-mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--teal); display:flex; align-items:center; gap:10px;
-  }
-  .eyebrow::before{content:""; width:16px; height:1px; background:var(--teal); display:inline-block;}
-
-  .btn{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:var(--font-body); font-weight:600; font-size:14.5px;
-    padding:13px 24px; border-radius:2px; border:1px solid transparent;
-    cursor:pointer; text-decoration:none; transition:opacity .15s ease;
-  }
-  .btn:hover{opacity:.88;}
-  .btn-primary{background:var(--navy); color:var(--paper);}
-  .btn-outline{background:transparent; color:var(--navy); border-color:var(--navy);}
-  .btn-outline:hover{background:var(--navy); color:var(--paper);}
-
-  /* header */
-  header{
-    position:sticky; top:0; z-index:50;
-    background:rgba(255,255,255,.92); backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{display:flex; align-items:center; justify-content:space-between; height:78px;}
-  .logo{display:flex; align-items:center; gap:10px; font-family:var(--font-body); font-weight:700; font-size:19px; color:var(--navy); letter-spacing:.01em; text-decoration:none;}
-  .logo-mark{width:26px; height:26px; flex-shrink:0;}
-  .logo b{color:var(--teal); font-weight:700;}
-  .nav-links{display:flex; align-items:center; gap:32px; list-style:none;}
-  .nav-links a{font-size:14px; font-weight:500; color:var(--muted); text-decoration:none; transition:color .15s ease;}
-  .nav-links a:hover{color:var(--navy);}
-  .nav-links a.is-current{color:var(--navy);}
-
-  /* page hero */
-  .page-hero{padding:70px 0 60px; border-bottom:1px solid var(--line);}
-  .page-hero h1{
-    font-family:var(--font-display); font-weight:600; font-size:44px; line-height:1.12;
-    letter-spacing:-.01em; margin:18px 0 18px; color:var(--navy-2); max-width:620px;
-  }
-  .page-hero p.lead{font-size:16.5px; color:var(--muted); max-width:560px;}
-  .page-hero .eyebrow, .page-hero h1, .page-hero p.lead, .cat-chips{
-    opacity:0; transform:translateY(18px);
-    animation:hero-in .7s cubic-bezier(.16,1,.3,1) forwards;
-  }
-  .page-hero .eyebrow{animation-delay:.05s;}
-  .page-hero h1{animation-delay:.15s;}
-  .page-hero p.lead{animation-delay:.25s;}
-  .cat-chips{animation-delay:.35s;}
-  @keyframes hero-in{ to{ opacity:1; transform:translateY(0); } }
-  @media (prefers-reduced-motion:reduce){
-    .page-hero .eyebrow, .page-hero h1, .page-hero p.lead, .cat-chips{
-      opacity:1 !important; transform:none !important; animation:none !important;
-    }
-  }
-
-  /* category chips */
-  .cat-chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:28px;}
-  .cat-chips span{
-    font-size:13px; font-weight:500; color:var(--navy);
-    padding:7px 14px; border:1px solid var(--line); border-radius:20px;
-    background:var(--paper-2);
-  }
-
-  /* shared section */
-  section{padding:72px 0;}
-  .section-head{max-width:620px; margin-bottom:36px;}
-  .section-head h2{
-    font-family:var(--font-display); font-weight:600; font-size:26px; margin-top:12px; letter-spacing:-.01em; color:var(--navy-2);
-  }
-  .section-head p{color:var(--muted); font-size:14.5px; margin-top:10px;}
-  .resource-group{padding:48px 0; border-bottom:1px solid var(--line);}
-  .resource-group:first-of-type{padding-top:0;}
-  .resource-group:last-of-type{border-bottom:none;}
-
-  /* resource cards */
-  .resource-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
-  .resource-card{background:var(--paper); padding:28px 26px; display:flex; flex-direction:column;}
-  .resource-tag{
-    display:inline-block; align-self:flex-start;
-    font-family:var(--font-mono); font-size:10.5px; letter-spacing:.05em;
-    color:var(--teal); border:1px solid var(--teal); border-radius:20px;
-    padding:4px 11px; margin-bottom:16px;
-  }
-  .resource-card h3{font-family:var(--font-display); font-weight:600; font-size:18px; color:var(--navy-2); margin-bottom:10px; line-height:1.3;}
-  .resource-card p{font-size:13.5px; color:var(--muted); flex-grow:1;}
-  .resource-meta{font-size:12px; color:var(--muted); font-family:var(--font-mono); margin-top:16px; padding-top:14px; border-top:1px solid var(--line);}
-
-  /* whatsapp strip */
-  .wa-strip{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-  .wa-inner{display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap; padding:44px 0;}
-  .wa-inner h3{font-family:var(--font-display); font-weight:600; font-size:22px; color:var(--navy-2); max-width:440px;}
-  .wa-inner p{font-size:14px; color:var(--muted); margin-top:8px; max-width:440px;}
-
-  /* cta banner */
-  .cta-banner{background:var(--navy); padding:60px 0;}
-  .cta-inner{display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;}
-  .cta-inner h2{font-family:var(--font-body); font-weight:600; font-size:26px; color:var(--paper); max-width:520px;}
-  .cta-inner .btn{background:var(--paper); color:var(--navy);}
-
-  /* footer */
-  footer{background:var(--navy-2); color:rgba(246,248,249,.8); padding:56px 0 28px;}
-  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px; padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,.1);}
-  .footer-grid h4{font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); margin-bottom:14px;}
-  .footer-grid ul{list-style:none;}
-  .footer-grid li{margin-bottom:9px; font-size:13.5px;}
-  .footer-grid p{font-size:13px; line-height:1.6; color:rgba(246,248,249,.6);}
-  .office{margin-bottom:14px;}
-  .office b{display:block; font-size:13.5px; color:var(--paper); margin-bottom:2px;}
-  .office span{font-size:12.5px; color:rgba(246,248,249,.55);}
-  .bottom-bar{display:flex; justify-content:space-between; align-items:center; padding-top:22px; font-size:12px; color:rgba(246,248,249,.45); flex-wrap:wrap; gap:10px;}
-
-  @media (max-width:900px){
-    .nav-links{display:none;}
-    .page-hero h1{font-size:32px;}
-    .resource-grid{grid-template-columns:1fr;}
-    .footer-grid{grid-template-columns:1fr 1fr; gap:26px;}
-    .cta-inner{flex-direction:column; align-items:flex-start;}
-    .wa-inner{flex-direction:column; align-items:flex-start;}
-  }
-
-  /* scroll reveal system */
-  .reveal{
-    opacity:0; transform:translateY(26px);
-    transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
-    will-change:opacity, transform;
-  }
-  .reveal.is-visible{opacity:1; transform:translateY(0);}
-  @media (prefers-reduced-motion:reduce){
-    .reveal{opacity:1 !important; transform:none !important; transition:none !important;}
-  }
-
-  .logo{
-    width: 200px;
-  }
-</style>
-
-</head>
-<body>
-
-<header>
-  <div class="wrap nav">
-    <a href="index.html" class="logo">
-      <div class="logo" >
-            <img src="/images/Logo.png" alt="CSC Logo">
-    </div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="services.html">Services</a></li>
-      <li><a href="how-it-works.html">How it works</a></li>
-      <li><a href="success-stories.html">Success stories</a></li>
-      <li><a href="resources.html" class="is-current">Resources</a></li>
-      <li><a href="about.html">About us</a></li>
-      <li><a href="contact-us.html">Contact</a></li>
-    </ul>
-    <a href="eligibility.html" class="btn btn-outline">Check your eligibility</a>
-  </div>
-</header>
-
-<section class="page-hero">
-  <div class="wrap">
-    <div class="eyebrow">RESOURCES</div>
-    <h1>Straight answers, not forwarded WhatsApp messages.</h1>
-    <p class="lead">Guides written for Nepalese actually living in Canada — status, PR, sponsorship, and what to do when something goes wrong. Updated as IRCC rules change.</p>
-    <div class="cat-chips">
-      <span>Status &amp; Permits</span>
-      <span>PR &amp; Sponsorship</span>
-      <span>Work &amp; Study</span>
-      <span>Refusals &amp; Appeals</span>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-
-    <div class="resource-group" id="status-guides">
-      <div class="section-head reveal">
-        <div class="eyebrow">STATUS &amp; PERMITS</div>
-        <h2>Keeping your status in good standing.</h2>
-      </div>
-      <div class="resource-grid">
-        <div class="resource-card reveal" style="transition-delay:0ms">
-          <span class="resource-tag">STATUS</span>
-          <h3>What to do if your study permit is about to expire</h3>
-          <p>The realistic timeline for filing an extension, and what happens if you miss the window.</p>
-          <div class="resource-meta">6 MIN READ</div>
-        </div>
-        <div class="resource-card reveal" style="transition-delay:90ms">
-          <span class="resource-tag">STATUS</span>
-          <h3>Restoration vs. a fresh application — what's the difference?</h3>
-          <p>If your status has already lapsed, this decides which route you're actually eligible for.</p>
-          <div class="resource-meta">5 MIN READ</div>
-        </div>
-        <div class="resource-card reveal" style="transition-delay:180ms">
-          <span class="resource-tag">WORK</span>
-          <h3>LMIA vs. open work permit: which applies to you</h3>
-          <p>A plain-language breakdown of the two most common work permit routes for Nepalis in Canada.</p>
-          <div class="resource-meta">7 MIN READ</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="resource-group" id="pr-guides">
-      <div class="section-head reveal">
-        <div class="eyebrow">PR &amp; SPONSORSHIP</div>
-        <h2>Building toward permanent residence.</h2>
-      </div>
-      <div class="resource-grid">
-        <div class="resource-card reveal" style="transition-delay:0ms">
-          <span class="resource-tag">PR</span>
-          <h3>PGWP to PR: mapping your pathway</h3>
-          <p>What to line up during your PGWP so you're not scrambling in the final months.</p>
-          <div class="resource-meta">8 MIN READ</div>
-        </div>
-        <div class="resource-card reveal" style="transition-delay:90ms">
-          <span class="resource-tag">PR</span>
-          <h3>Express Entry CRS score: how to actually raise it</h3>
-          <p>The levers that move your score the most — and the ones that barely matter.</p>
-          <div class="resource-meta">6 MIN READ</div>
-        </div>
-        <div class="resource-card reveal" style="transition-delay:180ms">
-          <span class="resource-tag">SPONSORSHIP</span>
-          <h3>Super Visa vs. PR sponsorship for your parents</h3>
-          <p>Two very different routes to bring your parents over — here's how to choose.</p>
-          <div class="resource-meta">7 MIN READ</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="resource-group" id="refusal-guides">
-      <div class="section-head reveal">
-        <div class="eyebrow">REFUSALS &amp; APPEALS</div>
-        <h2>If something didn't go as planned.</h2>
-      </div>
-      <div class="resource-grid">
-        <div class="resource-card reveal" style="transition-delay:0ms">
-          <span class="resource-tag">REFUSALS</span>
-          <h3>Common reasons Nepali applications get refused</h3>
-          <p>The patterns we see most often — and how to avoid repeating them on your next filing.</p>
-          <div class="resource-meta">9 MIN READ</div>
-        </div>
-        <div class="resource-card reveal" style="transition-delay:90ms">
-          <span class="resource-tag">NEWS</span>
-          <h3>How to actually read IRCC processing times</h3>
-          <p>The published number and your real wait time are rarely the same thing — here's why.</p>
-          <div class="resource-meta">5 MIN READ</div>
-        </div>
-        <div class="resource-card reveal" style="transition-delay:180ms">
-          <span class="resource-tag">REFUSALS</span>
-          <h3>When a judicial review is worth pursuing</h3>
-          <p>Most refusals don't need one. Here's how to tell if yours might.</p>
-          <div class="resource-meta">6 MIN READ</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<div class="cta-banner" id="book">
-  <div class="wrap cta-inner reveal">
-    <h2>Rules change faster than articles get written.</h2>
-    <a href="#book" class="btn">Book a free 30-min call</a>
-  </div>
-</div>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="logo" >
-            <img src="/images/Logo2.png" alt="CSC Logo">
-    </div>
-        <p>CSC Global — a regulated immigration consultancy serving Nepalese across Canada with status, PR, and sponsorship since 2016.</p>
-      </div>
-      <div>
-        <h4>Office</h4>
-        <div class="office"><b>Mississauga</b><span>100 City Centre Dr, Mississauga, ON L5B 2C9</span></div>
-      </div>
-      <div>
-        <h4>Services</h4>
-        <ul>
-          <li><a href="services.html#status">Status &amp; extensions</a></li>
-          <li><a href="services.html#pr">Permanent residency</a></li>
-          <li><a href="services.html#sponsorship">Family sponsorship</a></li>
-          <li><a href="services.html#work">Work permits</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li>WhatsApp: +977 98XX-XXXXXX</li>
-          <li>info@cscglobal.ca</li>
-        </ul>
-      </div>
-    </div>
-    <div class="bottom-bar">
-      <span>© 2026 CSC Global. RCIC #R5XXXXX.</span>
-      <span>Privacy · Terms · Refund policy</span>
-    </div>
-  </div>
-</footer>
-
-
-<script>
-(function(){
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var els = document.querySelectorAll('.reveal');
-  if(!els.length) return;
-
-  if(reduceMotion || !('IntersectionObserver' in window)){
-    els.forEach(function(el){ el.classList.add('is-visible'); });
-    return;
-  }
-
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
+        --font-display: "Work Sans", sans-serif;
+        --font-body: "Work Sans", sans-serif;
+        --font-mono: "IBM Plex Mono", monospace;
       }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-  els.forEach(function(el){ observer.observe(el); });
-})();
-</script>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font-body);
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+      }
+      .wrap {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
 
-<div class="book-overlay" id="bookOverlay">
-  <div class="book-frame-wrap">
-    <button class="book-close" id="bookClose" aria-label="Close">&times;</button>
-    <iframe id="bookIframe" src="" title="Book a consultation"></iframe>
-  </div>
-</div>
+      .eyebrow {
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--teal);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 16px;
+        height: 1px;
+        background: var(--teal);
+        display: inline-block;
+      }
 
-<style>
-  .book-overlay{
-    position:fixed; inset:0; z-index:200; background:rgba(15,40,70,.55);
-    display:none; align-items:center; justify-content:center; padding:20px;
-    opacity:0; transition:opacity .25s ease;
-  }
-  .book-overlay.open{display:flex;}
-  .book-overlay.visible{opacity:1;}
-  .book-frame-wrap{
-    position:relative; background:#fff; border-radius:10px;
-    width:100%; max-width:560px; height:min(640px, 90vh);
-    box-shadow:0 30px 70px -20px rgba(15,40,70,.4);
-  }
-  .book-frame-wrap iframe{width:100%; height:100%; border:0; border-radius:10px;}
-  .book-close{
-    position:absolute; top:-14px; right:-14px; z-index:2;
-    width:32px; height:32px; border-radius:50%; border:1px solid #E7EBEE;
-    background:#fff; font-size:18px; cursor:pointer;
-  }
-</style>
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 14.5px;
+        padding: 13px 24px;
+        border-radius: 2px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        text-decoration: none;
+        transition: opacity 0.15s ease;
+      }
+      .btn:hover {
+        opacity: 0.88;
+      }
+      .btn-primary {
+        background: var(--navy);
+        color: var(--paper);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--navy);
+        border-color: var(--navy);
+      }
+      .btn-outline:hover {
+        background: var(--navy);
+        color: var(--paper);
+      }
 
-<script>
-(function(){
-  var overlay = document.getElementById('bookOverlay');
-  var iframe = document.getElementById('bookIframe');
-  var closeBtn = document.getElementById('bookClose');
+      /* header */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(6px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 78px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-body);
+        font-weight: 700;
+        font-size: 19px;
+        color: var(--navy);
+        letter-spacing: 0.01em;
+        text-decoration: none;
+      }
+      .logo-mark {
+        width: 26px;
+        height: 26px;
+        flex-shrink: 0;
+      }
+      .logo b {
+        color: var(--teal);
+        font-weight: 700;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.15s ease;
+      }
+      .nav-links a:hover {
+        color: var(--navy);
+      }
+      .nav-links a.is-current {
+        color: var(--navy);
+      }
 
-  document.addEventListener('click', function(e){
-    var trigger = e.target.closest('a[href="#book"]');
-    if(!trigger) return;
-    e.preventDefault();
-    iframe.src = 'booking-modal.html';
-    overlay.classList.add('open');
-    requestAnimationFrame(function(){ overlay.classList.add('visible'); });
-  });
+      /* page hero */
+      .page-hero {
+        padding: 70px 0 60px;
+        border-bottom: 1px solid var(--line);
+      }
+      .page-hero h1 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 44px;
+        line-height: 1.12;
+        letter-spacing: -0.01em;
+        margin: 18px 0 18px;
+        color: var(--navy-2);
+        max-width: 620px;
+      }
+      .page-hero p.lead {
+        font-size: 16.5px;
+        color: var(--muted);
+        max-width: 560px;
+      }
+      .page-hero .eyebrow,
+      .page-hero h1,
+      .page-hero p.lead,
+      .cat-chips {
+        opacity: 0;
+        transform: translateY(18px);
+        animation: hero-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      .page-hero .eyebrow {
+        animation-delay: 0.05s;
+      }
+      .page-hero h1 {
+        animation-delay: 0.15s;
+      }
+      .page-hero p.lead {
+        animation-delay: 0.25s;
+      }
+      .cat-chips {
+        animation-delay: 0.35s;
+      }
+      @keyframes hero-in {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .page-hero .eyebrow,
+        .page-hero h1,
+        .page-hero p.lead,
+        .cat-chips {
+          opacity: 1 !important;
+          transform: none !important;
+          animation: none !important;
+        }
+      }
 
-  function close(){
-    overlay.classList.remove('visible');
-    setTimeout(function(){ overlay.classList.remove('open'); iframe.src = ''; }, 250);
-  }
-  closeBtn.addEventListener('click', close);
-  overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
-})();
-</script>
+      /* category chips */
+      .cat-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+      }
+      .cat-chips span {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--navy);
+        padding: 7px 14px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: var(--paper-2);
+      }
 
-</body>
+      /* shared section */
+      section {
+        padding: 72px 0;
+      }
+      .section-head {
+        max-width: 620px;
+        margin-bottom: 36px;
+      }
+      .section-head h2 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 26px;
+        margin-top: 12px;
+        letter-spacing: -0.01em;
+        color: var(--navy-2);
+      }
+      .section-head p {
+        color: var(--muted);
+        font-size: 14.5px;
+        margin-top: 10px;
+      }
+      .resource-group {
+        padding: 48px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .resource-group:first-of-type {
+        padding-top: 0;
+      }
+      .resource-group:last-of-type {
+        border-bottom: none;
+      }
+
+      /* resource cards */
+      .resource-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .resource-card {
+        background: var(--paper);
+        padding: 28px 26px;
+        display: flex;
+        flex-direction: column;
+      }
+      .resource-tag {
+        display: inline-block;
+        align-self: flex-start;
+        font-family: var(--font-mono);
+        font-size: 10.5px;
+        letter-spacing: 0.05em;
+        color: var(--teal);
+        border: 1px solid var(--teal);
+        border-radius: 20px;
+        padding: 4px 11px;
+        margin-bottom: 16px;
+      }
+      .resource-card h3 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 18px;
+        color: var(--navy-2);
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+      .resource-card p {
+        font-size: 13.5px;
+        color: var(--muted);
+        flex-grow: 1;
+      }
+      .resource-meta {
+        font-size: 12px;
+        color: var(--muted);
+        font-family: var(--font-mono);
+        margin-top: 16px;
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+      }
+
+      /* whatsapp strip */
+      .wa-strip {
+        background: var(--paper-2);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .wa-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        flex-wrap: wrap;
+        padding: 44px 0;
+      }
+      .wa-inner h3 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 22px;
+        color: var(--navy-2);
+        max-width: 440px;
+      }
+      .wa-inner p {
+        font-size: 14px;
+        color: var(--muted);
+        margin-top: 8px;
+        max-width: 440px;
+      }
+
+      /* cta banner */
+      .cta-banner {
+        background: var(--navy);
+        padding: 60px 0;
+      }
+      .cta-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+      .cta-inner h2 {
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 26px;
+        color: var(--paper);
+        max-width: 520px;
+      }
+      .cta-inner .btn {
+        background: var(--paper);
+        color: var(--navy);
+      }
+
+      /* footer */
+      footer {
+        background: var(--navy-2);
+        color: rgba(246, 248, 249, 0.8);
+        padding: 56px 0 28px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 36px;
+        padding-bottom: 36px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .footer-grid h4 {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 14px;
+      }
+      .footer-grid ul {
+        list-style: none;
+      }
+      .footer-grid li {
+        margin-bottom: 9px;
+        font-size: 13.5px;
+      }
+      .footer-grid p {
+        font-size: 13px;
+        line-height: 1.6;
+        color: rgba(246, 248, 249, 0.6);
+      }
+      .office {
+        margin-bottom: 14px;
+      }
+      .office b {
+        display: block;
+        font-size: 13.5px;
+        color: var(--paper);
+        margin-bottom: 2px;
+      }
+      .office span {
+        font-size: 12.5px;
+        color: rgba(246, 248, 249, 0.55);
+      }
+      .bottom-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 22px;
+        font-size: 12px;
+        color: rgba(246, 248, 249, 0.45);
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      @media (max-width: 900px) {
+        .nav-links {
+          display: none;
+        }
+        .page-hero h1 {
+          font-size: 32px;
+        }
+        .resource-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 26px;
+        }
+        .cta-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .wa-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      /* scroll reveal system */
+      .reveal {
+        opacity: 0;
+        transform: translateY(26px);
+        transition:
+          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+        }
+      }
+
+      .logo {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap nav">
+        <a href="index.html" class="logo">
+          <div class="logo">
+            <img src="/images/Logo.png" alt="CSC Logo" />
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="services.html">Services</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="success-stories.html">Success stories</a></li>
+          <li><a href="resources.html" class="is-current">Resources</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact-us.html">Contact</a></li>
+        </ul>
+        <a href="eligibility.html" class="btn btn-outline"
+          >Check your eligibility</a
+        >
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="eyebrow">RESOURCES</div>
+        <h1>Straight answers, not forwarded WhatsApp messages.</h1>
+        <p class="lead">
+          Guides written for Nepalese actually living in Canada — status, PR,
+          sponsorship, and what to do when something goes wrong. Updated as IRCC
+          rules change.
+        </p>
+        <div class="cat-chips">
+          <span>Status &amp; Permits</span>
+          <span>PR &amp; Sponsorship</span>
+          <span>Work &amp; Study</span>
+          <span>Refusals &amp; Appeals</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="resource-group" id="status-guides">
+          <div class="section-head reveal">
+            <div class="eyebrow">STATUS &amp; PERMITS</div>
+            <h2>Keeping your status in good standing.</h2>
+          </div>
+          <div class="resource-grid">
+            <div class="resource-card reveal" style="transition-delay: 0ms">
+              <span class="resource-tag">STATUS</span>
+              <h3>What to do if your study permit is about to expire</h3>
+              <p>
+                The realistic timeline for filing an extension, and what happens
+                if you miss the window.
+              </p>
+              <div class="resource-meta">6 MIN READ</div>
+            </div>
+            <div class="resource-card reveal" style="transition-delay: 90ms">
+              <span class="resource-tag">STATUS</span>
+              <h3>
+                Restoration vs. a fresh application — what's the difference?
+              </h3>
+              <p>
+                If your status has already lapsed, this decides which route
+                you're actually eligible for.
+              </p>
+              <div class="resource-meta">5 MIN READ</div>
+            </div>
+            <div class="resource-card reveal" style="transition-delay: 180ms">
+              <span class="resource-tag">WORK</span>
+              <h3>LMIA vs. open work permit: which applies to you</h3>
+              <p>
+                A plain-language breakdown of the two most common work permit
+                routes for Nepalis in Canada.
+              </p>
+              <div class="resource-meta">7 MIN READ</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-group" id="pr-guides">
+          <div class="section-head reveal">
+            <div class="eyebrow">PR &amp; SPONSORSHIP</div>
+            <h2>Building toward permanent residence.</h2>
+          </div>
+          <div class="resource-grid">
+            <div class="resource-card reveal" style="transition-delay: 0ms">
+              <span class="resource-tag">PR</span>
+              <h3>PGWP to PR: mapping your pathway</h3>
+              <p>
+                What to line up during your PGWP so you're not scrambling in the
+                final months.
+              </p>
+              <div class="resource-meta">8 MIN READ</div>
+            </div>
+            <div class="resource-card reveal" style="transition-delay: 90ms">
+              <span class="resource-tag">PR</span>
+              <h3>Express Entry CRS score: how to actually raise it</h3>
+              <p>
+                The levers that move your score the most — and the ones that
+                barely matter.
+              </p>
+              <div class="resource-meta">6 MIN READ</div>
+            </div>
+            <div class="resource-card reveal" style="transition-delay: 180ms">
+              <span class="resource-tag">SPONSORSHIP</span>
+              <h3>Super Visa vs. PR sponsorship for your parents</h3>
+              <p>
+                Two very different routes to bring your parents over — here's
+                how to choose.
+              </p>
+              <div class="resource-meta">7 MIN READ</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-group" id="refusal-guides">
+          <div class="section-head reveal">
+            <div class="eyebrow">REFUSALS &amp; APPEALS</div>
+            <h2>If something didn't go as planned.</h2>
+          </div>
+          <div class="resource-grid">
+            <div class="resource-card reveal" style="transition-delay: 0ms">
+              <span class="resource-tag">REFUSALS</span>
+              <h3>Common reasons Nepali applications get refused</h3>
+              <p>
+                The patterns we see most often — and how to avoid repeating them
+                on your next filing.
+              </p>
+              <div class="resource-meta">9 MIN READ</div>
+            </div>
+            <div class="resource-card reveal" style="transition-delay: 90ms">
+              <span class="resource-tag">NEWS</span>
+              <h3>How to actually read IRCC processing times</h3>
+              <p>
+                The published number and your real wait time are rarely the same
+                thing — here's why.
+              </p>
+              <div class="resource-meta">5 MIN READ</div>
+            </div>
+            <div class="resource-card reveal" style="transition-delay: 180ms">
+              <span class="resource-tag">REFUSALS</span>
+              <h3>When a judicial review is worth pursuing</h3>
+              <p>
+                Most refusals don't need one. Here's how to tell if yours might.
+              </p>
+              <div class="resource-meta">6 MIN READ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-banner" id="book">
+      <div class="wrap cta-inner reveal">
+        <h2>Rules change faster than articles get written.</h2>
+        <a href="#book" class="btn">Book a free 30-min call</a>
+      </div>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <div class="logo">
+              <img src="/images/Logo2.png" alt="CSC Logo" />
+            </div>
+            <p>
+              CSC Global — a regulated immigration consultancy serving Nepalese
+              across Canada with status, PR, and sponsorship since 2016.
+            </p>
+          </div>
+          <div>
+            <h4>Office</h4>
+            <div class="office">
+              <b>Mississauga</b
+              ><span>100 City Centre Dr, Mississauga, ON L5B 2C9</span>
+            </div>
+          </div>
+          <div>
+            <h4>Services</h4>
+            <ul>
+              <li>
+                <a href="services.html#status">Status &amp; extensions</a>
+              </li>
+              <li><a href="services.html#pr">Permanent residency</a></li>
+              <li>
+                <a href="services.html#sponsorship">Family sponsorship</a>
+              </li>
+              <li><a href="services.html#work">Work permits</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <ul>
+              <li>WhatsApp: +977 98XX-XXXXXX</li>
+              <li>info@cscglobal.ca</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bottom-bar">
+          <span>© 2026 CSC Global. RCIC #R5XXXXX.</span>
+          <span>Privacy · Terms · Refund policy</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var reduceMotion =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var els = document.querySelectorAll(".reveal");
+        if (!els.length) return;
+
+        if (reduceMotion || !("IntersectionObserver" in window)) {
+          els.forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+          return;
+        }
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+        );
+
+        els.forEach(function (el) {
+          observer.observe(el);
+        });
+      })();
+    </script>
+
+    <div class="book-overlay" id="bookOverlay">
+      <div class="book-frame-wrap">
+        <button class="book-close" id="bookClose" aria-label="Close">
+          &times;
+        </button>
+        <iframe id="bookIframe" src="" title="Book a consultation"></iframe>
+      </div>
+    </div>
+
+    <style>
+      .book-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        background: rgba(15, 40, 70, 0.55);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+      .book-overlay.open {
+        display: flex;
+      }
+      .book-overlay.visible {
+        opacity: 1;
+      }
+      .book-frame-wrap {
+        position: relative;
+        background: #fff;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 560px;
+        height: min(640px, 90vh);
+        box-shadow: 0 30px 70px -20px rgba(15, 40, 70, 0.4);
+      }
+      .book-frame-wrap iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        border-radius: 10px;
+      }
+      .book-close {
+        position: absolute;
+        top: -14px;
+        right: -14px;
+        z-index: 2;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid #e7ebee;
+        background: #fff;
+        font-size: 18px;
+        cursor: pointer;
+      }
+    </style>
+
+    <script>
+      (function () {
+        var overlay = document.getElementById("bookOverlay");
+        var iframe = document.getElementById("bookIframe");
+        var closeBtn = document.getElementById("bookClose");
+
+        document.addEventListener("click", function (e) {
+          var trigger = e.target.closest('a[href="#book"]');
+          if (!trigger) return;
+          e.preventDefault();
+          iframe.src = "booking-modal.html";
+          overlay.classList.add("open");
+          requestAnimationFrame(function () {
+            overlay.classList.add("visible");
+          });
+        });
+
+        function close() {
+          overlay.classList.remove("visible");
+          setTimeout(function () {
+            overlay.classList.remove("open");
+            iframe.src = "";
+          }, 250);
+        }
+        closeBtn.addEventListener("click", close);
+        overlay.addEventListener("click", function (e) {
+          if (e.target === overlay) close();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") close();
+        });
+      })();
+    </script>
+  </body>
 </html>

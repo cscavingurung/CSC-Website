@@ -188,15 +188,12 @@
       <p>A consultant will reach out within 24 hours to confirm your time.</p>
     </div>
 
+    <script src="config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
       (function () {
-        const SUPABASE_URL = "https://dgwssqymenrjwncbuyux.supabase.co";
-        const SUPABASE_ANON_KEY =
-          "sb_publishable_f5eZE-55wt0f2nn-Pw2hrw_kgxE3Gl4";
 
-        // 1. Initialize client using window.supabase.createClient
-        // 2. Assign it to 'supabaseClient' (NOT 'supabase')
+    
         const supabaseClient = window.supabase.createClient(
           SUPABASE_URL,
           SUPABASE_ANON_KEY,

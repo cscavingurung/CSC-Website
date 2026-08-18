@@ -3,60 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us — Canadian Study Center</title>
+    <title>Contact — Canadian Study Center</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="style.css" />
+
     <style>
-      :root {
-        --navy: #173a63;
-        --navy-2: #0f2846;
-        --teal: #1c7fa0;
-        --red: #e1372b;
-        --paper: #ffffff;
-        --paper-2: #f6f8f9;
-        --ink: #1b2430;
-        --muted: #5b6672;
-        --line: #e7ebee;
-
-        --font-display: "Work Sans", sans-serif;
-        --font-body: "Work Sans", sans-serif;
-        --font-mono: "IBM Plex Mono", monospace;
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: var(--font-body);
-        color: var(--ink);
-        background: var(--paper);
-        line-height: 1.55;
-        -webkit-font-smoothing: antialiased;
-      }
-      img {
-        max-width: 100%;
-        display: block;
-      }
-      a {
-        color: inherit;
-      }
-      .wrap {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 0 32px;
-      }
-
       .eyebrow {
         font-family: var(--font-mono);
-        font-size: 11.5px;
+        font-size: 12px;
         letter-spacing: 0.14em;
         text-transform: uppercase;
         color: var(--teal);
@@ -72,100 +30,6 @@
         display: inline-block;
       }
 
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-family: var(--font-body);
-        font-weight: 600;
-        font-size: 14.5px;
-        padding: 13px 24px;
-        border-radius: 3px;
-        border: 1px solid transparent;
-        cursor: pointer;
-        text-decoration: none;
-        transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease,
-          background 0.2s ease,
-          color 0.2s ease;
-      }
-      .btn-primary {
-        background: var(--navy);
-        color: var(--paper);
-        box-shadow: 0 2px 8px rgba(15, 40, 70, 0.15);
-      }
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 22px -6px rgba(15, 40, 70, 0.35);
-      }
-      .btn-outline {
-        background: transparent;
-        color: var(--navy);
-        border-color: var(--navy);
-      }
-      .btn-outline:hover {
-        background: var(--navy);
-        color: var(--paper);
-        transform: translateY(-2px);
-        box-shadow: 0 10px 22px -6px rgba(15, 40, 70, 0.25);
-      }
-
-      /* header */
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(6px);
-        border-bottom: 1px solid var(--line);
-      }
-      .nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 78px;
-      }
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-family: var(--font-body);
-        font-weight: 700;
-        font-size: 19px;
-        color: var(--navy);
-        letter-spacing: 0.01em;
-        text-decoration: none;
-      }
-      .logo-mark {
-        width: 26px;
-        height: 26px;
-        flex-shrink: 0;
-      }
-      .logo b {
-        color: var(--teal);
-        font-weight: 700;
-      }
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-        list-style: none;
-      }
-      .nav-links a {
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--muted);
-        text-decoration: none;
-        transition: color 0.15s ease;
-      }
-      .nav-links a:hover {
-        color: var(--navy);
-      }
-      .nav-links a.is-current {
-        color: var(--navy);
-      }
-
       /* page hero */
       .page-hero {
         padding: 70px 0 56px;
@@ -174,10 +38,10 @@
       .page-hero h1 {
         font-family: var(--font-display);
         font-weight: 600;
-        font-size: 42px;
+        font-size: 44px;
         line-height: 1.15;
         letter-spacing: -0.01em;
-        margin: 18px 0 16px;
+        margin: 16px 0 16px;
         color: var(--navy-2);
         max-width: 600px;
       }
@@ -239,7 +103,7 @@
         background: var(--paper);
         border: 1px solid var(--line);
         border-radius: 8px;
-        padding: 22px 22px;
+        padding: 24px 24px;
         display: flex;
         gap: 16px;
         align-items: flex-start;
@@ -253,8 +117,8 @@
         box-shadow: 0 14px 28px -12px rgba(15, 40, 70, 0.16);
       }
       .contact-card .icon {
-        width: 38px;
-        height: 38px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         flex-shrink: 0;
         background: var(--paper-2);
@@ -264,22 +128,22 @@
         justify-content: center;
       }
       .contact-card .icon svg {
-        width: 17px;
-        height: 17px;
+        width: 20px;
+        height: 20px;
       }
       .contact-card h3 {
-        font-size: 14.5px;
+        font-size: 16px;
         font-weight: 600;
         color: var(--navy-2);
         margin-bottom: 4px;
       }
       .contact-card p {
-        font-size: 13.5px;
+        font-size: 14px;
         color: var(--muted);
         margin-bottom: 2px;
       }
       .contact-card a.link {
-        font-size: 13.5px;
+        font-size: 14px;
         color: var(--teal);
         font-weight: 600;
         text-decoration: none;
@@ -289,11 +153,11 @@
         background: var(--paper-2);
         border: 1px solid var(--line);
         border-radius: 8px;
-        padding: 22px 22px;
+        padding: 24px 24px;
         margin-top: 4px;
       }
       .hours-card h3 {
-        font-size: 13px;
+        font-size: 14px;
         font-family: var(--font-mono);
         letter-spacing: 0.05em;
         text-transform: uppercase;
@@ -303,7 +167,7 @@
       .hours-row {
         display: flex;
         justify-content: space-between;
-        font-size: 13.5px;
+        font-size: 14px;
         padding: 8px 0;
         border-top: 1px solid var(--line);
       }
@@ -338,7 +202,7 @@
       .form-field label {
         display: block;
         font-family: var(--font-mono);
-        font-size: 11px;
+        font-size: 12px;
         letter-spacing: 0.05em;
         color: var(--muted);
         text-transform: uppercase;
@@ -349,12 +213,12 @@
       .form-field textarea {
         width: 100%;
         font-family: var(--font-body);
-        font-size: 14.5px;
+        font-size: 16px;
         color: var(--navy-2);
         background: var(--paper);
         border: 1px solid var(--line);
         border-radius: 4px;
-        padding: 12px 14px;
+        padding: 12px 16px;
       }
       .form-field select {
         appearance: none;
@@ -376,7 +240,7 @@
         border-color: var(--teal);
       }
       .form-note {
-        font-size: 12px;
+        font-size: 14px;
         color: var(--muted);
         margin-top: 2px;
         margin-bottom: 20px;
@@ -428,92 +292,6 @@
         display: block;
       }
 
-      /* cta banner */
-      .cta-banner {
-        background: var(--navy);
-        padding: 60px 0;
-      }
-      .cta-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 30px;
-        flex-wrap: wrap;
-      }
-      .cta-inner h2 {
-        font-family: var(--font-body);
-        font-weight: 600;
-        font-size: 26px;
-        color: var(--paper);
-        max-width: 520px;
-      }
-      .cta-inner .btn {
-        background: var(--paper);
-        color: var(--navy);
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-      }
-      .cta-inner .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 26px -6px rgba(0, 0, 0, 0.3);
-      }
-
-      /* footer */
-      footer {
-        background: var(--navy-2);
-        color: rgba(246, 248, 249, 0.8);
-        padding: 56px 0 28px;
-      }
-      .footer-grid {
-        display: grid;
-        grid-template-columns: 1.4fr 1fr 1fr 1fr;
-        gap: 36px;
-        padding-bottom: 36px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      .footer-grid h4 {
-        font-family: var(--font-mono);
-        font-size: 11px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--teal);
-        margin-bottom: 14px;
-      }
-      .footer-grid ul {
-        list-style: none;
-      }
-      .footer-grid li {
-        margin-bottom: 9px;
-        font-size: 13.5px;
-      }
-      .footer-grid p {
-        font-size: 13px;
-        line-height: 1.6;
-        color: rgba(246, 248, 249, 0.6);
-      }
-      .office {
-        margin-bottom: 14px;
-      }
-      .office b {
-        display: block;
-        font-size: 13.5px;
-        color: var(--paper);
-        margin-bottom: 2px;
-      }
-      .office span {
-        font-size: 12.5px;
-        color: rgba(246, 248, 249, 0.55);
-      }
-      .bottom-bar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 22px;
-        font-size: 12px;
-        color: rgba(246, 248, 249, 0.45);
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
       /* scroll reveal */
       .reveal {
         opacity: 0;
@@ -560,11 +338,9 @@
           align-items: flex-start;
         }
       }
-
-      .logo {
-        width: 200px;
-      }
     </style>
+    <script src="script.js" defer></script>
+
   </head>
   <body>
     <header>
@@ -575,12 +351,11 @@
           </div>
         </a>
         <ul class="nav-links">
+          <li><a href="about.html">About</a></li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="how-it-works.html">How it works</a></li>
           <li><a href="success-stories.html">Success stories</a></li>
           <li><a href="resources.html">Resources</a></li>
-          <li><a href="about.html">About us</a></li>
-          <li><a href="contact-us.html" class="is-current">Contact</a></li>
+          <li><a href="contact.html" class="is-current">Contact</a></li>
         </ul>
         <a href="eligibility.html" class="btn btn-outline"
           >Check your eligibility</a
@@ -622,7 +397,7 @@
               <div>
                 <h3>WhatsApp</h3>
                 <p>Fastest way to reach us — usually within 24 hours.</p>
-                <a class="link" href="#">+977 98XX-XXXXXX →</a>
+                <a class="link" href="#">+1 (416) 272-4274 →</a>
               </div>
             </div>
 
@@ -645,8 +420,8 @@
                   For documents, files, or anything you'd rather send in
                   writing.
                 </p>
-                <a class="link" href="mailto:info@cscglobal.ca"
-                  >info@cscglobal.ca →</a
+                <a class="link" href="mailto:hari.adhikari@live.ca"
+                  >hari.adhikari@live.ca →</a
                 >
               </div>
             </div>
@@ -665,17 +440,20 @@
               </div>
               <div>
                 <h3>Office</h3>
-                <p>Putalisadak, Kathmandu 44600, Nepal</p>
+                <p>
+                  Brampton, ON L6Y 0P6 <br />
+                  7900 Hurontario Street, Unit #203
+                </p>
               </div>
             </div>
 
             <div class="hours-card reveal" style="transition-delay: 270ms">
-              <h3>Office hours (Nepal time)</h3>
+              <h3>Office hours (Canada time)</h3>
               <div class="hours-row">
-                <span>Sunday – Friday</span><span>10:00 AM – 6:00 PM</span>
+                <span>Monday – Friday</span><span>9:30 AM – 5:30 PM</span>
               </div>
               <div class="hours-row">
-                <span>Saturday</span><span>Closed</span>
+                <span>Saturday, Sunday</span><span>Closed</span>
               </div>
               <div class="hours-row">
                 <span>WhatsApp</span><span>Monitored daily</span>
@@ -745,22 +523,6 @@
       </div>
     </section>
 
-    <!-- <div class="map-section">
-  <div class="wrap">
-    <div class="map-head reveal">
-      <div>
-        <div class="eyebrow">FIND US</div>
-        <h2 style="margin-top:10px;">Our office in Kathmandu.</h2>
-        <p>Putalisadak, Kathmandu 44600, Nepal — a short walk from Putalisadak Chowk.</p>
-      </div>
-      <a href="https://www.google.com/maps/search/?api=1&amp;query=27.7032,85.3258" target="_blank" rel="noopener" class="btn btn-outline">Open in Google Maps</a>
-    </div>
-    <div class="map-frame reveal" style="transition-delay:100ms">
-      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=85.3198%2C27.6992%2C85.3318%2C27.7072&amp;layer=mapnik&amp;marker=27.7032%2C85.3258" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Canadian Study Center office location in Putalisadak, Kathmandu"></iframe>
-    </div>
-  </div>
-</div> -->
-
     <div class="map-section">
       <div class="wrap">
         <div class="map-head reveal">
@@ -773,7 +535,7 @@
             </p>
           </div>
           <a
-            href="https://google.com"
+            href="https://maps.app.goo.gl/484CDsjRHrwkf2QZ9"
             target="_blank"
             rel="noopener"
             class="btn btn-outline"
@@ -781,14 +543,14 @@
           >
         </div>
         <div class="map-frame reveal" style="transition-delay: 100ms">
-          <!-- Google Maps Embed for CSC Global -->
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.374429981719!2d85.32013517614105!3d27.705723325561767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb185788c6ffff%3A0x1ac42ad3f2daa124!2sCSC%20Global!5e0!3m2!1sen!2snp!4v1786699594265!5m2!1sen!2snp"
-            style="border: 0; width: 100%; height: 100%"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d130564.99508249575!2d-79.71037851779442!3d43.68755873468533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b3fd0f7855555%3A0x38633680f96ffa5c!2s7900%20Hurontario%20St%20Unit%23203%2C%20Brampton%2C%20ON%20L6Y%200C7%2C%20Canada!5e0!3m2!1sen!2snp!4v1787030184104!5m2!1sen!2snp"
+            width="600"
+            height="450"
+            style="border: 0"
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin"
-            title="CSC Global office location in Putalisadak, Kathmandu"
           ></iframe>
         </div>
       </div>
@@ -809,36 +571,32 @@
               <img src="/images/Logo2.png" alt="CSC Logo" />
             </div>
             <p>
-              Canadian Study Center — a regulated immigration consultancy
-              serving Nepalese across Canada with status, PR, and sponsorship
-              since 2016.
+              CSC Global — a regulated immigration consultancy serving Nepalese
+              across Canada with status, PR, and sponsorship since 2016.
             </p>
           </div>
           <div>
             <h4>Office</h4>
             <div class="office">
-              <b>Mississauga</b
-              ><span>100 City Centre Dr, Mississauga, ON L5B 2C9</span>
+              <b>Brampton</b><span>7900 Hurontario Street, Unit #203</span>
             </div>
           </div>
           <div>
             <h4>Services</h4>
             <ul>
-              <li>
-                <a href="services.html#status">Status &amp; extensions</a>
-              </li>
-              <li><a href="services.html#pr">Permanent residency</a></li>
-              <li>
-                <a href="services.html#sponsorship">Family sponsorship</a>
-              </li>
-              <li><a href="services.html#work">Work permits</a></li>
+              <li>Permanent Residency</li>
+              <li>Study Permit</li>
+              <li>Work Permit</li>
+              <li>Visit Canada</li>
+              <li>Canadian Citizenship</li>
+              <li>PR Card Renewal</li>
             </ul>
           </div>
           <div>
             <h4>Contact</h4>
             <ul>
-              <li>WhatsApp: +977 98XX-XXXXXX</li>
-              <li>info@cscglobal.ca</li>
+              <li>+1 (416) 272-4274</li>
+              <li>hari.adhikari@live.ca</li>
             </ul>
           </div>
         </div>
@@ -884,14 +642,38 @@
 
     <script>
       (function () {
+        var supabase = window.supabase.createClient(
+          SUPABASE_URL,
+          SUPABASE_ANON_KEY,
+        );
+
         var form = document.querySelector(".contact-form");
         if (!form) return;
-        form.addEventListener("submit", function (e) {
+
+        form.addEventListener("submit", async function (e) {
           e.preventDefault();
           var btn = form.querySelector('button[type="submit"]');
+          btn.disabled = true;
+          btn.textContent = "Sending...";
+
+          var { error } = await supabase.from("contact_messages").insert({
+            full_name: form.name.value,
+            phone: form.phone.value,
+            email: form.email.value,
+            topic: form.topic.value,
+            message: form.message.value,
+          });
+
+          if (error) {
+            console.error(error);
+            btn.disabled = false;
+            btn.textContent = "Send message";
+            alert("Something went wrong — please try WhatsApp instead.");
+            return;
+          }
+
           btn.textContent = "Message sent — we'll reply within 24 hours";
           btn.style.opacity = ".8";
-          btn.disabled = true;
         });
       })();
     </script>
@@ -953,6 +735,9 @@
         cursor: pointer;
       }
     </style>
+
+    <script src="config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script>
       (function () {

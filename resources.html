@@ -12,9 +12,6 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-      
-      
-
       .eyebrow {
         font-family: var(--font-mono);
         font-size: 11.5px;
@@ -32,8 +29,6 @@
         background: var(--teal);
         display: inline-block;
       }
-
-      
 
       /* page hero */
       .page-hero {
@@ -217,7 +212,6 @@
         max-width: 440px;
       }
 
-
       /* scroll reveal system */
       .reveal {
         opacity: 0;
@@ -238,10 +232,39 @@
           transition: none !important;
         }
       }
-  
+
+      /* Responsive Media Queries */
+      @media (max-width: 900px) {
+        .resource-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .page-hero {
+          padding: 50px 0 40px;
+        }
+        .page-hero h1 {
+          font-size: 32px;
+        }
+        section {
+          padding: 50px 0;
+        }
+        .resource-group {
+          padding: 36px 0;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .resource-grid {
+          grid-template-columns: 1fr;
+        }
+        .resource-card {
+          padding: 22px 20px;
+        }
+      }
     </style>
     <script src="script.js" defer></script>
-
   </head>
   <body>
     <header>
@@ -258,7 +281,30 @@
           <li><a href="resources.html" class="is-current">Resources</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-        <a href="eligibility.html" class="btn btn-outline"
+        <div class="nav-right">
+          <a href="eligibility.html" class="btn btn-outline nav-cta-desktop"
+            >Check your eligibility</a
+          >
+          <button
+            class="nav-toggle"
+            id="navToggle"
+            aria-label="Open menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="success-stories.html">Success stories</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="eligibility.html" class="btn btn-primary mobile-nav-cta"
           >Check your eligibility</a
         >
       </div>
@@ -406,9 +452,11 @@
       <div class="wrap">
         <div class="footer-grid">
           <div>
-            <div class="logo">
-              <img src="/images/Logo2.png" alt="CSC Logo" />
-            </div>
+            <a href="index.html" class="logo">
+              <div class="logo">
+                <img src="/images/Logo2.png" alt="CSC Logo" />
+              </div>
+            </a>
             <p>
               CSC Global — a regulated immigration consultancy serving Nepalese
               across Canada with status, PR, and sponsorship since 2016.
@@ -417,35 +465,68 @@
           <div>
             <h4>Office</h4>
             <div class="office">
-              <b>Brampton</b
-              ><span>7900 Hurontario Street, Unit #203</span>
+              <b>Brampton</b><span>7900 Hurontario Street, Unit #203</span>
             </div>
           </div>
           <div>
             <h4>Services</h4>
             <ul>
-              <li>Permanent Residency</li>
-              <li>Study Permit</li>
-              <li>Work Permit</li>
-              <li>Visit Canada</li>
-              <li>Canadian Citizenship</li>
-              <li>PR Card Renewal</li>
+              <li><a href="services.html#pr">Permanent Residency</a></li>
+              <li><a href="services.html#study">Study Permit</a></li>
+              <li><a href="services.html#work">Work Permit</a></li>
+              <li><a href="services.html#status">Visit Canada</a></li>
+              <li><a href="services.html#pr">Canadian Citizenship</a></li>
+              <li><a href="services.html#status">PR Card Renewal</a></li>
             </ul>
           </div>
           <div>
             <h4>Contact</h4>
             <ul>
-              <li>+1 (416) 272-4274</li>
-              <li>hari.adhikari@live.ca</li>
+              <li><a href="tel:+14162724274">+1 (416) 272-4274</a></li>
+              <li><a href="mailto:hari.adhikari@live.ca">hari.adhikari@live.ca</a></li>
             </ul>
           </div>
         </div>
         <div class="bottom-bar">
           <span>© 2026 CSC Global. RCIC #R5XXXXX.</span>
-          <span>Privacy · Terms · Refund policy</span>
+          <span>
+            <a href="privacy.html">Privacy</a> · 
+            <a href="terms.html">Terms</a> · 
+            <a href="refund.html">Refund policy</a>
+          </span>
         </div>
       </div>
     </footer>
+
+    <script>
+      (function () {
+        var toggle = document.getElementById("navToggle");
+        var panel = document.getElementById("mobileNav");
+        if (!toggle || !panel) return;
+
+        toggle.addEventListener("click", function () {
+          var isOpen = panel.classList.toggle("is-open");
+          toggle.classList.toggle("is-open", isOpen);
+          toggle.setAttribute("aria-expanded", isOpen);
+        });
+
+        panel.addEventListener("click", function (e) {
+          if (e.target.tagName === "A") {
+            panel.classList.remove("is-open");
+            toggle.classList.remove("is-open");
+            toggle.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 900 && panel.classList.contains("is-open")) {
+            panel.classList.remove("is-open");
+            toggle.classList.remove("is-open");
+            toggle.setAttribute("aria-expanded", "false");
+          }
+        });
+      })();
+    </script>
 
     <script>
       (function () {

@@ -10,300 +10,42 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css">
-
-    <style>
-      
-     
-
-      .eyebrow {
-        font-family: var(--font-mono);
-        font-size: 11.5px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--teal);
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .eyebrow::before {
-        content: "";
-        width: 16px;
-        height: 1px;
-        background: var(--teal);
-        display: inline-block;
-      }
-
-      
-
-      /* page hero */
-      .page-hero {
-        padding: 70px 0 64px;
-        border-bottom: 1px solid var(--line);
-      }
-      .page-hero-grid {
-        display: grid;
-        grid-template-columns: 1.1fr 1fr;
-        gap: 56px;
-        align-items: center;
-      }
-      .page-hero h1 {
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 44px;
-        line-height: 1.12;
-        letter-spacing: -0.01em;
-        margin: 18px 0 18px;
-        color: var(--navy-2);
-        max-width: 520px;
-      }
-      .page-hero p.lead {
-        font-size: 16.5px;
-        color: var(--muted);
-        max-width: 480px;
-      }
-      .page-hero .eyebrow,
-      .page-hero h1,
-      .page-hero p.lead,
-      .page-hero-media {
-        opacity: 0;
-        transform: translateY(18px);
-        animation: hero-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
-      .page-hero .eyebrow {
-        animation-delay: 0.05s;
-      }
-      .page-hero h1 {
-        animation-delay: 0.15s;
-      }
-      .page-hero p.lead {
-        animation-delay: 0.25s;
-      }
-      .page-hero-media {
-        animation-delay: 0.2s;
-      }
-      @keyframes hero-in {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .page-hero .eyebrow,
-        .page-hero h1,
-        .page-hero p.lead,
-        .page-hero-media {
-          opacity: 1 !important;
-          transform: none !important;
-          animation: none !important;
-        }
-      }
-      .page-hero-media img {
-        width: 100%;
-        aspect-ratio: 4/3;
-        object-fit: cover;
-        border-radius: 10px;
-        border: 1px solid var(--line);
-      }
-
-      /* shared section */
-      section {
-        padding: 80px 0;
-      }
-      .section-head {
-        max-width: 620px;
-        margin-bottom: 44px;
-      }
-      .section-head.center {
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-      }
-      .section-head h2 {
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 30px;
-        margin-top: 14px;
-        letter-spacing: -0.01em;
-        color: var(--navy-2);
-      }
-      .section-head p {
-        color: var(--muted);
-        font-size: 15px;
-        margin-top: 12px;
-      }
-
-      /* story - two column, text + stacked facts */
-      .story-grid {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 64px;
-      }
-      .story-copy p {
-        font-size: 15.5px;
-        color: var(--muted);
-        margin-bottom: 18px;
-        max-width: 540px;
-      }
-      .story-copy p:last-child {
-        margin-bottom: 0;
-      }
-      .story-facts {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-      }
-      .story-fact {
-        border-top: 1px solid var(--line);
-        padding: 20px 0;
-      }
-      .story-fact:last-child {
-        border-bottom: 1px solid var(--line);
-      }
-      .story-fact b {
-        display: block;
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 24px;
-        color: var(--navy-2);
-        margin-bottom: 4px;
-      }
-      .story-fact span {
-        font-size: 12.5px;
-        color: var(--muted);
-      }
-
-      /* values */
-      .values-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1px;
-        background: var(--line);
-        border: 1px solid var(--line);
-      }
-      .value-card {
-        background: var(--paper);
-        padding: 30px 26px;
-      }
-      .value-num {
-        font-family: var(--font-mono);
-        font-size: 11.5px;
-        color: var(--teal);
-        letter-spacing: 0.05em;
-      }
-      .value-card h3 {
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 18px;
-        margin: 12px 0 8px;
-        color: var(--navy-2);
-      }
-      .value-card p {
-        font-size: 13.5px;
-        color: var(--muted);
-      }
-
-      /* team */
-      .team-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-      }
-      .team-card img {
-        width: 100%;
-        aspect-ratio: 1/1;
-        object-fit: cover;
-        border-radius: 8px;
-        border: 1px solid var(--line);
-        margin-bottom: 16px;
-      }
-      .team-card h4 {
-        font-family: var(--font-body);
-        font-weight: 600;
-        font-size: 16px;
-        color: var(--navy-2);
-        margin-bottom: 2px;
-      }
-      .team-card span.role {
-        font-size: 12.5px;
-        color: var(--teal);
-        font-family: var(--font-mono);
-      }
-      .team-card p {
-        font-size: 13.5px;
-        color: var(--muted);
-        margin-top: 10px;
-      }
-
-      /* results-style stat band, reused visual language from homepage */
-      .about-stats {
-        background: var(--paper-2);
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-      }
-      .about-stats-row {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 24px;
-      }
-      .about-stats-row div b {
-        font-family: var(--font-display);
-        font-weight: 600;
-        font-size: 28px;
-        color: var(--navy);
-        display: block;
-        margin-bottom: 6px;
-      }
-      .about-stats-row div span {
-        font-size: 12.5px;
-        color: var(--muted);
-      }
-
-
-
-      /* scroll reveal system */
-      .reveal {
-        opacity: 0;
-        transform: translateY(26px);
-        transition:
-          opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        will-change: opacity, transform;
-      }
-      .reveal.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .reveal {
-          opacity: 1 !important;
-          transform: none !important;
-          transition: none !important;
-        }
-      }
-      
-    </style>
     <script src="script.js" defer></script>
-
   </head>
   <body>
     <header>
-      <div class="wrap nav">
-        <a href="index.html" class="logo">
-          <div class="logo">
-            <img src="/images/Logo.png" alt="CSC Logo" />
-          </div>
-        </a>
-        <ul class="nav-links">
-          <li><a href="about.html" class="is-current">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="success-stories.html">Success stories</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <a href="eligibility.html" class="btn btn-outline"
-          >Check your eligibility</a>
+  <div class="wrap nav">
+    <a href="index.html" class="logo">
+      <div class="logo">
+        <img src="/images/Logo.png" alt="CSC Logo" />
       </div>
-    </header>
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html" class="is-current">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="success-stories.html">Success stories</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="eligibility.html" class="btn btn-outline nav-cta-desktop">Check your eligibility</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobileNav">
+    <ul class="mobile-nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="success-stories.html">Success stories</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="eligibility.html" class="btn btn-primary mobile-nav-cta">Check your eligibility</a>
+  </div>
+</header>
 
     <section class="page-hero">
       <div class="wrap page-hero-grid">
@@ -472,7 +214,7 @@
     </section>
 
     <div class="about-stats">
-      <div class="wrap" style="padding: 56px 0">
+      <div class="wrap" style="padding: 60px 32px;">
         <div class="about-stats-row reveal">
           <div>
             <b>Kathmandu</b
@@ -496,9 +238,11 @@
       <div class="wrap">
         <div class="footer-grid">
           <div>
-            <div class="logo">
-              <img src="/images/Logo2.png" alt="CSC Logo" />
-            </div>
+            <a href="index.html" class="logo">
+              <div class="logo">
+                <img src="/images/Logo2.png" alt="CSC Logo" />
+              </div>
+            </a>
             <p>
               CSC Global — a regulated immigration consultancy serving Nepalese
               across Canada with status, PR, and sponsorship since 2016.
@@ -507,35 +251,68 @@
           <div>
             <h4>Office</h4>
             <div class="office">
-              <b>Brampton</b
-              ><span>7900 Hurontario Street, Unit #203</span>
+              <b>Brampton</b><span>7900 Hurontario Street, Unit #203</span>
             </div>
           </div>
           <div>
             <h4>Services</h4>
             <ul>
-              <li>Permanent Residency</li>
-              <li>Study Permit</li>
-              <li>Work Permit</li>
-              <li>Visit Canada</li>
-              <li>Canadian Citizenship</li>
-              <li>PR Card Renewal</li>
+              <li><a href="services.html#pr">Permanent Residency</a></li>
+              <li><a href="services.html#study">Study Permit</a></li>
+              <li><a href="services.html#work">Work Permit</a></li>
+              <li><a href="services.html#status">Visit Canada</a></li>
+              <li><a href="services.html#pr">Canadian Citizenship</a></li>
+              <li><a href="services.html#status">PR Card Renewal</a></li>
             </ul>
           </div>
           <div>
             <h4>Contact</h4>
             <ul>
-              <li>+1 (416) 272-4274</li>
-              <li>hari.adhikari@live.ca</li>
+              <li><a href="tel:+14162724274">+1 (416) 272-4274</a></li>
+              <li><a href="mailto:hari.adhikari@live.ca">hari.adhikari@live.ca</a></li>
             </ul>
           </div>
         </div>
         <div class="bottom-bar">
           <span>© 2026 CSC Global. RCIC #R5XXXXX.</span>
-          <span>Privacy · Terms · Refund policy</span>
+          <span>
+            <a href="privacy.html">Privacy</a> · 
+            <a href="terms.html">Terms</a> · 
+            <a href="refund.html">Refund policy</a>
+          </span>
         </div>
       </div>
     </footer>
+
+    <script>
+  (function(){
+    var toggle = document.getElementById('navToggle');
+    var panel = document.getElementById('mobileNav');
+    if(!toggle || !panel) return;
+
+    toggle.addEventListener('click', function(){
+      var isOpen = panel.classList.toggle('is-open');
+      toggle.classList.toggle('is-open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    panel.addEventListener('click', function(e){
+      if(e.target.tagName === 'A'){
+        panel.classList.remove('is-open');
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    window.addEventListener('resize', function(){
+      if(window.innerWidth > 900 && panel.classList.contains('is-open')){
+        panel.classList.remove('is-open');
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
 
     <script>
       (function () {
@@ -578,55 +355,6 @@
         <iframe id="bookIframe" src="" title="Book a consultation"></iframe>
       </div>
     </div>
-
-    <style>
-      .book-overlay {
-        position: fixed;
-        inset: 0;
-        z-index: 200;
-        background: rgba(15, 40, 70, 0.55);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        opacity: 0;
-        transition: opacity 0.25s ease;
-      }
-      .book-overlay.open {
-        display: flex;
-      }
-      .book-overlay.visible {
-        opacity: 1;
-      }
-      .book-frame-wrap {
-        position: relative;
-        background: #fff;
-        border-radius: 10px;
-        width: 100%;
-        max-width: 560px;
-        height: min(640px, 90vh);
-        box-shadow: 0 30px 70px -20px rgba(15, 40, 70, 0.4);
-      }
-      .book-frame-wrap iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-        border-radius: 10px;
-      }
-      .book-close {
-        position: absolute;
-        top: -14px;
-        right: -14px;
-        z-index: 2;
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        border: 1px solid #e7ebee;
-        background: #fff;
-        font-size: 18px;
-        cursor: pointer;
-      }
-    </style>
 
     <script>
       (function () {

@@ -109,7 +109,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 16px;
-        padding: 24px;
+        padding: 24px 32px;
         border-bottom: 1px solid var(--line);
         position: sticky;
         top: 76px;
@@ -126,6 +126,7 @@
         border-radius: 20px;
         text-decoration: none;
         transition: all 0.15s ease;
+        white-space: nowrap;
       }
       .jump-nav a:hover {
         color: var(--navy);
@@ -275,6 +276,34 @@
           transition: none !important;
         }
       }
+
+      /* Mobile responsiveness improvements */
+      @media (max-width: 768px) {
+        .page-hero h1 {
+          font-size: 32px;
+        }
+        .jump-nav {
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          padding: 16px 0;
+          top: 60px;
+        }
+        .service-block {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 40px 0;
+        }
+        .service-side {
+          position: static;
+        }
+        .service-included {
+          grid-template-columns: 1fr;
+        }
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+      }
     </style>
     <script src="script.js" defer></script>
   </head>
@@ -293,9 +322,23 @@
           <li><a href="resources.html">Resources</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-        <a href="eligibility.html" class="btn btn-outline"
-          >Check your eligibility</a
-        >
+        <div class="nav-right">
+          <a href="eligibility.html" class="btn btn-outline nav-cta-desktop">Check your eligibility</a>
+          <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="success-stories.html">Success stories</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="eligibility.html" class="btn btn-primary mobile-nav-cta">Check your eligibility</a>
       </div>
     </header>
 
@@ -676,7 +719,7 @@
     </section>
 
     <div class="pricing-note">
-      <div class="wrap" style="padding: 64px 0">
+      <div class="wrap" style="padding: 60px 32px;">
         <div class="pricing-grid">
           <div>
             <div class="eyebrow">HOW PRICING WORKS</div>
@@ -746,9 +789,11 @@
       <div class="wrap">
         <div class="footer-grid">
           <div>
-            <div class="logo">
-              <img src="/images/Logo2.png" alt="CSC Logo" />
-            </div>
+            <a href="index.html" class="logo">
+              <div class="logo">
+                <img src="/images/Logo2.png" alt="CSC Logo" />
+              </div>
+            </a>
             <p>
               CSC Global — a regulated immigration consultancy serving Nepalese
               across Canada with status, PR, and sponsorship since 2016.
@@ -757,35 +802,68 @@
           <div>
             <h4>Office</h4>
             <div class="office">
-              <b>Brampton</b
-              ><span>7900 Hurontario Street, Unit #203</span>
+              <b>Brampton</b><span>7900 Hurontario Street, Unit #203</span>
             </div>
           </div>
           <div>
             <h4>Services</h4>
             <ul>
-              <li>Permanent Residency</li>
-              <li>Study Permit</li>
-              <li>Work Permit</li>
-              <li>Visit Canada</li>
-              <li>Canadian Citizenship</li>
-              <li>PR Card Renewal</li>
+              <li><a href="services.html#pr">Permanent Residency</a></li>
+              <li><a href="services.html#study">Study Permit</a></li>
+              <li><a href="services.html#work">Work Permit</a></li>
+              <li><a href="services.html#status">Visit Canada</a></li>
+              <li><a href="services.html#pr">Canadian Citizenship</a></li>
+              <li><a href="services.html#status">PR Card Renewal</a></li>
             </ul>
           </div>
           <div>
             <h4>Contact</h4>
             <ul>
-              <li>+1 (416) 272-4274</li>
-              <li>hari.adhikari@live.ca</li>
+              <li><a href="tel:+14162724274">+1 (416) 272-4274</a></li>
+              <li><a href="mailto:hari.adhikari@live.ca">hari.adhikari@live.ca</a></li>
             </ul>
           </div>
         </div>
         <div class="bottom-bar">
           <span>© 2026 CSC Global. RCIC #R5XXXXX.</span>
-          <span>Privacy · Terms · Refund policy</span>
+          <span>
+            <a href="privacy.html">Privacy</a> · 
+            <a href="terms.html">Terms</a> · 
+            <a href="refund.html">Refund policy</a>
+          </span>
         </div>
       </div>
     </footer>
+
+    <script>
+      (function(){
+        var toggle = document.getElementById('navToggle');
+        var panel = document.getElementById('mobileNav');
+        if(!toggle || !panel) return;
+
+        toggle.addEventListener('click', function(){
+          var isOpen = panel.classList.toggle('is-open');
+          toggle.classList.toggle('is-open', isOpen);
+          toggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        panel.addEventListener('click', function(e){
+          if(e.target.tagName === 'A'){
+            panel.classList.remove('is-open');
+            toggle.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        window.addEventListener('resize', function(){
+          if(window.innerWidth > 900 && panel.classList.contains('is-open')){
+            panel.classList.remove('is-open');
+            toggle.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      })();
+    </script>
 
     <script>
       (function () {

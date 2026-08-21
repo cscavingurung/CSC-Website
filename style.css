@@ -1131,6 +1131,10 @@ footer a {
   cursor: pointer;
 }
 
+.ktm {
+    padding: 60px 32px;
+  }
+
 /* Responsive Styles */
 @media (max-width: 900px) {
   .nav-links,
@@ -1300,5 +1304,9 @@ footer a {
   .about-stats-row,
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .ktm {
+    padding: 60px 20px;
   }
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      CSC Global — Immigration Support for Nepalses in Canada
+      CSC Global — Immigration Support for Nepalese in Canada
     </title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
@@ -18,9 +18,7 @@
     <header>
       <div class="wrap nav">
         <a href="index.html" class="logo">
-          <div class="logo">
             <img src="/images/Logo.png" alt="CSC Logo" />
-          </div>
         </a>
         <ul class="nav-links">
           <li><a href="about.html">About</a></li>
@@ -36,18 +34,20 @@
           </button>
         </div>
       </div>
-
-      <div class="mobile-nav" id="mobileNav">
-        <ul class="mobile-nav-links">
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="success-stories.html">Success stories</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <a href="eligibility.html" class="btn btn-primary mobile-nav-cta">Check your eligibility</a>
-      </div>
     </header>
+
+    <div class="nav-scrim" id="navScrim"></div>
+
+    <div class="mobile-nav" id="mobileNav">
+      <ul class="mobile-nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="success-stories.html">Success stories</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="eligibility.html" class="btn btn-outline mobile-nav-cta">Check your eligibility</a>
+    </div>
 
     <section class="hero">
       <div class="wrap hero-grid">
@@ -554,299 +554,6 @@
       </div>
     </footer>
 
-    <script>
-      (function(){
-        var toggle = document.getElementById('navToggle');
-        var panel = document.getElementById('mobileNav');
-        if(!toggle || !panel) return;
-
-        toggle.addEventListener('click', function(){
-          var isOpen = panel.classList.toggle('is-open');
-          toggle.classList.toggle('is-open', isOpen);
-          toggle.setAttribute('aria-expanded', isOpen);
-        });
-
-        panel.addEventListener('click', function(e){
-          if(e.target.tagName === 'A'){
-            panel.classList.remove('is-open');
-            toggle.classList.remove('is-open');
-            toggle.setAttribute('aria-expanded', 'false');
-          }
-        });
-
-        window.addEventListener('resize', function(){
-          if(window.innerWidth > 900 && panel.classList.contains('is-open')){
-            panel.classList.remove('is-open');
-            toggle.classList.remove('is-open');
-            toggle.setAttribute('aria-expanded', 'false');
-          }
-        });
-      })();
-    </script>
-
-    <script>
-      (function () {
-        var reduceMotion =
-          window.matchMedia &&
-          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if (reduceMotion) return;
-
-        var rows = [
-          {
-            row: document.querySelector(".marquee-left"),
-            track: document.getElementById("marqueeTrackLeft"),
-            dir: -1,
-          },
-          {
-            row: document.querySelector(".marquee-right"),
-            track: document.getElementById("marqueeTrackRight"),
-            dir: 1,
-          },
-        ];
-
-        var STAGGER = 180;
-
-        rows.forEach(function (r) {
-          if (!r.track) return;
-          r.loopWidth = r.track.scrollWidth / 2;
-          r.pos = r.dir === -1 ? 0 : -r.loopWidth + STAGGER;
-          r.speedFactor = 1;
-          r.targetFactor = 1;
-          r.baseSpeed = r.loopWidth / (46 * 60);
-
-          r.row.addEventListener("mouseenter", function () {
-            r.targetFactor = 0.18;
-          });
-          r.row.addEventListener("mouseleave", function () {
-            r.targetFactor = 1;
-          });
-          r.row.addEventListener(
-            "touchstart",
-            function () {
-              r.targetFactor = 0.18;
-            },
-            { passive: true },
-          );
-          r.row.addEventListener(
-            "touchend",
-            function () {
-              r.targetFactor = 1;
-            },
-            { passive: true },
-          );
-        });
-
-        function recalc() {
-          rows.forEach(function (r) {
-            if (!r.track) return;
-            r.loopWidth = r.track.scrollWidth / 2;
-            r.baseSpeed = r.loopWidth / (46 * 60);
-          });
-        }
-        window.addEventListener("resize", recalc);
-
-        function tick() {
-          rows.forEach(function (r) {
-            if (!r.track || !r.loopWidth) return;
-            r.speedFactor += (r.targetFactor - r.speedFactor) * 0.06;
-            r.pos += r.dir * r.baseSpeed * r.speedFactor;
-
-            if (r.dir === -1 && r.pos <= -r.loopWidth) r.pos += r.loopWidth;
-            if (r.dir === 1 && r.pos >= 0) r.pos -= r.loopWidth;
-
-            r.track.style.transform = "translateX(" + r.pos + "px)";
-          });
-          requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      })();
-    </script>
-
-    <script>
-      (function () {
-        var reduceMotion =
-          window.matchMedia &&
-          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-        function animateCount(el) {
-          var text = el.textContent.trim();
-          var match = text.match(/^([^0-9]*)([0-9][0-9,]*\.?[0-9]*)(.*)$/);
-          if (!match) {
-            return;
-          }
-          var prefix = match[1],
-            raw = match[2],
-            suffix = match[3];
-          var isDecimal = raw.indexOf(".") > -1;
-          var decimals = isDecimal ? raw.split(".")[1].length : 0;
-          var target = parseFloat(raw.replace(/,/g, ""));
-          if (isNaN(target)) {
-            return;
-          }
-
-          if (reduceMotion) {
-            el.textContent =
-              prefix +
-              (isDecimal ? target.toFixed(decimals) : target.toLocaleString()) +
-              suffix;
-            return;
-          }
-
-          var duration = 1300;
-          var start = null;
-          function step(ts) {
-            if (!start) start = ts;
-            var p = Math.min((ts - start) / duration, 1);
-            var eased = 1 - Math.pow(1 - p, 3);
-            var current = eased * target;
-            el.textContent =
-              prefix +
-              (isDecimal
-                ? current.toFixed(decimals)
-                : Math.round(current).toLocaleString()) +
-              suffix;
-            if (p < 1) {
-              requestAnimationFrame(step);
-            } else {
-              el.textContent =
-                prefix +
-                (isDecimal
-                  ? target.toFixed(decimals)
-                  : target.toLocaleString()) +
-                suffix;
-            }
-          }
-          requestAnimationFrame(step);
-        }
-
-        var counters = document.querySelectorAll(".result-card h3");
-        if (!counters.length) return;
-
-        if (!("IntersectionObserver" in window)) {
-          counters.forEach(function (el) {
-            animateCount(el);
-          });
-          return;
-        }
-
-        var seen = new WeakSet();
-        var observer = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting && !seen.has(entry.target)) {
-                seen.add(entry.target);
-                animateCount(entry.target);
-              }
-            });
-          },
-          { threshold: 0.4 },
-        );
-
-        counters.forEach(function (el) {
-          observer.observe(el);
-        });
-      })();
-    </script>
-
-    <script>
-      (function () {
-        var list = document.getElementById("showcaseList");
-        var imgA = document.getElementById("showcaseImgA");
-        var caption = document.getElementById("showcaseCaption");
-        if (!list || !imgA || !caption) return;
-
-        var data = [
-          {
-            a: "https://images.unsplash.com/photo-1514464750060-00e6e34c8b8c?q=80&w=900&auto=format&fit=crop",
-            caption:
-              "Restoration, extensions, and status changes for Nepalis already living in Canada — filed directly with IRCC.",
-          },
-          {
-            a: "https://images.unsplash.com/photo-1583521214690-73421a1829a9?q=80&w=900&auto=format&fit=crop",
-            caption:
-              "Express Entry, PNP, and CEC pathways from within Canada — profile scoring, document prep, and CRS improvement plans.",
-          },
-          {
-            a: "https://images.unsplash.com/photo-1714974528737-3e6c7e4d11af?q=80&w=900&auto=format&fit=crop",
-            caption:
-              "Sponsoring a spouse, parent, or child to join you from Nepal, with honest timelines on current processing backlogs.",
-          },
-          {
-            a: "https://images.unsplash.com/photo-1768055105012-4c53791b2877?q=80&w=900&auto=format&fit=crop",
-            caption:
-              "LMIA-backed and open work permit renewals, including post-graduation work permit (PGWP) planning.",
-          },
-          {
-            a: "https://images.unsplash.com/photo-1503365194569-df4e1d04cec1?q=80&w=900&auto=format&fit=crop",
-            caption:
-              "Study permit extensions and the pathway from PGWP toward permanent residence.",
-          },
-          {
-            a: "https://images.unsplash.com/photo-1714974528737-3e6c7e4d11af?q=80&w=900&auto=format&fit=crop",
-            caption:
-              "Had an application refused? We review the refusal letter and tell you honestly what's fixable.",
-          },
-        ];
-
-        function setActive(index) {
-          var items = list.querySelectorAll(".showcase-item");
-          items.forEach(function (el) {
-            el.classList.remove("is-active");
-          });
-          items[index].classList.add("is-active");
-
-          var d = data[index];
-          imgA.style.opacity = 0;
-          caption.style.opacity = 0;
-          setTimeout(function () {
-            imgA.src = d.a;
-            caption.textContent = d.caption;
-            imgA.style.opacity = 1;
-            caption.style.opacity = 1;
-          }, 150);
-        }
-
-        list.addEventListener("click", function (e) {
-          var btn = e.target.closest(".showcase-item");
-          if (!btn) return;
-          setActive(parseInt(btn.dataset.index, 10));
-        });
-      })();
-    </script>
-
-    <script>
-      (function () {
-        var reduceMotion =
-          window.matchMedia &&
-          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        var els = document.querySelectorAll(".reveal");
-        if (!els.length) return;
-
-        if (reduceMotion || !("IntersectionObserver" in window)) {
-          els.forEach(function (el) {
-            el.classList.add("is-visible");
-          });
-          return;
-        }
-
-        var observer = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
-        );
-
-        els.forEach(function (el) {
-          observer.observe(el);
-        });
-      })();
-    </script>
-
     <div class="book-overlay" id="bookOverlay">
       <div class="book-frame-wrap">
         <button class="book-close" id="bookClose" aria-label="Close">
@@ -855,39 +562,5 @@
         <iframe id="bookIframe" src="" title="Book a consultation"></iframe>
       </div>
     </div>
-
-    <script>
-      (function () {
-        var overlay = document.getElementById("bookOverlay");
-        var iframe = document.getElementById("bookIframe");
-        var closeBtn = document.getElementById("bookClose");
-
-        document.addEventListener("click", function (e) {
-          var trigger = e.target.closest('a[href="#book"]');
-          if (!trigger) return;
-          e.preventDefault();
-          iframe.src = "booking-modal.html";
-          overlay.classList.add("open");
-          requestAnimationFrame(function () {
-            overlay.classList.add("visible");
-          });
-        });
-
-        function close() {
-          overlay.classList.remove("visible");
-          setTimeout(function () {
-            overlay.classList.remove("open");
-            iframe.src = "";
-          }, 250);
-        }
-        closeBtn.addEventListener("click", close);
-        overlay.addEventListener("click", function (e) {
-          if (e.target === overlay) close();
-        });
-        document.addEventListener("keydown", function (e) {
-          if (e.key === "Escape") close();
-        });
-      })();
-    </script>
   </body>
 </html>

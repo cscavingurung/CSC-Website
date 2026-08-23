@@ -1099,9 +1099,37 @@ footer a:hover {
   list-style: none;
 }
 .footer-grid li {
-  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
   font-size: 15px;
 }
+
+/* Contact Specific - Removes Hover & Matches Icon Color to Text */
+.footer-grid ul.contact-list a,
+.footer-grid div:last-child ul a {
+  cursor: default;
+}
+.footer-grid ul.contact-list a:hover,
+.footer-grid div:last-child ul a:hover {
+  opacity: 1;
+}
+
+.footer-grid .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: rgba(246, 248, 249, 0.8); /* Matches footer text color */
+}
+.footer-grid .icon svg {
+  width: 100%;
+  height: 100%;
+}
+
 .footer-grid p {
   margin-top: 12px;
   font-size: 14px;

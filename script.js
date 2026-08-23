@@ -152,3 +152,139 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+/* SERVICES SHOWCASE TABS */
+(function () {
+  var list = document.getElementById("showcaseList");
+  var imgA = document.getElementById("showcaseImgA");
+  var caption = document.getElementById("showcaseCaption");
+  if (!list || !imgA || !caption) return;
+
+  var data = [
+    {
+      a: "https://images.unsplash.com/photo-1514464750060-00e6e34c8b8c?q=80&w=900&auto=format&fit=crop",
+      caption: "Express Entry, PNP, and CEC pathways from within Canada — profile scoring, document prep, and CRS improvement plans."
+    },
+    {
+      a: "https://images.unsplash.com/photo-1503365194569-df4e1d04cec1?q=80&w=900&auto=format&fit=crop",
+      caption: "Study permit extensions and the pathway from PGWP toward permanent residence."
+    },
+    {
+      a: "https://images.unsplash.com/photo-1768055105012-4c53791b2877?q=80&w=900&auto=format&fit=crop",
+      caption: "LMIA-backed and open work permit renewals, including post-graduation work permit (PGWP) planning."
+    },
+    {
+      a: "https://images.unsplash.com/photo-1714974528737-3e6c7e4d11af?q=80&w=900&auto=format&fit=crop",
+      caption: "Visiting family or exploring Canada — visitor visa applications and extensions handled from Nepal or from within Canada."
+    },
+    {
+      a: "https://images.unsplash.com/photo-1583521214690-73421a1829a9?q=80&w=900&auto=format&fit=crop",
+      caption: "Citizenship applications for permanent residents who've met their residency requirement — filed and tracked end to end."
+    },
+    {
+      a: "https://images.unsplash.com/photo-1514464750060-00e6e34c8b8c?q=80&w=900&auto=format&fit=crop",
+      caption: "PR card expiring or already expired? Renewals and replacements filed directly with IRCC."
+    }
+  ];
+
+  function setActive(index) {
+    var items = list.querySelectorAll(".showcase-item");
+    items.forEach(function (el) {
+      el.classList.remove("is-active");
+    });
+    items[index].classList.add("is-active");
+
+    var d = data[index];
+    imgA.style.opacity = 0;
+    caption.style.opacity = 0;
+    setTimeout(function () {
+      imgA.src = d.a;
+      caption.textContent = d.caption;
+      imgA.style.opacity = 1;
+      caption.style.opacity = 1;
+    }, 150);
+  }
+
+  list.addEventListener("click", function (e) {
+    var btn = e.target.closest(".showcase-item");
+    if (!btn) return;
+    setActive(parseInt(btn.dataset.index, 10));
+  });
+})();
+
+/* TESTIMONIAL MARQUEE */
+(function () {
+  var reduceMotion =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) return;
+
+  var rows = [
+    {
+      row: document.querySelector(".marquee-left"),
+      track: document.getElementById("marqueeTrackLeft"),
+      dir: -1
+    },
+    {
+      row: document.querySelector(".marquee-right"),
+      track: document.getElementById("marqueeTrackRight"),
+      dir: 1
+    }
+  ];
+
+  var STAGGER = 180; // half a card + gap, offsets bottom row from top row
+
+  rows.forEach(function (r) {
+    if (!r.track) return;
+    r.loopWidth = r.track.scrollWidth / 2;
+    r.pos = r.dir === -1 ? 0 : -r.loopWidth + STAGGER;
+    r.speedFactor = 1;
+    r.targetFactor = 1;
+    r.baseSpeed = r.loopWidth / (46 * 60); // px per frame at ~60fps, matches a 46s full loop
+
+    r.row.addEventListener("mouseenter", function () {
+      r.targetFactor = 0.18;
+    });
+    r.row.addEventListener("mouseleave", function () {
+      r.targetFactor = 1;
+    });
+    r.row.addEventListener(
+      "touchstart",
+      function () {
+        r.targetFactor = 0.18;
+      },
+      { passive: true }
+    );
+    r.row.addEventListener(
+      "touchend",
+      function () {
+        r.targetFactor = 1;
+      },
+      { passive: true }
+    );
+  });
+
+  function recalc() {
+    rows.forEach(function (r) {
+      if (!r.track) return;
+      r.loopWidth = r.track.scrollWidth / 2;
+      r.baseSpeed = r.loopWidth / (46 * 60);
+    });
+  }
+  window.addEventListener("resize", recalc);
+
+  function tick() {
+    rows.forEach(function (r) {
+      if (!r.track || !r.loopWidth) return;
+      r.speedFactor += (r.targetFactor - r.speedFactor) * 0.06;
+      r.pos += r.dir * r.baseSpeed * r.speedFactor;
+
+      if (r.dir === -1 && r.pos <= -r.loopWidth) r.pos += r.loopWidth;
+      if (r.dir === 1 && r.pos >= 0) r.pos -= r.loopWidth;
+
+      r.track.style.transform = "translateX(" + r.pos + "px)";
+    });
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();

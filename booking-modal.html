@@ -142,48 +142,52 @@
     </p>
 
     <form id="bookingForm">
-      <div class="row">
-        <div class="field">
-          <label>Full name</label><input type="text" name="name" required />
-        </div>
-        <div class="field">
-          <label>Phone / WhatsApp</label
-          ><input type="tel" name="phone" required />
-        </div>
-      </div>
-      <div class="field">
-        <label>Email</label><input type="email" name="email" required />
-      </div>
-      <div class="row">
-        <div class="field">
-          <label>What's this about?</label>
-          <select name="service">
-            <option>Permanent Residency</option>
-            <option>Study permit</option>
-            <option>Work permit</option>
-            <option>Visit Canada</option>
-            <option>Canadian Citizenship</option>
-            <option>PR Card Renewal</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Best time to call</label>
-          <select name="time">
-            <option>Morning (Nepal time)</option>
-            <option>Afternoon (Nepal time)</option>
-            <option>Evening (Nepal time)</option>
-          </select>
-        </div>
-      </div>
-      <div class="field">
-        <label>Anything we should know? (optional)</label
-        ><textarea name="note"></textarea>
-      </div>
-      <button type="submit">Confirm booking request</button>
-      <p class="note">
-        No charge for this call. You only pay if you decide to move forward.
-      </p>
-    </form>
+  <div class="row">
+    <div class="field">
+      <label>Full name</label>
+      <input type="text" name="name" required />
+    </div>
+    <div class="field">
+      <label>Phone / WhatsApp</label>
+      <input type="tel" id="bkPhone" name="phone" placeholder="+1 or +977 number" required />
+    </div>
+  </div>
+  <div class="field">
+    <label>Email</label>
+    <!-- Changed to type="text" to enforce our strict trailing-character check -->
+    <input type="text" id="bkEmail" name="email" placeholder="you@email.com" required />
+  </div>
+  <div class="row">
+    <div class="field">
+      <label>What's this about?</label>
+      <select name="service">
+        <option>Permanent Residency</option>
+        <option>Study permit</option>
+        <option>Work permit</option>
+        <option>Visit Canada</option>
+        <option>Canadian Citizenship</option>
+        <option>PR Card Renewal</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Best time to call</label>
+      <select name="time">
+        <option>Morning (Nepal time)</option>
+        <option>Afternoon (Nepal time)</option>
+        <option>Evening (Nepal time)</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label>Anything we should know? (optional)</label>
+    <textarea name="note"></textarea>
+  </div>
+  <button type="submit">Confirm booking request</button>
+  <p class="note">
+    No charge for this call. You only pay if you decide to move forward.
+  </p>
+</form>
+
 
     <div class="success" id="s">
       <h3>Request received.</h3>
@@ -191,35 +195,106 @@
     </div>
 <!-- 1. Include the EmailJS Library -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<!-- 2. Run your code -->
 <script>
-  (function () {
-    var form = document.getElementById("bookingForm");
-    if (!form) return;
+(function () {
+  var form = document.getElementById("bookingForm");
+  if (!form) return;
 
-    emailjs.init({ publicKey: "XH5h0hcPAU5Rj5oWz" });
+  var phoneInput = document.getElementById("bkPhone");
+  var emailInput = document.getElementById("bkEmail");
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var btn = form.querySelector('button[type="submit"]');
-      var originalText = btn.textContent;
-      btn.disabled = true;
-      btn.textContent = "Sending...";
+  // --- Real-time Phone Formatting Middleware ---
+  phoneInput.addEventListener("input", function (e) {
+    var raw = e.target.value;
+    var digits = raw.replace(/\D/g, ""); 
+    
+    // Nepal format tracking
+    if (raw.trim().startsWith("+977") || digits.startsWith("977") || (digits.startsWith("9") && !digits.startsWith("1"))) {
+      if (digits.startsWith("977")) {
+        digits = digits.substring(3);
+      }
+      digits = digits.substring(0, 10);
+      e.target.value = digits.length > 0 ? "+977 " + digits : "";
+      return;
+    }
 
-      emailjs.sendForm("service_w4c8767", "template_wpxi7yd", form)
-        .then(function () {
-          form.style.display = "none";
-          document.getElementById("s").classList.add("active");
-        })
-        .catch(function (err) {
-          console.error(err);
-          btn.disabled = false;
-          btn.textContent = originalText;
-          alert("Something went wrong — please try WhatsApp instead.");
-        });
-    });
-  })();
+    // Canada/NANP format tracking
+    if (digits.startsWith("1")) {
+      digits = digits.substring(1);
+    }
+    digits = digits.substring(0, 10);
+
+    if (digits.length === 0) {
+      e.target.value = "";
+    } else if (digits.length <= 3) {
+      e.target.value = "+1 (" + digits;
+    } else if (digits.length <= 6) {
+      e.target.value = "+1 (" + digits.slice(0, 3) + ") " + digits.slice(3);
+    } else {
+      e.target.value = "+1 (" + digits.slice(0, 3) + ") " + digits.slice(3, 6) + "-" + digits.slice(6);
+    }
+  });
+
+  // --- Strict Validation Matchers ---
+  function isPhoneValid(value) {
+    var clean = value.replace(/\s+/g, ""); 
+    var canadaRegex = /^\+1\([2-9]\d{2}\)\d{3}-\d{4}$/;
+    var nepalRegex = /^\+977(98|97)\d{8}$/;
+    return canadaRegex.test(clean) || nepalRegex.test(clean);
+  }
+
+  function isEmailStrictlyValid(value) {
+    // Supports single extensions (.com, .ca) AND dual-layered variations (.com.np)
+    // The "$" ensures zero extra characters can be typed at the absolute end
+    var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-zA-Z]{2,4})?$/;
+    return emailRegex.test(value.trim());
+  }
+
+  // --- Initialize EmailJS ---
+  emailjs.init({ publicKey: "XH5h0hcPAU5Rj5oWz" });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // 1. Core Browser Checks (Required inputs check)
+    if (!form.checkValidity()) {
+      return;
+    }
+
+    // 2. Strict Email Verification
+    if (!isEmailStrictlyValid(emailInput.value)) {
+      alert("Please enter a valid email address.\nExamples: name@domain.com or name@domain.com.np\n(Do not add trailing numbers or junk characters)");
+      emailInput.focus();
+      return;
+    }
+
+    // 3. Strict Phone Verification
+    if (!isPhoneValid(phoneInput.value)) {
+      alert("Please enter a valid phone number format.\nCanada: +1 (555) 555-5555\nNepal: +977 98XXXXXXXX");
+      phoneInput.focus();
+      return;
+    }
+
+    var btn = form.querySelector('button[type="submit"]');
+    var originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+
+    // Targets your specific booking form service and template ID
+    emailjs.sendForm("service_w4c8767", "template_wpxi7yd", form)
+      .then(function () {
+        form.style.display = "none";
+        document.getElementById("s").classList.add("active");
+      })
+      .catch(function (err) {
+        console.error(err);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        alert("Something went wrong — please try WhatsApp instead.");
+      });
+  });
+})();
 </script>
+
   </body>
 </html>

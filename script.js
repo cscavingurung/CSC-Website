@@ -289,15 +289,86 @@ document.addEventListener("DOMContentLoaded", function () {
   requestAnimationFrame(tick);
 })();
 
-/* CONTACT FORM — EMAILJS */
+
+
+/* CONTACT FORM — EMAILJS WITH DUAL-REGION PHONE & STRICT EMAIL VALIDATION */
 (function () {
   var form = document.getElementById("contactForm");
   if (!form) return;
 
+  var phoneInput = document.getElementById("cfPhone");
+  var emailInput = document.getElementById("cfEmail");
+
+  // --- Real-time Phone Formatting Middleware ---
+  phoneInput.addEventListener("input", function (e) {
+    var raw = e.target.value;
+    var digits = raw.replace(/\D/g, ""); 
+    
+    if (raw.trim().startsWith("+977") || digits.startsWith("977") || (digits.startsWith("9") && !digits.startsWith("1"))) {
+      if (digits.startsWith("977")) {
+        digits = digits.substring(3);
+      }
+      digits = digits.substring(0, 10);
+      e.target.value = digits.length > 0 ? "+977 " + digits : "";
+      return;
+    }
+
+    if (digits.startsWith("1")) {
+      digits = digits.substring(1);
+    }
+    digits = digits.substring(0, 10);
+
+    if (digits.length === 0) {
+      e.target.value = "";
+    } else if (digits.length <= 3) {
+      e.target.value = "+1 (" + digits;
+    } else if (digits.length <= 6) {
+      e.target.value = "+1 (" + digits.slice(0, 3) + ") " + digits.slice(3);
+    } else {
+      e.target.value = "+1 (" + digits.slice(0, 3) + ") " + digits.slice(3, 6) + "-" + digits.slice(6);
+    }
+  });
+
+  // --- Strict Validation Matchers ---
+  function isPhoneValid(value) {
+    var clean = value.replace(/\s+/g, ""); 
+    var canadaRegex = /^\+1\([2-9]\d{2}\)\d{3}-\d{4}$/;
+    var nepalRegex = /^\+977(98|97)\d{8}$/;
+    return canadaRegex.test(clean) || nepalRegex.test(clean);
+  }
+
+  function isEmailStrictlyValid(value) {
+    // This regex explicitly mandates a dot and limits the domain extension to 2-6 letters maximum.
+    // The "$" at the end means NOTHING can be typed after the extension (kills trailing junk like .com121212)
+      var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-zA-Z]{2,4})?$/;
+    return emailRegex.test(value.trim());
+  }
+
+  // --- Initialize EmailJS ---
   emailjs.init({ publicKey: "XH5h0hcPAU5Rj5oWz" });
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+
+    // 1. Core Browser Checks (Required fields, basic types)
+    if (!form.checkValidity()) {
+      return;
+    }
+
+    // 2. Strict Email Verification
+    if (!isEmailStrictlyValid(emailInput.value)) {
+      alert("Please enter a valid email address.\nExample: you@email.com (Do not include trailing numbers or text)");
+      emailInput.focus();
+      return;
+    }
+
+    // 3. Strict Phone Validation 
+    if (!isPhoneValid(phoneInput.value)) {
+      alert("Please enter a valid phone number format.\nCanada: +1 (555) 555-5555\nNepal: +977 98XXXXXXXX");
+      phoneInput.focus();
+      return;
+    }
+
     var btn = form.querySelector('button[type="submit"]');
     var originalText = btn.textContent;
     btn.disabled = true;
@@ -306,6 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
     emailjs.sendForm("service_w4c8767", "template_ke7lfdl", form)
       .then(function () {
         btn.textContent = "Message sent — we'll reply within 24 hours";
+        form.reset(); 
       })
       .catch(function (err) {
         console.error(err);
@@ -315,3 +387,5 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 })();
+
+

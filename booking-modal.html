@@ -131,6 +131,8 @@
         }
       }
     </style>
+    
+    
   </head>
   <body>
     <div class="eyebrow">FREE CONSULTATION</div>
@@ -139,7 +141,7 @@
       Tell us a bit about your situation — we'll confirm a time within 24 hours.
     </p>
 
-    <form id="f">
+    <form id="bookingForm">
       <div class="row">
         <div class="field">
           <label>Full name</label><input type="text" name="name" required />
@@ -156,12 +158,12 @@
         <div class="field">
           <label>What's this about?</label>
           <select name="service">
-            <option>Status &amp; extensions</option>
-            <option>Permanent residency</option>
-            <option>Family sponsorship</option>
-            <option>Work permit</option>
+            <option>Permanent Residency</option>
             <option>Study permit</option>
-            <option>Refusal review</option>
+            <option>Work permit</option>
+            <option>Visit Canada</option>
+            <option>Canadian Citizenship</option>
+            <option>PR Card Renewal</option>
           </select>
         </div>
         <div class="field">
@@ -187,58 +189,37 @@
       <h3>Request received.</h3>
       <p>A consultant will reach out within 24 hours to confirm your time.</p>
     </div>
+<!-- 1. Include the EmailJS Library -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-    <script src="config.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
-      (function () {
+<!-- 2. Run your code -->
+<script>
+  (function () {
+    var form = document.getElementById("bookingForm");
+    if (!form) return;
 
-    
-        const supabaseClient = window.supabase.createClient(
-          SUPABASE_URL,
-          SUPABASE_ANON_KEY,
-        );
+    emailjs.init({ publicKey: "XH5h0hcPAU5Rj5oWz" });
 
-        document
-          .getElementById("f")
-          .addEventListener("submit", async function (e) {
-            e.preventDefault();
-            const form = e.target;
-            const btn = form.querySelector('button[type="submit"]');
-            btn.disabled = true;
-            btn.textContent = "Sending...";
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      var originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = "Sending...";
 
-            try {
-              const payload = {
-                full_name: form.querySelector('[name="name"]').value,
-                phone: form.querySelector('[name="phone"]').value,
-                email: form.querySelector('[name="email"]').value,
-                service: form.querySelector('[name="service"]').value,
-                best_time: form.querySelector('[name="time"]').value,
-                note: form.querySelector('[name="note"]').value,
-              };
-
-              // Call .from() on supabaseClient
-              const { error } = await supabaseClient
-                .from("consultation_bookings")
-                .insert([payload]);
-
-              if (error) throw error;
-
-              form.style.display = "none";
-              document.getElementById("s").classList.add("active");
-              if (window.parent)
-                window.parent.postMessage("booking-submitted", "*");
-            } catch (err) {
-              console.error("Submission Error:", err);
-              btn.disabled = false;
-              btn.textContent = "Confirm booking request";
-              alert(
-                "Error: " + (err.message || "Check console logs for details."),
-              );
-            }
-          });
-      })();
-    </script>
+      emailjs.sendForm("service_w4c8767", "template_wpxi7yd", form)
+        .then(function () {
+          form.style.display = "none";
+          document.getElementById("s").classList.add("active");
+        })
+        .catch(function (err) {
+          console.error(err);
+          btn.disabled = false;
+          btn.textContent = originalText;
+          alert("Something went wrong — please try WhatsApp instead.");
+        });
+    });
+  })();
+</script>
   </body>
 </html>

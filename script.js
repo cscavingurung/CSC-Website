@@ -288,3 +288,30 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   requestAnimationFrame(tick);
 })();
+
+/* CONTACT FORM — EMAILJS */
+(function () {
+  var form = document.getElementById("contactForm");
+  if (!form) return;
+
+  emailjs.init({ publicKey: "XH5h0hcPAU5Rj5oWz" });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var btn = form.querySelector('button[type="submit"]');
+    var originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+
+    emailjs.sendForm("service_w4c8767", "template_ke7lfdl", form)
+      .then(function () {
+        btn.textContent = "Message sent — we'll reply within 24 hours";
+      })
+      .catch(function (err) {
+        console.error(err);
+        btn.disabled = false;
+        btn.textContent = originalText;
+        alert("Something went wrong — please try WhatsApp instead.");
+      });
+  });
+})();

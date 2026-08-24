@@ -332,6 +332,7 @@
         }
       }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -476,7 +477,7 @@
             </div>
           </div>
 
-          <form class="contact-form reveal" style="transition-delay: 120ms">
+          <form class="contact-form reveal" style="transition-delay: 120ms" id="contactForm">
             <div class="form-row">
               <div class="form-field">
                 <label for="cfName">Full name</label>
@@ -511,12 +512,12 @@
             <div class="form-field">
               <label for="cfTopic">What's this about?</label>
               <select id="cfTopic" name="topic">
-                <option>Status &amp; extensions</option>
-                <option>Permanent residency</option>
-                <option>Family sponsorship</option>
-                <option>Work permit</option>
+                <option>Permanent &amp; Residency</option>
                 <option>Study permit</option>
-                <option>Refusal review</option>
+                <option>Work permit</option>
+                <option>Visit Canada</option>
+                <option>Canadian Citizenship</option>
+                <option>PR Card Renewal</option>
                 <option>Something else</option>
               </select>
             </div>
@@ -656,43 +657,6 @@
     <script src="config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <script>
-      (function () {
-        var supabase = window.supabase.createClient(
-          SUPABASE_URL,
-          SUPABASE_ANON_KEY,
-        );
-
-        var form = document.querySelector(".contact-form");
-        if (!form) return;
-
-        form.addEventListener("submit", async function (e) {
-          e.preventDefault();
-          var btn = form.querySelector('button[type="submit"]');
-          btn.disabled = true;
-          btn.textContent = "Sending...";
-
-          var { error } = await supabase.from("contact_messages").insert({
-            full_name: form.name.value,
-            phone: form.phone.value,
-            email: form.email.value,
-            topic: form.topic.value,
-            message: form.message.value,
-          });
-
-          if (error) {
-            console.error(error);
-            btn.disabled = false;
-            btn.textContent = "Send message";
-            alert("Something went wrong — please try WhatsApp instead.");
-            return;
-          }
-
-          btn.textContent = "Message sent — we'll reply within 24 hours";
-          btn.style.opacity = ".8";
-        });
-      })();
-    </script>
 
     <div class="book-overlay" id="bookOverlay">
       <div class="book-frame-wrap">

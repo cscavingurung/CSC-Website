@@ -389,3 +389,81 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 
 
+/* PARTNER MARQUEE */
+(function () {
+  var reduceMotion =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) return;
+
+  var rows = [
+    {
+      row: document.querySelector(".partner-marquee-left"),
+      track: document.getElementById("partnerTrackLeft"),
+      dir: -1
+    },
+    {
+      row: document.querySelector(".partner-marquee-right"),
+      track: document.getElementById("partnerTrackRight"),
+      dir: 1
+    }
+  ];
+
+  var STAGGER = 112; // Adjusted offset relative to partner card width + gap
+
+  rows.forEach(function (r) {
+    if (!r.track || !r.row) return;
+    r.loopWidth = r.track.scrollWidth / 2;
+    r.pos = r.dir === -1 ? 0 : -r.loopWidth + STAGGER;
+    r.speedFactor = 1;
+    r.targetFactor = 1;
+    r.baseSpeed = r.loopWidth / (46 * 60);
+
+    r.row.addEventListener("mouseenter", function () {
+      r.targetFactor = 0.18;
+    });
+    r.row.addEventListener("mouseleave", function () {
+      r.targetFactor = 1;
+    });
+    r.row.addEventListener(
+      "touchstart",
+      function () {
+        r.targetFactor = 0.18;
+      },
+      { passive: true }
+    );
+    r.row.addEventListener(
+      "touchend",
+      function () {
+        r.targetFactor = 1;
+      },
+      { passive: true }
+    );
+  });
+
+  function recalc() {
+    rows.forEach(function (r) {
+      if (!r.track) return;
+      r.loopWidth = r.track.scrollWidth / 2;
+      r.baseSpeed = r.loopWidth / (46 * 60);
+    });
+  }
+  window.addEventListener("resize", recalc);
+
+  function tick() {
+    rows.forEach(function (r) {
+      if (!r.track || !r.loopWidth) return;
+      r.speedFactor += (r.targetFactor - r.speedFactor) * 0.06;
+      r.pos += r.dir * r.baseSpeed * r.speedFactor;
+
+      if (r.dir === -1 && r.pos <= -r.loopWidth) r.pos += r.loopWidth;
+      if (r.dir === 1 && r.pos >= 0) r.pos -= r.loopWidth;
+
+      r.track.style.transform = "translateX(" + r.pos + "px)";
+    });
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
+

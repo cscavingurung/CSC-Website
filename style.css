@@ -595,7 +595,7 @@ section {
 
 /* process - vertical alternating timeline */
 .process-vertical {
-  background: var(--paper);
+  background: var(--paper-2);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -701,10 +701,78 @@ section {
   grid-column: 3;
 }
 
+
+/* Partner Marquee Section */
+.partners-marquee {
+  padding: 84px 0 90px;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.partners-marquee .section-head {
+  margin-bottom: 48px;
+}
+
+.partner-marquee-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.partner-marquee-row {
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.partner-marquee-row:last-child {
+  margin-bottom: 0;
+}
+
+.partner-marquee-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Individual Partner Logo Card */
+.partner-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 20px 24px;
+  flex: 0 0 220px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partner-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.25s ease;
+}
+
+.partner-card:hover img {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .partner-card {
+    flex: 0 0 160px;
+    height: 85px;
+    padding: 14px 16px;
+  }
+}
+
+
 /* testimonials - marquee */
 .testimonial-marquee {
   padding: 84px 0 90px;
-  background: var(--paper-2);
+  background: var(--paper);
   overflow: hidden;
 }
 .testimonial-marquee .section-head {
@@ -781,6 +849,10 @@ section {
 }
 
 /* faq */
+#faq{
+  background: var(--paper-2);
+}
+
 .faq-list {
   max-width: 800px;
   margin: 0 auto;
@@ -789,7 +861,7 @@ section {
   gap: 12px;
 }
 .faq-item {
-  background: var(--paper-2);
+  background: var(--paper);
   border-radius: 8px;
   padding: 20px 24px;
   transition: background 0.2s ease;

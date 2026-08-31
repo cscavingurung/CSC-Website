@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 })();
 
-/* TESTIMONIAL MARQUEE */
+/* VERTICAL TESTIMONIAL MARQUEE */
 (function () {
   var reduceMotion =
     window.matchMedia &&
@@ -223,24 +223,24 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       row: document.querySelector(".marquee-left"),
       track: document.getElementById("marqueeTrackLeft"),
-      dir: -1
+      dir: -1 // Moves up
     },
     {
       row: document.querySelector(".marquee-right"),
       track: document.getElementById("marqueeTrackRight"),
-      dir: 1
+      dir: 1  // Moves down (if present)
     }
   ];
 
-  var STAGGER = 180; // half a card + gap, offsets bottom row from top row
+  var STAGGER = 120; // Offsets vertical positions between tracks
 
   rows.forEach(function (r) {
     if (!r.track) return;
-    r.loopWidth = r.track.scrollWidth / 2;
-    r.pos = r.dir === -1 ? 0 : -r.loopWidth + STAGGER;
+    r.loopHeight = r.track.scrollHeight / 2; // Swapped to scrollHeight
+    r.pos = r.dir === -1 ? 0 : -r.loopHeight + STAGGER;
     r.speedFactor = 1;
     r.targetFactor = 1;
-    r.baseSpeed = r.loopWidth / (46 * 60); // px per frame at ~60fps, matches a 46s full loop
+    r.baseSpeed = r.loopHeight / (46 * 60); // Speed calibrated to vertical size
 
     r.row.addEventListener("mouseenter", function () {
       r.targetFactor = 0.18;
@@ -267,27 +267,29 @@ document.addEventListener("DOMContentLoaded", function () {
   function recalc() {
     rows.forEach(function (r) {
       if (!r.track) return;
-      r.loopWidth = r.track.scrollWidth / 2;
-      r.baseSpeed = r.loopWidth / (46 * 60);
+      r.loopHeight = r.track.scrollHeight / 2; // Recalculate heights on resize
+      r.baseSpeed = r.loopHeight / (46 * 60);
     });
   }
   window.addEventListener("resize", recalc);
 
   function tick() {
     rows.forEach(function (r) {
-      if (!r.track || !r.loopWidth) return;
+      if (!r.track || !r.loopHeight) return;
       r.speedFactor += (r.targetFactor - r.speedFactor) * 0.06;
       r.pos += r.dir * r.baseSpeed * r.speedFactor;
 
-      if (r.dir === -1 && r.pos <= -r.loopWidth) r.pos += r.loopWidth;
-      if (r.dir === 1 && r.pos >= 0) r.pos -= r.loopWidth;
+      if (r.dir === -1 && r.pos <= -r.loopHeight) r.pos += r.loopHeight;
+      if (r.dir === 1 && r.pos >= 0) r.pos -= r.loopHeight;
 
-      r.track.style.transform = "translateX(" + r.pos + "px)";
+      // Swapped from translateX to translateY
+      r.track.style.transform = "translateY(" + r.pos + "px)";
     });
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
 })();
+
 
 
 

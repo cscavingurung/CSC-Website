@@ -529,3 +529,43 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 })();
 
+
+
+
+/* BACK TO TOP */
+(function () {
+  var btn = document.getElementById("backToTop");
+  if (!btn) return;
+
+  var reduceMotion =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var ticking = false;
+
+  function toggleVisibility() {
+    if (window.scrollY > 480) {
+      btn.classList.add("is-visible");
+    } else {
+      btn.classList.remove("is-visible");
+    }
+    ticking = false;
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) {
+      requestAnimationFrame(toggleVisibility);
+      ticking = true;
+    }
+  });
+
+  toggleVisibility(); // in case the page loads already scrolled
+
+  btn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: reduceMotion ? "auto" : "smooth"
+    });
+  });
+})();
+

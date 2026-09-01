@@ -1007,7 +1007,7 @@ section {
 
 /* --- LEFT COLUMN: HEADING CONTENT --- */
 .marquee-split-wrapper .wrap {
-  flex: 0 0 40%; /* Allocates clean layout width for your text */
+  flex: 0 0 30%; /* Allocates clean layout width for your text */
   padding: 0;
   margin: 0;
 }

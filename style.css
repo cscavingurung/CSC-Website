@@ -575,9 +575,7 @@ section {
 
 .services-grid {
   display: grid;
-  /* CHANGED: Changes from 3 columns to responsive auto-fit, spanning the screen */
-  grid-template-columns: repeat(2, 1fr);
-  /* CHANGED: Set gap to 0 so the cards touch each other exactly like the image */
+  grid-template-columns: repeat(2, 1fr);   /* 2 per row — desktop + tablet */
   gap: 8px;
   width: 100%;
 }
@@ -585,10 +583,9 @@ section {
 .service-card {
   position: relative;
   display: block;
-  /* CHANGED: Swapped 3/4 to a landscape/wider aspect ratio typical for full-width rows */
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: 0; /* explicit: no rounding anywhere in this component */
+  border-radius: 0;
   text-decoration: none;
   color: inherit;
   background: var(--ink);
@@ -611,7 +608,6 @@ section {
 }
 
 .service-card::after {
-  /* bottom-weighted scrim so the label + copy stay legible on any photo */
   content: "";
   position: absolute;
   inset: 0;
@@ -642,13 +638,53 @@ section {
   margin: 0;
 }
 
-/* Responsive patch for smaller screens */
-@media (max-width: 991px) {
-  .services-grid {
-    /* Wraps beautifully into 2 columns on tablet, 1 column on phone */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+/* Tablet: still 2 per row, just taller cards */
+@media (max-width: 980px) {
+  .service-card {
+    aspect-ratio: 3 / 3.4;
   }
 }
+
+/* Mobile: 1 per row */
+@media (max-width: 640px) {
+  .services {
+    padding: 56px 0;
+  }
+  .section-head {
+    margin-bottom: 36px;
+  }
+  .section-head p {
+    font-size: 15.5px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;   /* 1 per row — mobile */
+    gap: 12px;
+  }
+  .service-card {
+    aspect-ratio: 4 / 3.2;
+  }
+  .service-card__content {
+    top: auto;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    transform: none;
+    width: auto;
+    text-align: left;
+  }
+  .service-card__content h3 {
+    font-size: 22px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 400px) {
+  .service-card {
+    aspect-ratio: 4 / 3.6;
+  }
+}
+
 
 
 
@@ -775,7 +811,7 @@ section {
 .stop p {
   font-size: 12px;
   line-height: 1.55;
-  color: var(--teal)
+  color: var(--muted);
   margin: 0;
   max-width: 210px;
 }
@@ -919,10 +955,10 @@ section {
     font-size: 13px;
   }
   .stop h3 {
-    font-size: 16.5px;
+    font-size: 16px;
   }
   .stop p {
-    font-size: 13.5px;
+    font-size: 14px;
     max-width: none;
   }
 }
@@ -935,10 +971,27 @@ section {
   .service-card {
     aspect-ratio: 4 / 3.6;
   }
+
+  .stop__badge {
+    width: 40px;
+    height: 40px;
+    font-size: 11px;
+  }
+   .stop__content {
+    flex: 1;
+    min-width: 0;   /* lets text wrap properly instead of overflowing */
+  }
+  .route__line {
+    left: 20px;
+  }
   .stop {
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+    gap: 12px;
+  }
+  .stop h3 {
+    font-size: 15px;
+  }
+  .stop p {
+    font-size: 12px;
   }
 }
 

@@ -213,82 +213,82 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 
 /* VERTICAL TESTIMONIAL MARQUEE */
-(function () {
-  var reduceMotion =
-    window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduceMotion) return;
+// (function () {
+//   var reduceMotion =
+//     window.matchMedia &&
+//     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+//   if (reduceMotion) return;
 
-  var rows = [
-    {
-      row: document.querySelector(".marquee-left"),
-      track: document.getElementById("marqueeTrackLeft"),
-      dir: -1 // Moves up
-    },
-    {
-      row: document.querySelector(".marquee-right"),
-      track: document.getElementById("marqueeTrackRight"),
-      dir: 1  // Moves down (if present)
-    }
-  ];
+//   var rows = [
+//     {
+//       row: document.querySelector(".marquee-left"),
+//       track: document.getElementById("marqueeTrackLeft"),
+//       dir: -1 // Moves up
+//     },
+//     {
+//       row: document.querySelector(".marquee-right"),
+//       track: document.getElementById("marqueeTrackRight"),
+//       dir: 1  // Moves down (if present)
+//     }
+//   ];
 
-  var STAGGER = 120; // Offsets vertical positions between tracks
+//   var STAGGER = 120; // Offsets vertical positions between tracks
 
-  rows.forEach(function (r) {
-    if (!r.track) return;
-    r.loopHeight = r.track.scrollHeight / 2; // Swapped to scrollHeight
-    r.pos = r.dir === -1 ? 0 : -r.loopHeight + STAGGER;
-    r.speedFactor = 1;
-    r.targetFactor = 1;
-    r.baseSpeed = r.loopHeight / (46 * 60); // Speed calibrated to vertical size
+//   rows.forEach(function (r) {
+//     if (!r.track) return;
+//     r.loopHeight = r.track.scrollHeight / 2; // Swapped to scrollHeight
+//     r.pos = r.dir === -1 ? 0 : -r.loopHeight + STAGGER;
+//     r.speedFactor = 1;
+//     r.targetFactor = 1;
+//     r.baseSpeed = r.loopHeight / (46 * 60); // Speed calibrated to vertical size
 
-    r.row.addEventListener("mouseenter", function () {
-      r.targetFactor = 0.18;
-    });
-    r.row.addEventListener("mouseleave", function () {
-      r.targetFactor = 1;
-    });
-    r.row.addEventListener(
-      "touchstart",
-      function () {
-        r.targetFactor = 0.18;
-      },
-      { passive: true }
-    );
-    r.row.addEventListener(
-      "touchend",
-      function () {
-        r.targetFactor = 1;
-      },
-      { passive: true }
-    );
-  });
+//     r.row.addEventListener("mouseenter", function () {
+//       r.targetFactor = 0.18;
+//     });
+//     r.row.addEventListener("mouseleave", function () {
+//       r.targetFactor = 1;
+//     });
+//     r.row.addEventListener(
+//       "touchstart",
+//       function () {
+//         r.targetFactor = 0.18;
+//       },
+//       { passive: true }
+//     );
+//     r.row.addEventListener(
+//       "touchend",
+//       function () {
+//         r.targetFactor = 1;
+//       },
+//       { passive: true }
+//     );
+//   });
 
-  function recalc() {
-    rows.forEach(function (r) {
-      if (!r.track) return;
-      r.loopHeight = r.track.scrollHeight / 2; // Recalculate heights on resize
-      r.baseSpeed = r.loopHeight / (46 * 60);
-    });
-  }
-  window.addEventListener("resize", recalc);
+//   function recalc() {
+//     rows.forEach(function (r) {
+//       if (!r.track) return;
+//       r.loopHeight = r.track.scrollHeight / 2; // Recalculate heights on resize
+//       r.baseSpeed = r.loopHeight / (46 * 60);
+//     });
+//   }
+//   window.addEventListener("resize", recalc);
 
-  function tick() {
-    rows.forEach(function (r) {
-      if (!r.track || !r.loopHeight) return;
-      r.speedFactor += (r.targetFactor - r.speedFactor) * 0.06;
-      r.pos += r.dir * r.baseSpeed * r.speedFactor;
+//   function tick() {
+//     rows.forEach(function (r) {
+//       if (!r.track || !r.loopHeight) return;
+//       r.speedFactor += (r.targetFactor - r.speedFactor) * 0.06;
+//       r.pos += r.dir * r.baseSpeed * r.speedFactor;
 
-      if (r.dir === -1 && r.pos <= -r.loopHeight) r.pos += r.loopHeight;
-      if (r.dir === 1 && r.pos >= 0) r.pos -= r.loopHeight;
+//       if (r.dir === -1 && r.pos <= -r.loopHeight) r.pos += r.loopHeight;
+//       if (r.dir === 1 && r.pos >= 0) r.pos -= r.loopHeight;
 
-      // Swapped from translateX to translateY
-      r.track.style.transform = "translateY(" + r.pos + "px)";
-    });
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-})();
+//       // Swapped from translateX to translateY
+//       r.track.style.transform = "translateY(" + r.pos + "px)";
+//     });
+//     requestAnimationFrame(tick);
+//   }
+//   requestAnimationFrame(tick);
+// })();
 
 
 
@@ -392,81 +392,81 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 /* PARTNER MARQUEE */
-(function () {
-  var reduceMotion =
-    window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduceMotion) return;
+// (function () {
+//   var reduceMotion =
+//     window.matchMedia &&
+//     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+//   if (reduceMotion) return;
 
-  var rows = [
-    {
-      row: document.querySelector(".partner-marquee-left"),
-      track: document.getElementById("partnerTrackLeft"),
-      dir: -1
-    },
-    {
-      row: document.querySelector(".partner-marquee-right"),
-      track: document.getElementById("partnerTrackRight"),
-      dir: 1
-    }
-  ];
+//   var rows = [
+//     {
+//       row: document.querySelector(".partner-marquee-left"),
+//       track: document.getElementById("partnerTrackLeft"),
+//       dir: -1
+//     },
+//     {
+//       row: document.querySelector(".partner-marquee-right"),
+//       track: document.getElementById("partnerTrackRight"),
+//       dir: 1
+//     }
+//   ];
 
-  var STAGGER = 112; // Adjusted offset relative to partner card width + gap
+//   var STAGGER = 112; // Adjusted offset relative to partner card width + gap
 
-  rows.forEach(function (r) {
-    if (!r.track || !r.row) return;
-    r.loopWidth = r.track.scrollWidth / 2;
-    r.pos = r.dir === -1 ? 0 : -r.loopWidth + STAGGER;
-    r.speedFactor = 1;
-    r.targetFactor = 1;
-    r.baseSpeed = r.loopWidth / (46 * 60);
+//   rows.forEach(function (r) {
+//     if (!r.track || !r.row) return;
+//     r.loopWidth = r.track.scrollWidth / 2;
+//     r.pos = r.dir === -1 ? 0 : -r.loopWidth + STAGGER;
+//     r.speedFactor = 1;
+//     r.targetFactor = 1;
+//     r.baseSpeed = r.loopWidth / (46 * 60);
 
-    r.row.addEventListener("mouseenter", function () {
-      r.targetFactor = 0.18;
-    });
-    r.row.addEventListener("mouseleave", function () {
-      r.targetFactor = 1;
-    });
-    r.row.addEventListener(
-      "touchstart",
-      function () {
-        r.targetFactor = 0.18;
-      },
-      { passive: true }
-    );
-    r.row.addEventListener(
-      "touchend",
-      function () {
-        r.targetFactor = 1;
-      },
-      { passive: true }
-    );
-  });
+//     r.row.addEventListener("mouseenter", function () {
+//       r.targetFactor = 0.18;
+//     });
+//     r.row.addEventListener("mouseleave", function () {
+//       r.targetFactor = 1;
+//     });
+//     r.row.addEventListener(
+//       "touchstart",
+//       function () {
+//         r.targetFactor = 0.18;
+//       },
+//       { passive: true }
+//     );
+//     r.row.addEventListener(
+//       "touchend",
+//       function () {
+//         r.targetFactor = 1;
+//       },
+//       { passive: true }
+//     );
+//   });
 
-  function recalc() {
-    rows.forEach(function (r) {
-      if (!r.track) return;
-      r.loopWidth = r.track.scrollWidth / 2;
-      r.baseSpeed = r.loopWidth / (46 * 60);
-    });
-  }
-  window.addEventListener("resize", recalc);
+//   function recalc() {
+//     rows.forEach(function (r) {
+//       if (!r.track) return;
+//       r.loopWidth = r.track.scrollWidth / 2;
+//       r.baseSpeed = r.loopWidth / (46 * 60);
+//     });
+//   }
+//   window.addEventListener("resize", recalc);
 
-  function tick() {
-    rows.forEach(function (r) {
-      if (!r.track || !r.loopWidth) return;
-      r.speedFactor += (r.targetFactor - r.speedFactor) * 0.06;
-      r.pos += r.dir * r.baseSpeed * r.speedFactor;
+//   function tick() {
+//     rows.forEach(function (r) {
+//       if (!r.track || !r.loopWidth) return;
+//       r.speedFactor += (r.targetFactor - r.speedFactor) * 0.06;
+//       r.pos += r.dir * r.baseSpeed * r.speedFactor;
 
-      if (r.dir === -1 && r.pos <= -r.loopWidth) r.pos += r.loopWidth;
-      if (r.dir === 1 && r.pos >= 0) r.pos -= r.loopWidth;
+//       if (r.dir === -1 && r.pos <= -r.loopWidth) r.pos += r.loopWidth;
+//       if (r.dir === 1 && r.pos >= 0) r.pos -= r.loopWidth;
 
-      r.track.style.transform = "translateX(" + r.pos + "px)";
-    });
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-})();
+//       r.track.style.transform = "translateX(" + r.pos + "px)";
+//     });
+//     requestAnimationFrame(tick);
+//   }
+//   requestAnimationFrame(tick);
+// })();
 
 
 
@@ -567,5 +567,79 @@ document.addEventListener("DOMContentLoaded", function () {
       behavior: reduceMotion ? "auto" : "smooth"
     });
   });
+})();
+
+
+/* ================= UNIFIED MARQUEE ENGINE ================= */
+(function () {
+  var reduceMotion =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var rows = document.querySelectorAll("[data-marquee-dir]");
+  if (!rows.length || reduceMotion) return; // static, untouched DOM if motion is reduced
+
+  var SPEED = 46;   // px per second, baseline for every marquee on the site
+  var HOVER_FACTOR = 0.18;
+  var EASE = 0.06;
+
+  function duplicateTrack(track) {
+    if (track.dataset.duplicated === "true") return;
+    Array.prototype.slice.call(track.children).forEach(function (child) {
+      var clone = child.cloneNode(true);
+      clone.removeAttribute("id");
+      track.appendChild(clone);
+    });
+    track.dataset.duplicated = "true";
+  }
+
+  function createMarquee(row) {
+    var track = row.querySelector("[data-marquee-track]");
+    if (!track) return null;
+
+    var axis = row.dataset.marqueeAxis === "vertical" ? "vertical" : "horizontal";
+    var dir = (row.dataset.marqueeDir === "right" || row.dataset.marqueeDir === "down") ? 1 : -1;
+
+    duplicateTrack(track);
+
+    var m = { row: row, track: track, axis: axis, dir: dir, pos: 0, speedFactor: 1, targetFactor: 1 };
+
+    m.measure = function () {
+      m.loopSize = axis === "vertical" ? track.scrollHeight / 2 : track.scrollWidth / 2;
+      m.baseSpeed = SPEED / 60;
+    };
+    m.measure();
+
+    row.addEventListener("mouseenter", function () { m.targetFactor = HOVER_FACTOR; });
+    row.addEventListener("mouseleave", function () { m.targetFactor = 1; });
+    row.addEventListener("touchstart", function () { m.targetFactor = HOVER_FACTOR; }, { passive: true });
+    row.addEventListener("touchend", function () { m.targetFactor = 1; }, { passive: true });
+
+    return m;
+  }
+
+  var marquees = Array.prototype.slice.call(rows).map(createMarquee).filter(Boolean);
+  if (!marquees.length) return;
+
+  window.addEventListener("resize", function () {
+    marquees.forEach(function (m) { m.measure(); });
+  });
+
+  function tick() {
+    marquees.forEach(function (m) {
+      if (!m.loopSize) return;
+      m.speedFactor += (m.targetFactor - m.speedFactor) * EASE;
+      m.pos += m.dir * m.baseSpeed * m.speedFactor;
+
+      if (m.dir === -1 && m.pos <= -m.loopSize) m.pos += m.loopSize;
+      if (m.dir === 1 && m.pos >= 0) m.pos -= m.loopSize;
+
+      m.track.style.transform = m.axis === "vertical"
+        ? "translateY(" + m.pos + "px)"
+        : "translateX(" + m.pos + "px)";
+    });
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
 })();
 

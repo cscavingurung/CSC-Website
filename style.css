@@ -1203,6 +1203,66 @@ section {
   }
 }
 
+/* Scope this selector to the marquee context so it can never be
+   silently overridden by an unrelated .t-card rule elsewhere */
+.marquee-track .t-card {
+  background: var(--navy-2);
+  border-radius: 4px;
+  padding: 32px 28px;
+  flex: 0 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* existing 768px block stays as-is, then add: */
+@media (max-width: 560px) {
+  .marquee-split-wrapper {
+    padding: 48px 20px;
+    gap: 24px;
+  }
+
+  .marquee-row {
+  overflow: hidden;
+  flex: 1;
+  width: 100%;
+  height: 20%;
+  margin-bottom: 0; /* Reset old layout configurations */
+}
+
+  .marquee-split-wrapper .marquee-container {
+    height: 420px;
+  }
+
+  /* Show a single full-width column instead of two cramped ones */
+  .marquee-row:last-child {
+    display: none;
+  }
+
+  .marquee-track .t-card {
+    padding: 24px 20px;
+  }
+
+  .t-card p.quote {
+    font-size: 14.5px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+
+  .t-avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 10px;
+  }
+
+  .t-person b {
+    font-size: 13px;
+  }
+
+  .t-person span {
+    font-size: 11px;
+  }
+}
+
 /* faq */
 #faq {
   background: var(--paper-2);
@@ -3404,3 +3464,60 @@ section {
     height: 44px;
   }
 }
+
+
+
+
+
+.policy-section {
+        padding: 44px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .policy-section:first-of-type {
+        padding-top: 0;
+      }
+      .policy-section:last-of-type {
+        border-bottom: none;
+      }
+      .policy-section h2 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 21px;
+        color: var(--navy-2);
+        margin-bottom: 14px;
+      }
+      .policy-section p {
+        font-size: 14.5px;
+        color: var(--muted);
+        max-width: 680px;
+        margin-bottom: 12px;
+      }
+      .policy-section p:last-child {
+        margin-bottom: 0;
+      }
+      .policy-list {
+        margin: 4px 0 12px;
+        padding-left: 20px;
+      }
+      .policy-list li {
+        font-size: 14.5px;
+        color: var(--muted);
+        margin-bottom: 8px;
+        max-width: 660px;
+      }
+      .policy-highlight {
+        background: var(--paper-2);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 20px 22px;
+        font-size: 14.5px;
+        color: var(--navy-2);
+        font-weight: 500;
+        margin-bottom: 12px;
+      }
+      .policy-updated {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }

@@ -42,6 +42,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     navScrim.addEventListener("click", closeMenu);
 
+    var navCloseBtn = mobileNav.querySelector(".dot-x-btn");
+if (navCloseBtn) {
+  navCloseBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    closeMenu();
+  });
+}
+
     mobileNav.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", closeMenu);
     });
@@ -645,7 +653,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
+// Attach the closeMenu function directly to the close button
 
 
 

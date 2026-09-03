@@ -270,6 +270,7 @@ header {
 }
 .mobile-nav-links {
   list-style: none;
+  padding-top: 32px;
 }
 .mobile-nav-links li {
   border-bottom: 1px solid var(--line);
@@ -280,7 +281,7 @@ header {
 .mobile-nav-links a {
   display: block;
   padding: 14px 0;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--ink);
   text-decoration: none;
@@ -1889,7 +1890,12 @@ footer a:hover {
 
   .mobile-nav {
     width: min(84vw, 320px);
+    padding: 12px 20px;
   }
+
+  .mobile-nav-links {
+  padding-top: 24px;
+}
 
   .values-grid,
   .about-stats-row,
@@ -1909,7 +1915,7 @@ footer a:hover {
   .mobile-nav {
     width: 45%;
     max-width: none;
-    padding: 140px 56px 40px;
+    padding: 52px 56px 40px;
   }
   .mobile-nav-links a {
     font-size: 20px;
@@ -3525,4 +3531,38 @@ section {
 
 
 
-      
+      /* The main button container */
+.dot-x-btn {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto; /* Makes it easier to click */
+}
+
+/* Base style for all 5 dots */
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--navy-2); /* Dot color */
+  border-radius: 50%;              /* Makes them perfect circles */
+}
+
+/* Explicitly positioning each dot to form the X */
+.dot:nth-child(1) { grid-column: 1; grid-row: 1; } /* Top-Left */
+.dot:nth-child(2) { grid-column: 3; grid-row: 1; } /* Top-Right */
+.dot:nth-child(3) { grid-column: 2; grid-row: 2; } /* Center */
+.dot:nth-child(4) { grid-column: 1; grid-row: 3; } /* Bottom-Left */
+.dot:nth-child(5) { grid-column: 3; grid-row: 3; } /* Bottom-Right */
+
+/* Subtle hover effect */
+.dot-x-btn:hover .dot {
+  background-color: var(--navy);
+}
+

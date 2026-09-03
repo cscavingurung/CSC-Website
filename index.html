@@ -1,638 +1,1138 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSC Global — Immigration Support for Nepalese in Canada</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CSC Global — Immigration Support for Nepalese in Canada</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
-</head>
-
-<body>
-  <header>
-    <div class="topnav">
-      <div class="wraptop">
-        <div class="top-content">
-          <img src="images/Icons/Location.webp">
-          <p>Brampton, 7900 Hurontario Street, Unit #203</p>
-        </div>
-        <div class="nav-right">
+  <body>
+    <header>
+      <div class="topnav">
+        <div class="wraptop">
           <div class="top-content">
-            <img src="images/Icons/Whatsapp.webp">
-            <p>+1 (416) 272-4274</p>
+            <img src="images/Icons/Location.webp" />
+            <p>Brampton, 7900 Hurontario Street, Unit #203</p>
           </div>
-          <div class="top-content">
-            <img src="images/Icons/Gmail.webp">
-            <p>hari.adhikari@live.ca</p>
+          <div class="nav-right">
+            <div class="top-content">
+              <img src="images/Icons/Whatsapp.webp" />
+              <p>+1 (416) 272-4274</p>
+            </div>
+            <div class="top-content">
+              <img src="images/Icons/Gmail.webp" />
+              <p>hari.adhikari@live.ca</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="wrap nav">
-      <a href="index.html" class="logo">
-        <img src="/images/Logo.png" alt="CSC Logo" />
-      </a>
-      <ul class="nav-links">
+      <div class="wrap nav">
+        <a href="index.html" class="logo">
+          <img src="images/Logo.png" alt="CSC Logo" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="success-stories.html">Success stories</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+          <a href="eligibility.html" class="btn btn-outline nav-cta-desktop"
+            >Check your eligibility</a
+          >
+          <button
+            class="nav-toggle"
+            id="navToggle"
+            aria-label="Open menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span> <span></span><span></span
+            ><span></span> <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="nav-scrim" id="navScrim"></div>
+
+    <div class="mobile-nav" id="mobileNav">
+      <button class="dot-x-btn" aria-label="Close">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </button>
+
+      <ul class="mobile-nav-links">
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="success-stories.html">Success stories</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="nav-right">
-        <a href="eligibility.html" class="btn btn-outline nav-cta-desktop">Check your eligibility</a>
-        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span> <span></span><span></span><span></span>
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+      <a href="eligibility.html" class="btn btn-outline mobile-nav-cta"
+        >Check your eligibility</a
+      >
     </div>
-  </header>
 
-  <div class="nav-scrim" id="navScrim"></div>
-
-  <div class="mobile-nav" id="mobileNav">
-    <ul class="mobile-nav-links">
-      <li><a href="about.html">About</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="success-stories.html">Success stories</a></li>
-      <li><a href="resources.html">Resources</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <a href="eligibility.html" class="btn btn-outline mobile-nav-cta">Check your eligibility</a>
-  </div>
-
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-content">
-        <!-- <div class="eyebrow">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-content">
+          <!-- <div class="eyebrow">
             LICENSED RCIC CONSULTANTS · SERVING NEPALIESE ACROSS CANADA
           </div> -->
-        <h1>Navigate Your Next<br/>Step In Canada.</h1>
-        <p class="lead">
-          Straight answers on status extensions, PR, and sponsoring family
-          from consultants who understand exactly what you dealing with.
-        </p>
-        <div class="hero-ctas">
-          <a href="#book" class="btn btn-primary">Book a free consultation</a>
+          <h1>Navigate Your Next<br />Step In Canada.</h1>
+          <p class="lead">
+            Straight answers on status extensions, PR, and sponsoring family
+            from consultants who understand exactly what you dealing with.
+          </p>
+          <div class="hero-ctas">
+            <a href="#book" class="btn btn-primary">Book a free consultation</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="partners" class="partners-marquee">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <h2>Top Universities & Colleges We Partner With</h2>
-      <p>Guiding students into Canada's leading educational institutions.</p>
-    </div>
-  </div>
+    <section id="partners" class="partners-marquee">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Top Universities & Colleges We Partner With</h2>
+          <p>
+            Guiding students into Canada's leading educational institutions.
+          </p>
+        </div>
+      </div>
 
-  <div class="partner-marquee-container">
-    <!-- Top Row (scrolls left) -->
-    <div class="partner-marquee-row" data-marquee-dir="left">
-      <div class="partner-marquee-track" data-marquee-track>
-        <div class="partner-card"><img src="images/partners/Bow Valley College.svg" alt="Bow Valley College" /></div>
-        <div class="partner-card"><img src="images/partners/Keyano College.webp" alt="Keyano College" /></div>
-        <div class="partner-card"><img src="images/partners/Lakeland College.webp" alt="Lakeland College" /></div>
-        <div class="partner-card"><img src="images/partners/Lethbridge Polytechnic.svg" alt="Lethbridge Polytechnic" /></div>
-        <div class="partner-card"><img src="images/partners/NorQuest College.webp" alt="NorQuest College" /></div>
-        <div class="partner-card"><img src="images/partners/Northern Alberta Institute of Technology (NAIT).webp" alt="Northern Alberta Institute of Technology (NAIT)" /></div>
-        <div class="partner-card"><img src="images/partners/Algonquin_College.webp" alt="Algonquin College" /></div>
-        <div class="partner-card"><img src="images/partners/LogoCambrian.webp" alt="Cambrian College" /></div>
-        <div class="partner-card"><img src="images/partners/Canadore-College.webp" alt="Canadore College" /></div>
-        <div class="partner-card"><img src="images/partners/centennialcollege_logo_horizontal_rgb.webp" alt="Centennial College" /></div>
-        <div class="partner-card"><img src="images/partners/Conestoga College.webp" alt="Conestoga College" /></div>
-        <div class="partner-card"><img src="images/partners/Confederation College.png" alt="Confederation College" /></div>
-        <div class="partner-card"><img src="images/partners/Durham College.svg" alt="Durham College" /></div>
-        <div class="partner-card"><img src="images/partners/Fanshawe College.webp" alt="Fanshawe College" /></div>
-        <div class="partner-card"><img src="images/partners/Fleming College.webp" alt="Fleming College" /></div>
-        <div class="partner-card"><img src="images/partners/George Brown College.svg" alt="George Brown College" /></div>
-        <div class="partner-card"><img src="images/partners/Georgian College.webp" alt="Georgian College" /></div>
-        <div class="partner-card"><img src="images/partners/Humber College.svg" alt="Humber College" /></div>
-        <div class="partner-card"><img src="images/partners/Lambton College.webp" alt="Lambton College" /></div>
-        <div class="partner-card"><img src="images/partners/Loyalist College.png" alt="Loyalist College" /></div>
-        <div class="partner-card"><img src="images/partners/Mohawk College.webp" alt="Mohawk College" /></div>
-        <div class="partner-card"><img src="images/partners/Niagara College.webp" alt="Niagara College" /></div>
-        <div class="partner-card"><img src="images/partners/Northern College.svg" alt="Northern College" /></div>
-        <div class="partner-card"><img src="images/partners/St. Clair College.webp" alt="St. Clair College" /></div>
-        <div class="partner-card"><img src="images/partners/St. Lawrence College.webp" alt="St. Lawrence College" /></div>
-        <div class="partner-card"><img src="images/partners/Sault College.webp" alt="Sault College" /></div>
-        <div class="partner-card"><img src="images/partners/Seneca College.svg" alt="Seneca College" /></div>
-        <div class="partner-card"><img src="images/partners/Sheridan College.svg" alt="Sheridan College" /></div>
-        <div class="partner-card"><img src="images/partners/Great Plains College.svg" alt="Great Plains College" /></div>
-      </div>
-    </div>
+      <div class="partner-marquee-container">
+        <!-- Top Row (scrolls left) -->
+        <div class="partner-marquee-row" data-marquee-dir="left">
+          <div class="partner-marquee-track" data-marquee-track>
+            <div class="partner-card">
+              <img
+                src="images/partners/Bow Valley College.svg"
+                alt="Bow Valley College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Keyano College.webp"
+                alt="Keyano College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Lakeland College.webp"
+                alt="Lakeland College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Lethbridge Polytechnic.svg"
+                alt="Lethbridge Polytechnic"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/NorQuest College.webp"
+                alt="NorQuest College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Northern Alberta Institute of Technology (NAIT).webp"
+                alt="Northern Alberta Institute of Technology (NAIT)"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Algonquin_College.webp"
+                alt="Algonquin College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/LogoCambrian.webp"
+                alt="Cambrian College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Canadore-College.webp"
+                alt="Canadore College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/centennialcollege_logo_horizontal_rgb.webp"
+                alt="Centennial College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Conestoga College.webp"
+                alt="Conestoga College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Confederation College.png"
+                alt="Confederation College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Durham College.svg"
+                alt="Durham College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Fanshawe College.webp"
+                alt="Fanshawe College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Fleming College.webp"
+                alt="Fleming College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/George Brown College.svg"
+                alt="George Brown College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Georgian College.webp"
+                alt="Georgian College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Humber College.svg"
+                alt="Humber College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Lambton College.webp"
+                alt="Lambton College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Loyalist College.png"
+                alt="Loyalist College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Mohawk College.webp"
+                alt="Mohawk College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Niagara College.webp"
+                alt="Niagara College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Northern College.svg"
+                alt="Northern College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/St. Clair College.webp"
+                alt="St. Clair College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/St. Lawrence College.webp"
+                alt="St. Lawrence College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Sault College.webp"
+                alt="Sault College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Seneca College.svg"
+                alt="Seneca College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Sheridan College.svg"
+                alt="Sheridan College"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Great Plains College.svg"
+                alt="Great Plains College"
+              />
+            </div>
+          </div>
+        </div>
 
-    <!-- Bottom Row (scrolls right) -->
-    <div class="partner-marquee-row" data-marquee-dir="right">
-      <div class="partner-marquee-track" data-marquee-track>
-        <div class="partner-card"><img src="images/partners/York University.webp" alt="York University" /></div>
-        <div class="partner-card"><img src="images/partners/University of Windsor.svg" alt="University of Windsor" /></div>
-        <div class="partner-card"><img src="images/partners/Ontario Tech University.webp" alt="Ontario Tech University" /></div>
-        <div class="partner-card"><img src="images/partners/Trent University.webp" alt="Trent University" /></div>
-        <div class="partner-card"><img src="images/partners/Toronto Metropolitan University.svg" alt="Toronto Metropolitan University" /></div>
-        <div class="partner-card"><img src="images/partners/Laurentian University Université Laurentienne.webp" alt="Laurentian University Université Laurentienne" /></div>
-        <div class="partner-card"><img src="images/partners/Lakehead University.webp" alt="Lakehead University" /></div>
-        <div class="partner-card"><img src="images/partners/Algoma University.svg" alt="Algoma University" /></div>
-        <div class="partner-card"><img src="images/partners/Saint Mary's University.svg" alt="Saint Mary's University" /></div>
-        <div class="partner-card"><img src="images/partners/Mount Saint Vincent University.webp" alt="Mount Saint Vincent University" /></div>
-        <div class="partner-card"><img src="images/partners/Cape Breton University.webp" alt="Cape Breton University" /></div>
-        <div class="partner-card"><img src="images/partners/St. Thomas University.webp" alt="St. Thomas University" /></div>
-        <div class="partner-card"><img src="images/partners/Mount Allison University.webp" alt="Mount Allison University" /></div>
-        <div class="partner-card"><img src="images/partners/University of Winnipeg.webp" alt="University of Winnipeg" /></div>
-        <div class="partner-card"><img src="images/partners/University of Manitoba.svg" alt="University of Manitoba" /></div>
-        <div class="partner-card"><img src="images/partners/Vancouver Island University.webp" alt="Vancouver Island University" /></div>
-        <div class="partner-card"><img src="images/partners/University of Northern British Columbia.webp" alt="University of Northern British Columbia" /></div>
-        <div class="partner-card"><img src="images/partners/Thompson Rivers University.webp" alt="Thompson Rivers University" /></div>
-        <div class="partner-card"><img src="images/partners/Royal Roads University.svg" alt="Royal Roads University" /></div>
-        <div class="partner-card"><img src="images/partners/Kwantlen Polytechnic University.svg" alt="Kwantlen Polytechnic University" /></div>
-        <div class="partner-card"><img src="images/partners/Capilano University.webp" alt="Capilano University" /></div>
-        <div class="partner-card"><img src="images/partners/University of Lethbridge.webp" alt="University of Lethbridge" /></div>
-        <div class="partner-card"><img src="images/partners/University of Calgary.webp" alt="University of Calgary" /></div>
-        <div class="partner-card"><img src="images/partners/MacEwan University.svg" alt="MacEwan University" /></div>
+        <!-- Bottom Row (scrolls right) -->
+        <div class="partner-marquee-row" data-marquee-dir="right">
+          <div class="partner-marquee-track" data-marquee-track>
+            <div class="partner-card">
+              <img
+                src="images/partners/York University.webp"
+                alt="York University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/University of Windsor.svg"
+                alt="University of Windsor"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Ontario Tech University.webp"
+                alt="Ontario Tech University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Trent University.webp"
+                alt="Trent University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Toronto Metropolitan University.svg"
+                alt="Toronto Metropolitan University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Laurentian University Université Laurentienne.webp"
+                alt="Laurentian University Université Laurentienne"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Lakehead University.webp"
+                alt="Lakehead University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Algoma University.svg"
+                alt="Algoma University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Saint Mary's University.svg"
+                alt="Saint Mary's University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Mount Saint Vincent University.webp"
+                alt="Mount Saint Vincent University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Cape Breton University.webp"
+                alt="Cape Breton University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/St. Thomas University.webp"
+                alt="St. Thomas University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Mount Allison University.webp"
+                alt="Mount Allison University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/University of Winnipeg.webp"
+                alt="University of Winnipeg"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/University of Manitoba.svg"
+                alt="University of Manitoba"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Vancouver Island University.webp"
+                alt="Vancouver Island University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/University of Northern British Columbia.webp"
+                alt="University of Northern British Columbia"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Thompson Rivers University.webp"
+                alt="Thompson Rivers University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Royal Roads University.svg"
+                alt="Royal Roads University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Kwantlen Polytechnic University.svg"
+                alt="Kwantlen Polytechnic University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/Capilano University.webp"
+                alt="Capilano University"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/University of Lethbridge.webp"
+                alt="University of Lethbridge"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/University of Calgary.webp"
+                alt="University of Calgary"
+              />
+            </div>
+            <div class="partner-card">
+              <img
+                src="images/partners/MacEwan University.svg"
+                alt="MacEwan University"
+              />
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-  <section class="results track-record">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <h2>The records</h2>
-        <p>
-          Numbers we can back up, not numbers we made up for the homepage.
-        </p>
+    <section class="results track-record">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>The records</h2>
+          <p>
+            Numbers we can back up, not numbers we made up for the homepage.
+          </p>
+        </div>
+        <div class="results-grid">
+          <div class="result-card reveal delay-0">
+            <h3 class="counter" data-target="4200" data-suffix="+">0+</h3>
+            <p>
+              Applications filed for Nepalese in Canada — status changes, PR,
+              sponsorship, and citizenship.
+            </p>
+          </div>
+          <div class="result-card reveal delay-90">
+            <h3 class="counter" data-target="96" data-suffix="%">0%</h3>
+            <p>
+              Of applications we file are approved on the first attempt — no
+              resubmissions, no lost months.
+            </p>
+          </div>
+          <div class="result-card reveal delay-180">
+            <h3 class="counter" data-target="300" data-suffix="+">0+</h3>
+            <p>
+              Nepali-Canadians guided directly by our own consultants — no call
+              center, no outsourcing, no language barrier.
+            </p>
+          </div>
+        </div>
+        <div class="results-stats">
+          <div class="reveal delay-0">
+            <b>RCIC</b><span>Licensed &amp; regulated consultants</span>
+          </div>
+          <div class="reveal delay-90">
+            <b>NP + CA</b><span>Registered in Nepal &amp; Canada</span>
+          </div>
+          <div class="reveal delay-180">
+            <b>$0</b><span>Hidden fees, ever</span>
+          </div>
+          <div class="reveal delay-270">
+            <b>24 hrs</b><span>WhatsApp response time</span>
+          </div>
+        </div>
       </div>
-      <div class="results-grid">
-        <div class="result-card reveal delay-0">
-          <h3 class="counter" data-target="4200" data-suffix="+">0+</h3>
-          <p>Applications filed for Nepalese in Canada — status changes, PR, sponsorship, and citizenship.</p>
-        </div>
-        <div class="result-card reveal delay-90">
-          <h3 class="counter" data-target="96" data-suffix="%">0%</h3>
-          <p>Of applications we file are approved on the first attempt — no resubmissions, no lost months.</p>
-        </div>
-        <div class="result-card reveal delay-180">
-          <h3 class="counter" data-target="300" data-suffix="+">0+</h3>
-          <p>Nepali-Canadians guided directly by our own consultants — no call center, no outsourcing, no language
-            barrier.</p>
-        </div>
-      </div>
-      <div class="results-stats">
-        <div class="reveal delay-0">
-          <b>RCIC</b><span>Licensed &amp; regulated consultants</span>
-        </div>
-        <div class="reveal delay-90">
-          <b>NP + CA</b><span>Registered in Nepal &amp; Canada</span>
-        </div>
-        <div class="reveal delay-180">
-          <b>$0</b><span>Hidden fees, ever</span>
-        </div>
-        <div class="reveal delay-270">
-          <b>24 hrs</b><span>WhatsApp response time</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================================================
+    <!-- ============================================================
       SERVICES
            ============================================================ -->
-  <section class="services" id="services">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Our Services</h2>
-        <p>Each case gets its own consultant and its own checklist — not a one-size template.</p>
+    <section class="services" id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Our Services</h2>
+          <p>
+            Each case gets its own consultant and its own checklist — not a
+            one-size template.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <a class="service-card" href="/services.html#pr">
+            <img
+              src="images/Permanent Residency.webp"
+              alt="Permanent Residency"
+              loading="lazy"
+            />
+            <!-- <span class="service-card__tag"></span> -->
+            <div class="service-card__content">
+              <h3>Permanent Residency</h3>
+            </div>
+          </a>
+
+          <a class="service-card" href="/services.html#study">
+            <img
+              src="images/Study Permit.webp"
+              alt="Stacks of filed paper documents and folders for a study permit application"
+              loading="lazy"
+            />
+            <div class="service-card__content">
+              <h3>Study Permit</h3>
+            </div>
+          </a>
+
+          <a class="service-card" href="/services.html#work">
+            <img
+              src="images/Work Permit.webp"
+              alt="Hand checking off items on a work permit document checklist"
+              loading="lazy"
+            />
+            <div class="service-card__content">
+              <h3>Work Permit</h3>
+            </div>
+          </a>
+
+          <a class="service-card" href="/services.html#visit">
+            <img
+              src="images/Visit Canada.webp"
+              alt="Traveller arriving at the airport terminal in Canada"
+              loading="lazy"
+            />
+            <div class="service-card__content">
+              <h3>Visit Canada</h3>
+            </div>
+          </a>
+
+          <a class="service-card" href="/services.html#citizenship">
+            <img
+              src="images/Citizenship.webp"
+              alt="Consultant reviewing citizenship application requirements with a client"
+              loading="lazy"
+            />
+            <div class="service-card__content">
+              <h3>Citizenship</h3>
+            </div>
+          </a>
+
+          <a class="service-card" href="/services.html#pr-card">
+            <img
+              src="images/PR Card Renewal.webp"
+              alt="Checking PR card renewal application status on a phone"
+              loading="lazy"
+            />
+            <div class="service-card__content">
+              <h3>PR Card Renewal</h3>
+            </div>
+          </a>
+        </div>
       </div>
+    </section>
 
-      <div class="services-grid">
-
-        <a class="service-card" href="/services.html#pr">
-          <img src="images/Permanent Residency.webp" alt="Permanent Residency" loading="lazy">
-          <!-- <span class="service-card__tag"></span> -->
-          <div class="service-card__content">
-            <h3>Permanent Residency</h3>
-          </div>
-        </a>
-
-        <a class="service-card" href="/services.html#study">
-          <img src="images/Study Permit.webp"
-            alt="Stacks of filed paper documents and folders for a study permit application" loading="lazy">
-          <div class="service-card__content">
-            <h3>Study Permit</h3>
-          </div>
-        </a>
-
-        <a class="service-card" href="/services.html#work">
-          <img src="images/Work Permit.webp" alt="Hand checking off items on a work permit document checklist"
-            loading="lazy">
-          <div class="service-card__content">
-            <h3>Work Permit</h3>
-          </div>
-        </a>
-
-        <a class="service-card" href="/services.html#visit">
-          <img src="images/Visit Canada.webp" alt="Traveller arriving at the airport terminal in Canada" loading="lazy">
-          <div class="service-card__content">
-            <h3>Visit Canada</h3>
-          </div>
-        </a>
-
-        <a class="service-card" href="/services.html#citizenship">
-          <img src="images/Citizenship.webp"
-            alt="Consultant reviewing citizenship application requirements with a client" loading="lazy">
-          <div class="service-card__content">
-            <h3>Citizenship</h3>
-          </div>
-        </a>
-
-        <a class="service-card" href="/services.html#pr-card">
-          <img src="images/PR Card Renewal.webp" alt="Checking PR card renewal application status on a phone"
-            loading="lazy">
-          <div class="service-card__content">
-            <h3>PR Card Renewal</h3>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- ============================================================
+    <!-- ============================================================
      PROCESS
      ============================================================ -->
-  <section class="process" id="process">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>The Stages</h2>
-        <p>You'll always know which stage your file is in and who to ask.</p>
-      </div>
-
-      <div class="route">
-        <div class="route__line" aria-hidden="true"></div>
-
-        <div class="stop">
-          <div class="stop__badge">01</div>
-          <div class="stop__content">
-            <p class="stop__eyebrow">Stage 01</p>
-            <h3>Free consultation</h3>
-            <p>30 minutes, in Nepali or English, to map your options.</p>
-          </div>
+    <section class="process" id="process">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The Stages</h2>
+          <p>You'll always know which stage your file is in and who to ask.</p>
         </div>
 
-        <div class="stop">
-          <div class="stop__badge">02</div>
-          <div class="stop__content">
-            <p class="stop__eyebrow">Stage 02</p>
-            <h3>Document checklist</h3>
-            <p>A single shared checklist — upload from your phone.</p>
-          </div>
+        <div class="route">
+          <div class="route__line" aria-hidden="true"></div>
 
-        </div>
-
-        <div class="stop">
-          <div class="stop__badge">03</div>
-          <div class="stop__content">
-            <p class="stop__eyebrow">Stage 03</p>
-            <h3>Filing</h3>
-            <p>We file and give you the exact application number.</p>
-          </div>
-
-        </div>
-
-        <div class="stop">
-          <div class="stop__badge">04</div>
-          <div class="stop__content">
-            <p class="stop__eyebrow">Stage 04</p>
-            <h3>Tracking</h3>
-            <p>Status updates as soon as IRCC updates your file.</p>
-          </div>
-        </div>
-
-        <div class="stop">
-          <div class="stop__badge">05</div>
-          <div class="stop__content">
-          <p class="stop__eyebrow">Stage 05</p>
-          <h3>Approval</h3>
-          <p>Once approved, we help plan what's next.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <section id="stories" class="testimonial-marquee">
-  <div class="marquee-split-wrapper">
-
-    <div class="wrap">
-      <div class="section-head reveal">
-        <h2>Testimonials</h2>
-        <p>Real clients, real outcomes — hover any row to pause and read.</p>
-      </div>
-    </div>
-
-    <div class="marquee-container">
-      <div class="marquee-row" data-marquee-dir="up" data-marquee-axis="vertical">
-        <div class="marquee-track" data-marquee-track>
-          <div class="t-card">
-            <p class="quote">"Excellent service as a whole with very interactive and friendly staff. Especially, Ms. Shreya Singh, the counselor, made the entire process easy and hassle-free. Overall, the best consultancy for students aiming to study in their dream country, Canada."</p>
-            <div class="t-person">
-              <div class="t-avatar"><img src="images/Avatar/Pratik Chalise.png" alt="Pratik Chalise"></div>
-              <div><b>Pratik Chalise</b><span>Study permit — Ontario</span></div>
+          <div class="stop">
+            <div class="stop__badge">01</div>
+            <div class="stop__content">
+              <p class="stop__eyebrow">Stage 01</p>
+              <h3>Free consultation</h3>
+              <p>30 minutes, in Nepali or English, to map your options.</p>
             </div>
           </div>
 
-          <div class="t-image">
-            <img src="images/Study Permit.webp" alt="Study Permit">
-          </div>
-
-          <div class="t-card">
-            <p class="quote">"Had a fantastic experience with the Canadian Study Center, Chitwan. The staffs were incredibly helpful and knowledgeable, guiding me through selection of university to every step of the application process. I'm grateful for their dedication to helping students achieve their academic goals. I am blessed to start my Canadian processing from this consultancy. Highly recommended!"</p>
-            <div class="t-person">
-              <div class="t-avatar"><img src="images/Avatar/Asmita Baral.png" alt="Asmita Baral"></div>
-              <div><b>Asmita Baral</b><span>Express Entry — BC</span></div>
+          <div class="stop">
+            <div class="stop__badge">02</div>
+            <div class="stop__content">
+              <p class="stop__eyebrow">Stage 02</p>
+              <h3>Document checklist</h3>
+              <p>A single shared checklist — upload from your phone.</p>
             </div>
           </div>
 
-          <div class="t-card">
-            <p class="quote">"Every Success requires support from good partner. CSC is the right partner to support you in realizing the dream of studying in Canada. Most friendly, reliable and trustworthy education partner that solves every queries and doubts on study environment at Canada and helps you to choose universities/academic programs that suits you best."</p>
-            <div class="t-person">
-              <div class="t-avatar"><img src="images/Avatar/Sushil Bhattarai.png" alt="Sushil Bhattarai"></div>
-              <div><b>Sushil Bhattarai</b><span>Spousal sponsorship</span></div>
+          <div class="stop">
+            <div class="stop__badge">03</div>
+            <div class="stop__content">
+              <p class="stop__eyebrow">Stage 03</p>
+              <h3>Filing</h3>
+              <p>We file and give you the exact application number.</p>
             </div>
           </div>
 
-          <div class="t-image">
-            <img src="images/Study Permit.webp" alt="Study Permit">
-          </div>
-
-          <div class="t-card">
-            <p class="quote">"Recently had the opportunity to engage with the Canadian Study Center, and I must say, their dedication to student success is commendable. The staff's expertise in guiding students through the complexities of studying abroad is unparalleled. They provide personalized attention to each individual, ensuring that all queries are addressed with clarity and patience. The center's environment is welcoming and fosters a sense of community among the students, which I found to be quite enriching."</p>
-            <div class="t-person">
-              <div class="t-avatar"><img src="images/Avatar/Basanta Aryal.png" alt="Basanta Aryal"></div>
-              <div><b>Basanta Aryal</b><span>Study permit — Ontario</span></div>
+          <div class="stop">
+            <div class="stop__badge">04</div>
+            <div class="stop__content">
+              <p class="stop__eyebrow">Stage 04</p>
+              <h3>Tracking</h3>
+              <p>Status updates as soon as IRCC updates your file.</p>
             </div>
           </div>
 
-          <div class="t-card">
-            <p class="quote">"Overall, the experience with the csc was very nice and the whole team was very supportive in each step of documentation. The environment of CSC was very welcoming and warm. Altogether, I had an awesome experience with the consular and whole team of CSC. I will highly recommend others to apply through CSC if you are planning to study in Canada."</p>
-            <div class="t-person">
-              <div class="t-avatar"><img src="images/Avatar/Ravi Bhattarai.png" alt="Ravi Bhattarai"></div>
-              <div><b>Ravi Bhattarai</b><span>Express Entry — BC</span></div>
+          <div class="stop">
+            <div class="stop__badge">05</div>
+            <div class="stop__content">
+              <p class="stop__eyebrow">Stage 05</p>
+              <h3>Approval</h3>
+              <p>Once approved, we help plan what's next.</p>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="marquee-row" data-marquee-dir="down" data-marquee-axis="vertical">
-        <div class="marquee-track" data-marquee-track>
-          <div class="t-card">
-            <p class="quote">"Excellent service as a whole with very interactive and friendly staff. Especially, Ms. Shreya Singh, the counselor, made the entire process easy and hassle-free. Overall, the best consultancy for students aiming to study in their dream country, Canada."</p>
-            <div class="t-person">
-              <div class="t-avatar"><img src="images/Avatar/Pratik Chalise.png" alt="Pratik Chalise"></div>
-              <div><b>Pratik Chalise</b><span>Study permit — Ontario</span></div>
-            </div>
-          </div>
-
-          <div class="t-image">
-            <img src="images/Study Permit.webp" alt="Study Permit">
-          </div>
-
-          <div class="t-card">
-            <p class="quote">"Had a fantastic experience with the Canadian Study Center, Chitwan. The staffs were incredibly helpful and knowledgeable, guiding me through selection of university to every step of the application process. I'm grateful for their dedication to helping students achieve their academic goals. I am blessed to start my Canadian processing from this consultancy. Highly recommended!"</p>
-            <div class="t-person">
-              <div class="t-avatar"><img src="images/Avatar/Asmita Baral.png" alt="Asmita Baral"></div>
-              <div><b>Asmita Baral</b><span>Express Entry — BC</span></div>
-            </div>
-          </div>
-
-          <div class="t-card">
-            <p class="quote">"Every Success requires support from good partner. CSC is the right partner to support you in realizing the dream of studying in Canada. Most friendly, reliable and trustworthy education partner that solves every queries and doubts on study environment at Canada and helps you to choose universities/academic programs that suits you best."</p>
-            <div class="t-person">
-              <div class="t-avatar"><img src="images/Avatar/Sushil Bhattarai.png" alt="Sushil Bhattarai"></div>
-              <div><b>Sushil Bhattarai</b><span>Spousal sponsorship</span></div>
-            </div>
-          </div>
-
-          <div class="t-image">
-            <img src="images/Study Permit.webp" alt="Study Permit">
-          </div>
-
-          <div class="t-card">
-            <p class="quote">"Recently had the opportunity to engage with the Canadian Study Center, and I must say, their dedication to student success is commendable. The staff's expertise in guiding students through the complexities of studying abroad is unparalleled. They provide personalized attention to each individual, ensuring that all queries are addressed with clarity and patience. The center's environment is welcoming and fosters a sense of community among the students, which I found to be quite enriching."</p>
-            <div class="t-person">
-              <div class="t-avatar"><img src="images/Avatar/Basanta Aryal.png" alt="Basanta Aryal"></div>
-              <div><b>Basanta Aryal</b><span>Study permit — Ontario</span></div>
-            </div>
-          </div>
-
-          <div class="t-card">
-            <p class="quote">"Overall, the experience with the csc was very nice and the whole team was very supportive in each step of documentation. The environment of CSC was very welcoming and warm. Altogether, I had an awesome experience with the consular and whole team of CSC. I will highly recommend others to apply through CSC if you are planning to study in Canada."</p>
-            <div class="t-person">
-              <div class="t-avatar"><img src="images/Avatar/Ravi Bhattarai.png" alt="Ravi Bhattarai"></div>
-              <div><b>Ravi Bhattarai</b><span>Express Entry — BC</span></div>
-            </div>
+    <section id="stories" class="testimonial-marquee">
+      <div class="marquee-split-wrapper">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <h2>Testimonials</h2>
+            <p>
+              Real clients, real outcomes — hover any row to pause and read.
+            </p>
           </div>
         </div>
-      </div>
-    </div>
 
-  </div>
-</section>
-
-
-  <section id="faq">
-    <div class="wrap">
-      <div class="section-head center reveal">
-        <h2>FAQ's</h2>
-        <p>
-          If yours isn't here, ask us directly on the free consultation — no
-          charge either way.
-        </p>
-      </div>
-      <div class="faq-list">
-        <details class="faq-item reveal delay-0" open>
-          <summary>How much do your services cost?</summary>
-          <p>
-            Fixed fees per service, quoted upfront before you commit to
-            anything — never a percentage of your application or a surprise
-            add-on later.
-          </p>
-        </details>
-        <details class="faq-item reveal delay-60">
-          <summary>How long does the process actually take?</summary>
-          <p>
-            It depends on the visa category and IRCC's current processing
-            times, which we're upfront about — not just our own paperwork.
-            We'll give you a realistic range in your first consultation, not a
-            marketing number.
-          </p>
-        </details>
-        <details class="faq-item reveal delay-120">
-          <summary>Are you a licensed immigration consultant?</summary>
-          <p>
-            Yes — we're a Regulated Canadian Immigration Consultant (RCIC),
-            which means we're authorized to represent clients directly with
-            IRCC and are bound by a professional code of conduct.
-          </p>
-        </details>
-        <details class="faq-item reveal delay-180">
-          <summary>What happens if my application gets refused?</summary>
-          <p>
-            We review the refusal letter with you, explain exactly what went
-            wrong, and tell you honestly whether it's fixable — before you pay
-            us to try again.
-          </p>
-        </details>
-        <details class="faq-item reveal delay-240">
-          <summary>
-            Can you help me sponsor my parents or spouse from Nepal?
-          </summary>
-          <p>
-            Yes — spousal, parent, and dependent-child sponsorship is one of
-            the most common things we handle. We'll give you an honest read on
-            current processing backlogs before you apply.
-          </p>
-        </details>
-        <details class="faq-item reveal delay-300">
-          <summary>How do I get started?</summary>
-          <p>
-            Book a free 30-minute consultation in Nepali or English. We'll map
-            your options before you spend anything, so you know exactly what
-            you're signing up for.
-          </p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <div class="cta-banner" id="book">
-    <div class="wrap cta-inner reveal">
-      <h2>Talk to a licensed consultant before you file anything.</h2>
-      <a href="#book" class="btn">Book your free 30-min call</a>
-    </div>
-  </div>
-
-  <footer>
-    <div class="wrap">
-      <div class="footer-grid">
-        <div>
-          <div class="logo">
-            <img src="/images/Logo2.png" alt="CSC Logo" />
-          </div>
-
-          <p>
-            CSC Global — a regulated immigration consultancy serving Nepalese
-            across Canada with status, PR, and sponsorship since 2013.
-          </p>
-          <div class="social-links">
-            <a href="https://www.facebook.com/cscglobalcanada/" aria-label="Facebook" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M13.5 21v-7.5h2.5l.4-3H13.5V8.5c0-.9.25-1.5 1.55-1.5H16.5V4.3c-.3-.04-1.3-.13-2.4-.13-2.4 0-4 1.46-4 4.15V10.5H7.6v3h2.5V21h3.4z" />
-              </svg>
-            </a>
-            <a href="https://www.youtube.com/@Canadastudycenterofficial" aria-label="YouTube" target="_blank"
-              rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M22 12s0-3.2-.4-4.7c-.24-.9-.94-1.6-1.84-1.84C18.3 5 12 5 12 5s-6.3 0-7.76.46c-.9.24-1.6.94-1.84 1.84C2 8.8 2 12 2 12s0 3.2.4 4.7c.24.9.94 1.6 1.84 1.84C5.7 19 12 19 12 19s6.3 0 7.76-.46c.9-.24 1.6-.94 1.84-1.84.4-1.5.4-4.7.4-4.7zM10 15V9l5.2 3-5.2 3z" />
-              </svg>
-            </a>
-            <a href="https://www.instagram.com/cscglobal_canada/" aria-label="Instagram" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <rect x="3" y="3" width="18" height="18" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.2" cy="6.8" r="1" />
-              </svg>
-            </a>
-            <a href="https://ca.linkedin.com/company/csc-global" aria-label="LinkedIn" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M6.94 8.5H3.56V21h3.38V8.5zM5.25 3a2 2 0 100 4 2 2 0 000-4zM21 21v-6.9c0-3.3-1.76-4.84-4.1-4.84-1.9 0-2.75 1.04-3.22 1.78V8.5h-3.4c.04.96 0 12.5 0 12.5h3.4v-7c0-.37.03-.75.14-1.02.3-.75 1-1.53 2.16-1.53 1.52 0 2.13 1.16 2.13 2.86V21H21z" />
-              </svg>
-            </a>
-          </div>
-        </div>
-        <div>
-          <h4>Office</h4>
-          <div class="office">
-            <b>Brampton</b><span>7900 Hurontario Street, Unit #203</span>
-          </div>
-        </div>
-        <div>
-          <h4>Services</h4>
-          <ul>
-            <li><a href="services.html#pr">Permanent Residency</a></li>
-            <li><a href="services.html#study">Study Permit</a></li>
-            <li><a href="services.html#work">Work Permit</a></li>
-            <li><a href="services.html#visit">Visit Canada</a></li>
-            <li>
-              <a href="services.html#citizenship">Canadian Citizenship</a>
-            </li>
-            <li><a href="services.html#pr-card">PR Card Renewal</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Contact</h4>
-          <ul>
-            <li>
-              <div class="icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path
-                    d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.1-1.4-.1-.1-.3-.2-.6-.3z" />
-                  <path
-                    d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.5 5.2L2 22l4.9-1.4C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2z" />
-                </svg>
+        <div class="marquee-container">
+          <div
+            class="marquee-row"
+            data-marquee-dir="up"
+            data-marquee-axis="vertical"
+          >
+            <div class="marquee-track" data-marquee-track>
+              <div class="t-card">
+                <p class="quote">
+                  "Excellent service as a whole with very interactive and
+                  friendly staff. Especially, Ms. Shreya Singh, the counselor,
+                  made the entire process easy and hassle-free. Overall, the
+                  best consultancy for students aiming to study in their dream
+                  country, Canada."
+                </p>
+                <div class="t-person">
+                  <div class="t-avatar">
+                    <img
+                      src="images/Avatar/Pratik Chalise.png"
+                      alt="Pratik Chalise"
+                    />
+                  </div>
+                  <div>
+                    <b>Pratik Chalise</b><span>Study permit — Ontario</span>
+                  </div>
+                </div>
               </div>
-              <a>+1 (416) 272-4274</a>
-            </li>
-            <li>
-              <div class="icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16v16H4z" opacity="0" />
-                  <path d="M3 7l9 6 9-6" />
-                  <rect x="3" y="5" width="18" height="14" rx="2" />
-                </svg>
+
+              <div class="t-image">
+                <img src="images/Study Permit.webp" alt="Study Permit" />
               </div>
-              <a>hari.adhikari@live.ca</a>
-            </li>
-          </ul>
+
+              <div class="t-card">
+                <p class="quote">
+                  "Had a fantastic experience with the Canadian Study Center,
+                  Chitwan. The staffs were incredibly helpful and knowledgeable,
+                  guiding me through selection of university to every step of
+                  the application process. I'm grateful for their dedication to
+                  helping students achieve their academic goals. I am blessed to
+                  start my Canadian processing from this consultancy. Highly
+                  recommended!"
+                </p>
+                <div class="t-person">
+                  <div class="t-avatar">
+                    <img
+                      src="images/Avatar/Asmita Baral.png"
+                      alt="Asmita Baral"
+                    />
+                  </div>
+                  <div><b>Asmita Baral</b><span>Express Entry — BC</span></div>
+                </div>
+              </div>
+
+              <div class="t-card">
+                <p class="quote">
+                  "Every Success requires support from good partner. CSC is the
+                  right partner to support you in realizing the dream of
+                  studying in Canada. Most friendly, reliable and trustworthy
+                  education partner that solves every queries and doubts on
+                  study environment at Canada and helps you to choose
+                  universities/academic programs that suits you best."
+                </p>
+                <div class="t-person">
+                  <div class="t-avatar">
+                    <img
+                      src="images/Avatar/Sushil Bhattarai.png"
+                      alt="Sushil Bhattarai"
+                    />
+                  </div>
+                  <div>
+                    <b>Sushil Bhattarai</b><span>Spousal sponsorship</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="t-image">
+                <img src="images/Study Permit.webp" alt="Study Permit" />
+              </div>
+
+              <div class="t-card">
+                <p class="quote">
+                  "Recently had the opportunity to engage with the Canadian
+                  Study Center, and I must say, their dedication to student
+                  success is commendable. The staff's expertise in guiding
+                  students through the complexities of studying abroad is
+                  unparalleled. They provide personalized attention to each
+                  individual, ensuring that all queries are addressed with
+                  clarity and patience. The center's environment is welcoming
+                  and fosters a sense of community among the students, which I
+                  found to be quite enriching."
+                </p>
+                <div class="t-person">
+                  <div class="t-avatar">
+                    <img
+                      src="images/Avatar/Basanta Aryal.png"
+                      alt="Basanta Aryal"
+                    />
+                  </div>
+                  <div>
+                    <b>Basanta Aryal</b><span>Study permit — Ontario</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="t-card">
+                <p class="quote">
+                  "Overall, the experience with the csc was very nice and the
+                  whole team was very supportive in each step of documentation.
+                  The environment of CSC was very welcoming and warm.
+                  Altogether, I had an awesome experience with the consular and
+                  whole team of CSC. I will highly recommend others to apply
+                  through CSC if you are planning to study in Canada."
+                </p>
+                <div class="t-person">
+                  <div class="t-avatar">
+                    <img
+                      src="images/Avatar/Ravi Bhattarai.png"
+                      alt="Ravi Bhattarai"
+                    />
+                  </div>
+                  <div>
+                    <b>Ravi Bhattarai</b><span>Express Entry — BC</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="marquee-row"
+            data-marquee-dir="down"
+            data-marquee-axis="vertical"
+          >
+            <div class="marquee-track" data-marquee-track>
+              <div class="t-card">
+                <p class="quote">
+                  "Excellent service as a whole with very interactive and
+                  friendly staff. Especially, Ms. Shreya Singh, the counselor,
+                  made the entire process easy and hassle-free. Overall, the
+                  best consultancy for students aiming to study in their dream
+                  country, Canada."
+                </p>
+                <div class="t-person">
+                  <div class="t-avatar">
+                    <img
+                      src="images/Avatar/Pratik Chalise.png"
+                      alt="Pratik Chalise"
+                    />
+                  </div>
+                  <div>
+                    <b>Pratik Chalise</b><span>Study permit — Ontario</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="t-image">
+                <img src="images/Study Permit.webp" alt="Study Permit" />
+              </div>
+
+              <div class="t-card">
+                <p class="quote">
+                  "Had a fantastic experience with the Canadian Study Center,
+                  Chitwan. The staffs were incredibly helpful and knowledgeable,
+                  guiding me through selection of university to every step of
+                  the application process. I'm grateful for their dedication to
+                  helping students achieve their academic goals. I am blessed to
+                  start my Canadian processing from this consultancy. Highly
+                  recommended!"
+                </p>
+                <div class="t-person">
+                  <div class="t-avatar">
+                    <img
+                      src="images/Avatar/Asmita Baral.png"
+                      alt="Asmita Baral"
+                    />
+                  </div>
+                  <div><b>Asmita Baral</b><span>Express Entry — BC</span></div>
+                </div>
+              </div>
+
+              <div class="t-card">
+                <p class="quote">
+                  "Every Success requires support from good partner. CSC is the
+                  right partner to support you in realizing the dream of
+                  studying in Canada. Most friendly, reliable and trustworthy
+                  education partner that solves every queries and doubts on
+                  study environment at Canada and helps you to choose
+                  universities/academic programs that suits you best."
+                </p>
+                <div class="t-person">
+                  <div class="t-avatar">
+                    <img
+                      src="images/Avatar/Sushil Bhattarai.png"
+                      alt="Sushil Bhattarai"
+                    />
+                  </div>
+                  <div>
+                    <b>Sushil Bhattarai</b><span>Spousal sponsorship</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="t-image">
+                <img src="images/Study Permit.webp" alt="Study Permit" />
+              </div>
+
+              <div class="t-card">
+                <p class="quote">
+                  "Recently had the opportunity to engage with the Canadian
+                  Study Center, and I must say, their dedication to student
+                  success is commendable. The staff's expertise in guiding
+                  students through the complexities of studying abroad is
+                  unparalleled. They provide personalized attention to each
+                  individual, ensuring that all queries are addressed with
+                  clarity and patience. The center's environment is welcoming
+                  and fosters a sense of community among the students, which I
+                  found to be quite enriching."
+                </p>
+                <div class="t-person">
+                  <div class="t-avatar">
+                    <img
+                      src="images/Avatar/Basanta Aryal.png"
+                      alt="Basanta Aryal"
+                    />
+                  </div>
+                  <div>
+                    <b>Basanta Aryal</b><span>Study permit — Ontario</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="t-card">
+                <p class="quote">
+                  "Overall, the experience with the csc was very nice and the
+                  whole team was very supportive in each step of documentation.
+                  The environment of CSC was very welcoming and warm.
+                  Altogether, I had an awesome experience with the consular and
+                  whole team of CSC. I will highly recommend others to apply
+                  through CSC if you are planning to study in Canada."
+                </p>
+                <div class="t-person">
+                  <div class="t-avatar">
+                    <img
+                      src="images/Avatar/Ravi Bhattarai.png"
+                      alt="Ravi Bhattarai"
+                    />
+                  </div>
+                  <div>
+                    <b>Ravi Bhattarai</b><span>Express Entry — BC</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="bottom-bar">
-        <span>© 2026 CSC Global. RCIC #6176.</span>
-        <span>
-          <a href="privacy-policy.html">Privacy Policy</a>
-        </span>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <h2>FAQ's</h2>
+          <p>
+            If yours isn't here, ask us directly on the free consultation — no
+            charge either way.
+          </p>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item reveal delay-0" open>
+            <summary>How much do your services cost?</summary>
+            <p>
+              Fixed fees per service, quoted upfront before you commit to
+              anything — never a percentage of your application or a surprise
+              add-on later.
+            </p>
+          </details>
+          <details class="faq-item reveal delay-60">
+            <summary>How long does the process actually take?</summary>
+            <p>
+              It depends on the visa category and IRCC's current processing
+              times, which we're upfront about — not just our own paperwork.
+              We'll give you a realistic range in your first consultation, not a
+              marketing number.
+            </p>
+          </details>
+          <details class="faq-item reveal delay-120">
+            <summary>Are you a licensed immigration consultant?</summary>
+            <p>
+              Yes — we're a Regulated Canadian Immigration Consultant (RCIC),
+              which means we're authorized to represent clients directly with
+              IRCC and are bound by a professional code of conduct.
+            </p>
+          </details>
+          <details class="faq-item reveal delay-180">
+            <summary>What happens if my application gets refused?</summary>
+            <p>
+              We review the refusal letter with you, explain exactly what went
+              wrong, and tell you honestly whether it's fixable — before you pay
+              us to try again.
+            </p>
+          </details>
+          <details class="faq-item reveal delay-240">
+            <summary>
+              Can you help me sponsor my parents or spouse from Nepal?
+            </summary>
+            <p>
+              Yes — spousal, parent, and dependent-child sponsorship is one of
+              the most common things we handle. We'll give you an honest read on
+              current processing backlogs before you apply.
+            </p>
+          </details>
+          <details class="faq-item reveal delay-300">
+            <summary>How do I get started?</summary>
+            <p>
+              Book a free 30-minute consultation in Nepali or English. We'll map
+              your options before you spend anything, so you know exactly what
+              you're signing up for.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-banner" id="book">
+      <div class="wrap cta-inner reveal">
+        <h2>Talk to a licensed consultant before you file anything.</h2>
+        <a href="#book" class="btn">Book your free 30-min call</a>
       </div>
     </div>
-  </footer>
 
-  <div class="book-overlay" id="bookOverlay">
-    <div class="book-frame-wrap">
-      <button class="book-close" id="bookClose" aria-label="Close">
-        &times;
-      </button>
-      <iframe id="bookIframe" src="" title="Book a consultation"></iframe>
+    <footer>
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <div class="logo">
+              <img src="/images/Logo2.png" alt="CSC Logo" />
+            </div>
+
+            <p>
+              CSC Global — a regulated immigration consultancy serving Nepalese
+              across Canada with status, PR, and sponsorship since 2013.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/cscglobalcanada/"
+                aria-label="Facebook"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M13.5 21v-7.5h2.5l.4-3H13.5V8.5c0-.9.25-1.5 1.55-1.5H16.5V4.3c-.3-.04-1.3-.13-2.4-.13-2.4 0-4 1.46-4 4.15V10.5H7.6v3h2.5V21h3.4z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://www.youtube.com/@Canadastudycenterofficial"
+                aria-label="YouTube"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M22 12s0-3.2-.4-4.7c-.24-.9-.94-1.6-1.84-1.84C18.3 5 12 5 12 5s-6.3 0-7.76.46c-.9.24-1.6.94-1.84 1.84C2 8.8 2 12 2 12s0 3.2.4 4.7c.24.9.94 1.6 1.84 1.84C5.7 19 12 19 12 19s6.3 0 7.76-.46c.9-.24 1.6-.94 1.84-1.84.4-1.5.4-4.7.4-4.7zM10 15V9l5.2 3-5.2 3z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/cscglobal_canada/"
+                aria-label="Instagram"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.2" cy="6.8" r="1" />
+                </svg>
+              </a>
+              <a
+                href="https://ca.linkedin.com/company/csc-global"
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M6.94 8.5H3.56V21h3.38V8.5zM5.25 3a2 2 0 100 4 2 2 0 000-4zM21 21v-6.9c0-3.3-1.76-4.84-4.1-4.84-1.9 0-2.75 1.04-3.22 1.78V8.5h-3.4c.04.96 0 12.5 0 12.5h3.4v-7c0-.37.03-.75.14-1.02.3-.75 1-1.53 2.16-1.53 1.52 0 2.13 1.16 2.13 2.86V21H21z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h4>Office</h4>
+            <div class="office">
+              <b>Brampton</b><span>7900 Hurontario Street, Unit #203</span>
+            </div>
+          </div>
+          <div>
+            <h4>Services</h4>
+            <ul>
+              <li><a href="services.html#pr">Permanent Residency</a></li>
+              <li><a href="services.html#study">Study Permit</a></li>
+              <li><a href="services.html#work">Work Permit</a></li>
+              <li><a href="services.html#visit">Visit Canada</a></li>
+              <li>
+                <a href="services.html#citizenship">Canadian Citizenship</a>
+              </li>
+              <li><a href="services.html#pr-card">PR Card Renewal</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <ul>
+              <li>
+                <div class="icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.1-1.4-.1-.1-.3-.2-.6-.3z"
+                    />
+                    <path
+                      d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.5 5.2L2 22l4.9-1.4C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2z"
+                    />
+                  </svg>
+                </div>
+                <a>+1 (416) 272-4274</a>
+              </li>
+              <li>
+                <div class="icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M4 4h16v16H4z" opacity="0" />
+                    <path d="M3 7l9 6 9-6" />
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                  </svg>
+                </div>
+                <a>hari.adhikari@live.ca</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="bottom-bar">
+          <span>© 2026 CSC Global. RCIC #6176.</span>
+          <span>
+            <a href="privacy-policy.html">Privacy Policy</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+
+    <div class="book-overlay" id="bookOverlay">
+      <div class="book-frame-wrap">
+        <button class="book-close" id="bookClose" aria-label="Close">
+          &times;
+        </button>
+        <iframe id="bookIframe" src="" title="Book a consultation"></iframe>
+      </div>
     </div>
-  </div>
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M9 15V3M9 3L3.5 8.5M9 3L14.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-        stroke-linejoin="round" />
-    </svg>
-  </button>
-</body>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path
+          d="M9 15V3M9 3L3.5 8.5M9 3L14.5 8.5"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+  </body>
 </html>

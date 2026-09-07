@@ -355,7 +355,7 @@ if (navCloseBtn) {
   }
 
   // --- Initialize EmailJS ---
-  emailjs.init({ publicKey: "XH5h0hcPAU5Rj5oWz" });
+  emailjs.init({ publicKey: "_yYLWUO3FS3Lfm8UF" });
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -384,7 +384,7 @@ if (navCloseBtn) {
     btn.disabled = true;
     btn.textContent = "Sending...";
 
-    emailjs.sendForm("service_w4c8767", "template_ke7lfdl", form)
+    emailjs.sendForm("service_nmpor5o", "template_91uumih", form)
       .then(function () {
         btn.textContent = "Message sent — we'll reply within 24 hours";
         form.reset(); 

@@ -2,27 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Primary Pages -->
   <url>
-    <loc>https://csc-website-three.vercel.app/</loc>
+    <loc>https://cscglobalcanada.ca/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://csc-website-three.vercel.app/about</loc>
+    <loc>https://cscglobalcanada.ca/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://csc-website-three.vercel.app/services</loc>
+    <loc>https://cscglobalcanada.ca/services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://csc-website-three.vercel.app/contact</loc>
+    <loc>https://cscglobalcanada.ca/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://csc-website-three.vercel.app/eligibility</loc>
+    <loc>https://cscglobalcanada.ca/eligibility</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

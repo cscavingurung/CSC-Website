@@ -1460,6 +1460,34 @@ section {
   color: var(--teal);
   font-family: var(--font-mono);
 }
+
+.team-card .top-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.team-card .top-content img {
+  width: 20px;
+  aspect-ratio: 1 / 1;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.team-card .top-content a {
+  font-size: 14px;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  text-decoration: none;
+}
+
+.team-card .top-content a:hover {
+  /* text-decoration: underline; */
+  color: var(--navy);
+}
+
 .team-card p {
   font-size: 14px;
   color: var(--muted);

@@ -1461,14 +1461,14 @@ section {
   font-family: var(--font-mono);
 }
 
-.team-card .top-content {
+.team-card .teamicons {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
   margin-top: 12px;
 }
 
-.team-card .top-content img {
+.team-card .teamicons img {
   width: 20px;
   aspect-ratio: 1 / 1;
   border: none;
@@ -1476,16 +1476,14 @@ section {
   margin-bottom: 0;
 }
 
-.team-card .top-content a {
-  font-size: 14px;
-  color: var(--ink);
-  font-family: var(--font-mono);
-  text-decoration: none;
+.team-card .teamicons img {
+  opacity: 60%;
 }
 
-.team-card .top-content a:hover {
+.team-card .teamicons img:hover {
   /* text-decoration: underline; */
-  color: var(--navy);
+   opacity: 100%;
+
 }
 
 .team-card p {
